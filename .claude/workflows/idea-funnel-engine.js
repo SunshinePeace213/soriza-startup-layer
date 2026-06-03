@@ -183,8 +183,9 @@ async function gate2(c) {
   const lenses = lensesFor(c.idea_type)
   if (!lensTypeKnown(c.idea_type)) log(`⚠ Gate 2: unknown idea_type "${c.idea_type}" for ${c.id} — used default lenses (possible coverage gap)`)
   const hypo = c.gates.gate1_sharpen && c.gates.gate1_sharpen.hypothesis
+  const hypoHint = hypo ? '' : ` (hypothesis not in memory — read it from ${ns}hypothesis.md)` // resurrect-at-gate2 safety (N1)
   const objections = await parallel(lenses.map(slug => () => agent(
-    `Objection lens. Channel ${slug} against candidate id=${c.id}: seed=${JSON.stringify(c.seed)}, hypothesis=${JSON.stringify(hypo)}. Read its lens-card in .claude/skills/idea-funnel/references/expert-lens-map.md. Fire ONE strongest disconfirming objection + what evidence would rebut it.`,
+    `Objection lens. Channel ${slug} against candidate id=${c.id}: seed=${JSON.stringify(c.seed)}, hypothesis=${JSON.stringify(hypo)}${hypoHint}. Read its lens-card in .claude/skills/idea-funnel/references/expert-lens-map.md. Fire ONE strongest disconfirming objection + what evidence would rebut it.`,
     { agentType: 'objection-lens', schema: OBJECTION_SCHEMA, phase: 'Gate 2 — Disconfirmation', label: `obj:${c.id}:${slug.replace('-perspective', '')}` }
   )))
   await parallel([
@@ -194,7 +195,7 @@ async function gate2(c) {
       { agentType: 'market-researcher', phase: 'Gate 2 — Disconfirmation', label: `mkt:${c.id}` }),
   ])
   const v = await agent(
-    `Disconfirmation judge (Gate 2). Candidate id=${c.id}, idea_type=${c.idea_type}. Objections (from lenses): ${JSON.stringify((objections || []).filter(Boolean))}. Read the steelman at ${ns}market-research/competitor-steelman.md and the market evidence at ${ns}market-research.md. Read .claude/skills/idea-funnel/references/gate-rubrics.md (Gate 2). Kill if the strongest objection stands unrebutted by evidence OR the market read fails. If a domain-specific lens would have been more decisive than ${JSON.stringify(lenses)}, name it as coverage_gap.`,
+    `Disconfirmation judge (Gate 2). Candidate id=${c.id}, idea_type=${c.idea_type}. Objections (from lenses): ${JSON.stringify((objections || []).filter(Boolean))}. Read the steelman at ${ns}market-research/competitor-steelman.md and the market evidence at ${ns}market-research.md. Read .claude/skills/idea-funnel/references/gate-rubrics.md (Gate 2). Kill if the strongest objection stands unrebutted by evidence OR the market read fails. If a domain-specific lens would have been more decisive than ${JSON.stringify(lenses)}, name it as coverage_gap. Return an objection_ledger entry {expert, status:"rebutted"|"standing"} for every objection you adjudicated.`,
     { agentType: 'disconfirmation-judge', schema: JUDGE_SCHEMA, phase: 'Gate 2 — Disconfirmation', label: `judge:${c.id}` }
   )
   c.gates.gate2_disconfirmation = v

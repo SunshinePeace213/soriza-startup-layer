@@ -53,7 +53,7 @@ read. Kill if EITHER:
 Score blends objection-survival and market strength. Always record `strongest_unrebutted` and (per
 ADR-0004) any `coverage_gap` (an ideal-but-missing lens). Harsh-by-design: this gate has evidence in
 hand, so it may kill confidently.
-Output: `{ verdict, score, reason, strongest_unrebutted, market, coverage_gap }`.
+Output: `{ verdict, score, reason, strongest_unrebutted, objection_ledger, market, coverage_gap }`.
 
 ## Gate 3 — Customer-discovery DESIGN  (soft gate: reachability only)
 

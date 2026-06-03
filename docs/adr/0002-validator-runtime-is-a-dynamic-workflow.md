@@ -9,7 +9,7 @@ runtime executes and scales to "dozens to hundreds of agents per run." A 100-Can
 deterministic per-gate kill logic is the workflow case, not the skill case.
 
 **Decision.** The Idea-Stage Validator's runtime is a **saved dynamic Workflow**
-(`.claude/workflows/idea-funnel.js`, invoked as `/idea-funnel`, batch passed via the `args` global)
+(`.claude/workflows/idea-funnel-engine.js`, launched by the `/idea-funnel` skill via the Workflow tool, batch passed via the `args` global)
 that `pipeline()`s Candidates through ordered **gate-subagents** (`.claude/agents/*.md`). Each gate
 emits a **schema-validated** advance/kill verdict (the Workflow `schema` option). Existing research
 subagents are reused as stages; new gate-subagents + kill-rubrics are built and verified with
