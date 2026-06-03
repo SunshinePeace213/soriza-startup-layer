@@ -69,6 +69,7 @@ The 9-category framework in `references/skill-categories.md` is the first refere
 Decision rules at a glance:
 
 - **Artifact type** — see `references/decision-tree.md`. Skill (directory) is the default; subagent for context isolation / tool restrictions / memory; command (single-file) only for genuinely trivial cases.
+- **Dynamic workflow** — when the work smells like *orchestration* (deterministic fan-out, multi-stage pipeline, adversarial verification, scale beyond one context, loop-until-dry), see `references/dynamic-workflows.md`. It's an orthogonal layer usually fronted by a thin skill, not a fifth artifact type; the bar is high (fan-out must be load-bearing).
 - **Persona** — invoke `tech-company-personas` only when artifact quality depends on judgment (review/recommendation/voice) AND domain is tech-flavored. See `references/composition-rules.md`.
 - **Hooks** — see `references/hooks.md`. Add hooks when 3+ of these are yes: hard requirement independent of model behavior, verification against actual state needed, tool calls that must never happen, ships to others where you can't trust manual enforcement.
 
@@ -390,6 +391,7 @@ Full composition guidance: `references/composition-rules.md`.
 - `references/skill-categories.md` — Thariq's 9-category framework
 - `references/anti-patterns.md` — older-model patterns to refuse + Thariq-derived patterns + review checklist
 - `references/decision-tree.md` — skill vs command vs subagent vs combination
+- `references/dynamic-workflows.md` — when a task wants a dynamic workflow (the conservative bar, the shape ladder, house conventions); orthogonal to the type choice
 - `references/skill-template.md` — skill (directory) anatomy + frontmatter + Gotchas pattern
 - `references/command-template.md` — command (single-file) for trivial cases
 - `references/subagent-template.md` — subagent YAML + body + 5 common shapes
