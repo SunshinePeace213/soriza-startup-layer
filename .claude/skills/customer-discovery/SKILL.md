@@ -136,6 +136,8 @@ When workers report, Read each persona doc and assemble `customer-discovery/targ
 
 Read `references/run-pack-template.md`. Compose `customer-discovery/cowork-runpack.md` — fully self-contained (Gotchas: headless Cowork can't see the repo). It inlines: mission, target-profile excerpt, sourcing rules, per-persona outreach templates, the **send-gate protocol** (per-batch founder approval, ~5–10/day ramp, opt-out line, auto-stop on bounces/complaints, channel-norm respect), the **overlap-window scheduling rules**, the day-7 follow-up cadence, the **tracking-sheet schema**, the MCP-setup reminder, and the report-back contract.
 
+**Output path:** by default write the run-pack to `customer-discovery/cowork-runpack.md`. When a Cowork shared folder is configured (`/mnt/c/dev/soriza-cowork/`, per ADR-0003), also write it there so Cowork reads it natively and drops interview notes back into the repo; otherwise the founder pastes the sealed run-pack into Cowork. The `/idea-funnel` workflow passes this path to its `cd-design-gate` for Shortlist survivors.
+
 Surface a **pre-flight note** to the founder in chat (not legal advice): a one-paragraph jurisdiction caution (HK PDPO / EU GDPR / US CAN-SPAM for B2B cold outreach) and a nudge to prefer warm/community channels where the target congregates.
 
 #### Step D5 — Review and write

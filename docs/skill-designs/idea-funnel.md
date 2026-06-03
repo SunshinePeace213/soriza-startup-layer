@@ -80,3 +80,25 @@ delete it. Don't delete prematurely.
   correctness + sensible kill-reasons (the false-kill / false-pass check); tune `gate-rubrics.md`.
 - **Phase 8 — Wrap.** Update `CLAUDE.md`; final `CONTEXT.md` pass; save the run as `/idea-funnel`;
   set model tiers per gate (haiku for Gate 0/1, opus for Gate 2).
+
+## As-built (deviations from the plan above)
+
+Built on branch `idea-funnel`. Three intentional deviations:
+
+1. **Engine renamed to avoid a command-name collision.** A saved workflow already *is* its `/name`
+   command, so the engine ships as `.claude/workflows/idea-funnel-engine.js` (`/idea-funnel-engine`)
+   and a thin front-door **skill** `.claude/skills/idea-funnel/SKILL.md` owns the friendly `/idea-funnel`
+   command — it gathers inputs, calls the Workflow tool on the engine, and renders the ledger. (The plan
+   assumed one file at `.claude/workflows/idea-funnel.js`.)
+2. **Two ledger helper agents added** that the plan folded into "the session writes the ledger": a
+   workflow script can't write files, so `ledger-reader` (stateful re-run: read prior ledger, skip
+   settled) and `ledger-writer` (persist `ledger.json` + `ledger.md` + `shortlist.md`, derive run-label
+   by Glob — no timestamps) do it as real subagents inside the run.
+3. **`idea-to-hypothesis` repurposed as a deprecation signpost** (routing table to `/idea-funnel` and
+   the standalone skills), not as the launcher — the launcher is the new `idea-funnel` skill.
+
+Models built in (overridable in the engine's `agent()` calls): haiku for Gate 0/1 + ledger helpers,
+sonnet for seed-generator / objection-lens / cd-design, opus for the disconfirmation-judge.
+
+Status: all artifacts written and the engine JS passes `node --check`. NOT yet run live — Phase 7
+(small-slice eval against the fixtures) is the next step and needs a thesis/seed input + spends tokens.
