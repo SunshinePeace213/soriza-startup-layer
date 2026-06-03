@@ -94,8 +94,8 @@ Built on branch `idea-funnel`. Three intentional deviations:
    workflow script can't write files, so `ledger-reader` (stateful re-run: read prior ledger, skip
    settled) and `ledger-writer` (persist `ledger.json` + `ledger.md` + `shortlist.md`, derive run-label
    by Glob — no timestamps) do it as real subagents inside the run.
-3. **`idea-to-hypothesis` repurposed as a deprecation signpost** (routing table to `/idea-funnel` and
-   the standalone skills), not as the launcher — the launcher is the new `idea-funnel` skill.
+3. **`idea-to-hypothesis` removed** (superseded by the funnel). Old phrasings like "run the whole idea
+   stage" now route to the new `idea-funnel` skill via its description; that skill is the launcher.
 
 Models built in (overridable in the engine's `agent()` calls): haiku for Gate 0/1 + ledger helpers,
 sonnet for seed-generator / objection-lens / cd-design, opus for the disconfirmation-judge.
