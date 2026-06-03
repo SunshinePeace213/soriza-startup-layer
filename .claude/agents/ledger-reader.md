@@ -21,12 +21,14 @@ re-judged and re-paid for.
 1. Glob the runs dir; if none exists, return `{ run_history_found: false }` (first run).
 2. Read the most recent `ledger.json` (highest run-label suffix).
 3. Return each prior Candidate's `id`, `status`, `killed_at`, and best `score`.
-4. Any `id` in the resurrect list is reported with `resurrect: true` and its `killed_at` (so the
-   workflow re-enters it at that gate instead of skipping it).
+4. Any `id` in the resurrect list is reported in `settled` with `resurrect: true`, AND its FULL prior
+   record is returned in `resurrected` — `id, title, seed, idea_type, killed_at`, and the prior `gates`
+   — so the workflow can reconstruct it (even if it isn't in the current seeds) and re-enter it at its
+   kill gate instead of from Gate 0.
 
 ## Output (schema)
 `{ run_history_found, latest_run_label, settled: [ { candidate_id, status, killed_at, score,
-resurrect } ] }`.
+resurrect } ], resurrected: [ { id, title, seed, idea_type, killed_at, gates } ] }`.
 
 ## Edge cases
 - Read only — never write, never re-judge. You report state; the workflow decides what to skip.

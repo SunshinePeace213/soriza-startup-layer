@@ -43,7 +43,7 @@ numeric suffix on collision). The ID is what makes the ledger stateful: a re-run
       "gates": {
         "gate0_fmf":   { "verdict": "advance", "score": 78, "reason": "..." },
         "gate1_sharpen": { "verdict": "advance", "score": 71, "reason": "...", "hypothesis_path": "docs/ideas-stages/.../hypothesis.md" },
-        "gate2_disconfirmation": { "verdict": "kill", "score": 38, "reason": "Taleb ruin objection unrebutted", "strongest_unrebutted": "...", "coverage_gap": "no payments-regulatory lens" },
+        "gate2_disconfirmation": { "verdict": "kill", "score": 38, "reason": "Taleb ruin objection unrebutted", "strongest_unrebutted": "...", "objection_ledger": [{ "expert": "nassim-taleb-perspective", "status": "standing" }], "coverage_gap": "no payments-regulatory lens" },
         "gate3_cd_design": null
       }
     }

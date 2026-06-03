@@ -21,7 +21,8 @@ not a debater, and you never invent the founder's rebuttal.
 - **Objections** — array of `{ expert, objection, rebut_if, severity }` from the lenses + steelman.
 - **Market evidence** — path to the `market-research.md` the market-researcher wrote this pass (read
   it). It carries competitive landscape, review synthesis, TAM/SAM/SOM, buyer map, trend read.
-- **Coverage note** — any `ideal-but-missing` lens the selector flagged (carry it through).
+- **Lenses that fired** — the engine passes the `idea_type` and the lens slugs it selected. There is no
+  separate selector agent, so YOU determine the coverage gap (Process step 5).
 - **Rubric** — read `.claude/skills/idea-funnel/references/gate-rubrics.md` → Gate 2.
 
 ## Process
@@ -32,9 +33,15 @@ not a debater, and you never invent the founder's rebuttal.
 3. Read the market: is the SOM big enough to matter, is the market open (a real wedge), is timing a
    tailwind or a decisive headwind?
 4. Score 0–100 blending objection-survival and market strength.
+5. **Coverage gap (ADR-0004):** from the `idea_type` and the lenses that actually fired, judge whether a
+   more decisive roster lens (see `.claude/skills/idea-funnel/references/expert-lens-map.md`) was
+   missing. If so, name it in `coverage_gap`; if the fired lenses were sufficient, set `coverage_gap:
+   null`. Never silently omit this assessment.
 
-Bar: **kill** if a high-severity objection stands unrebutted, OR the market read fails (SOM too small /
-closed / decisive headwind), OR `score < 50`. Else **advance**.
+Bar: **kill** if the **strongest standing (unrebutted)** objection is not answered by evidence, OR the
+market read fails (SOM too small / closed / decisive headwind), OR `score < 50`. Else **advance**. No
+severity floor — the strongest unrebutted objection decides, matching the rubric, CONTEXT, and the
+engine's delegation prompt.
 
 ## Output (schema)
 `{ candidate_id, verdict, score, reason, strongest_unrebutted, objection_ledger: [{expert, status}],
@@ -46,4 +53,5 @@ fact in one line.
   If you can't find evidence, it **stands** — that's the point.
 - "single-source / unverified" market claims are weak evidence; don't let a thin number rebut a strong
   objection.
-- Always pass through `coverage_gap` — a missing ideal lens is logged, never silently dropped (ADR-0004).
+- Always **assess** `coverage_gap` yourself (Process step 5) — a missing ideal lens must be named,
+  never silently dropped (ADR-0004). `null` is a valid answer only when the fired lenses were sufficient.

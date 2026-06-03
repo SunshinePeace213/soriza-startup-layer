@@ -16,22 +16,36 @@ export const meta = {
 function slugify(s) {
   return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'untitled'
 }
-function lensesFor(ideaType) {
-  const M = {
-    marketplace: ['peter-thiel-perspective', 'jeff-bezos-perspective', 'charlie-munger-perspective'],
-    'e-commerce': ['jeff-bezos-perspective', 'charlie-munger-perspective', 'garry-tan-perspective'],
-    trading: ['nassim-taleb-perspective', 'charlie-munger-perspective', 'elon-musk-perspective'],
-    fintech: ['nassim-taleb-perspective', 'charlie-munger-perspective', 'elon-musk-perspective'],
-    'ai-agent': ['peter-thiel-perspective', 'elon-musk-perspective', 'garry-tan-perspective'],
-    content: ['jeff-bezos-perspective', 'naval-ravikant-perspective', 'garry-tan-perspective'],
-    community: ['jeff-bezos-perspective', 'naval-ravikant-perspective', 'garry-tan-perspective'],
-    services: ['tom-eisenmann-perspective', 'jeff-bezos-perspective', 'ben-horowitz-perspective'],
-    'hardware-adjacent': ['elon-musk-perspective', 'nassim-taleb-perspective', 'tom-eisenmann-perspective'],
-    'regulated-adjacent': ['nassim-taleb-perspective', 'charlie-munger-perspective', 'tom-eisenmann-perspective'],
-    default: ['peter-thiel-perspective', 'charlie-munger-perspective', 'jeff-bezos-perspective'],
-  }
-  return M[ideaType] || M.default
+const LENS_MAP = {
+  marketplace: ['peter-thiel-perspective', 'jeff-bezos-perspective', 'charlie-munger-perspective'],
+  'e-commerce': ['jeff-bezos-perspective', 'charlie-munger-perspective', 'garry-tan-perspective'],
+  'trading/fintech': ['nassim-taleb-perspective', 'charlie-munger-perspective', 'elon-musk-perspective'],
+  trading: ['nassim-taleb-perspective', 'charlie-munger-perspective', 'elon-musk-perspective'],
+  fintech: ['nassim-taleb-perspective', 'charlie-munger-perspective', 'elon-musk-perspective'],
+  'ai-agent': ['peter-thiel-perspective', 'elon-musk-perspective', 'garry-tan-perspective'],
+  'content/community': ['jeff-bezos-perspective', 'naval-ravikant-perspective', 'garry-tan-perspective'],
+  content: ['jeff-bezos-perspective', 'naval-ravikant-perspective', 'garry-tan-perspective'],
+  community: ['jeff-bezos-perspective', 'naval-ravikant-perspective', 'garry-tan-perspective'],
+  'services/gig': ['tom-eisenmann-perspective', 'jeff-bezos-perspective', 'ben-horowitz-perspective'],
+  services: ['tom-eisenmann-perspective', 'jeff-bezos-perspective', 'ben-horowitz-perspective'],
+  'hardware-adjacent': ['elon-musk-perspective', 'nassim-taleb-perspective', 'tom-eisenmann-perspective'],
+  'regulated-adjacent': ['nassim-taleb-perspective', 'charlie-munger-perspective', 'tom-eisenmann-perspective'],
+  default: ['peter-thiel-perspective', 'charlie-munger-perspective', 'jeff-bezos-perspective'],
 }
+// Accept the canonical compound idea_types the seed-generator + lens-map emit (e.g. 'trading/fintech')
+// AND split tokens, so Gate-2 routing can't silently fall through to default (W4).
+function normType(ideaType) { return String(ideaType || 'default').toLowerCase().trim() }
+function lensesFor(ideaType) {
+  const raw = normType(ideaType)
+  if (LENS_MAP[raw]) return LENS_MAP[raw]
+  for (const tok of raw.split('/')) if (LENS_MAP[tok]) return LENS_MAP[tok]
+  return LENS_MAP.default
+}
+function lensTypeKnown(ideaType) {
+  const raw = normType(ideaType)
+  return !!LENS_MAP[raw] || raw.split('/').some(tok => LENS_MAP[tok])
+}
+const STAGE_INDEX = { 'gate-0': 0, 'gate-1': 1, 'gate-2': 2 }
 function mkCandidate(seed) {
   const id = seed.id || ('cand-' + slugify(seed.title || seed.problem))
   return {
@@ -39,7 +53,7 @@ function mkCandidate(seed) {
     title: seed.title || seed.problem || id,
     seed: { problem: seed.problem || '', who: seed.who || '', why_now: seed.why_now || '' },
     idea_type: seed.idea_type || 'default',
-    status: 'advancing', killed_at: null, rank: null,
+    status: 'advancing', killed_at: null, rank: null, resumeFrom: -1,
     gates: { gate0_fmf: null, gate1_sharpen: null, gate2_disconfirmation: null, gate3_cd_design: null },
   }
 }
@@ -48,11 +62,11 @@ function mkCandidate(seed) {
 const VERDICT = { verdict: { type: 'string', enum: ['advance', 'kill'] }, score: { type: 'number' }, reason: { type: 'string' } }
 const SEED_SCHEMA = { type: 'object', required: ['seeds'], properties: { seeds: { type: 'array', items: { type: 'object', required: ['title', 'problem', 'who', 'why_now', 'idea_type'], properties: { id: { type: 'string' }, title: { type: 'string' }, problem: { type: 'string' }, who: { type: 'string' }, why_now: { type: 'string' }, idea_type: { type: 'string' } } } } } }
 const KCAP_SCHEMA = { type: 'object', required: ['k'], properties: { k: { type: 'integer' }, rationale: { type: 'string' } } }
-const READER_SCHEMA = { type: 'object', required: ['run_history_found'], properties: { run_history_found: { type: 'boolean' }, latest_run_label: { type: 'string' }, settled: { type: 'array', items: { type: 'object', properties: { candidate_id: { type: 'string' }, status: { type: 'string' }, killed_at: { type: ['string', 'null'] }, score: { type: 'number' }, resurrect: { type: 'boolean' } } } } } }
+const READER_SCHEMA = { type: 'object', required: ['run_history_found'], properties: { run_history_found: { type: 'boolean' }, latest_run_label: { type: 'string' }, settled: { type: 'array', items: { type: 'object', properties: { candidate_id: { type: 'string' }, status: { type: 'string' }, killed_at: { type: ['string', 'null'] }, score: { type: 'number' }, resurrect: { type: 'boolean' } } } }, resurrected: { type: 'array', items: { type: 'object', properties: { id: { type: 'string' }, title: { type: 'string' }, seed: { type: 'object' }, idea_type: { type: 'string' }, killed_at: { type: ['string', 'null'] }, gates: { type: 'object' } } } } } }
 const FMF_SCHEMA = { type: 'object', required: ['candidate_id', 'verdict', 'score', 'reason'], properties: { candidate_id: { type: 'string' }, ...VERDICT, hard_fail: { type: ['string', 'null'] } } }
 const SHARPEN_SCHEMA = { type: 'object', required: ['candidate_id', 'verdict', 'score', 'reason'], properties: { candidate_id: { type: 'string' }, ...VERDICT, testable: { type: 'boolean' }, hypothesis: { type: 'object', properties: { who: { type: 'string' }, how_often: { type: 'string' }, how_severe: { type: 'string' }, status_quo: { type: 'string' }, sentence: { type: 'string' } } }, hypothesis_path: { type: ['string', 'null'] } } }
 const OBJECTION_SCHEMA = { type: 'object', required: ['expert', 'objection', 'rebut_if', 'severity'], properties: { candidate_id: { type: 'string' }, expert: { type: 'string' }, objection: { type: 'string' }, rebut_if: { type: 'string' }, severity: { type: 'number' } } }
-const JUDGE_SCHEMA = { type: 'object', required: ['candidate_id', 'verdict', 'score', 'reason'], properties: { candidate_id: { type: 'string' }, ...VERDICT, strongest_unrebutted: { type: 'string' }, coverage_gap: { type: ['string', 'null'] }, market: { type: 'object', properties: { tam: { type: 'string' }, sam: { type: 'string' }, som: { type: 'string' }, timing: { type: 'string' } } } } }
+const JUDGE_SCHEMA = { type: 'object', required: ['candidate_id', 'verdict', 'score', 'reason'], properties: { candidate_id: { type: 'string' }, ...VERDICT, strongest_unrebutted: { type: 'string' }, coverage_gap: { type: ['string', 'null'] }, objection_ledger: { type: 'array', items: { type: 'object', properties: { expert: { type: 'string' }, status: { type: 'string' } } } }, market: { type: 'object', properties: { tam: { type: 'string' }, sam: { type: 'string' }, som: { type: 'string' }, timing: { type: 'string' } } } } }
 const CD_SCHEMA = { type: 'object', required: ['candidate_id', 'verdict', 'reachable'], properties: { candidate_id: { type: 'string' }, verdict: { type: 'string', enum: ['advance', 'kill'] }, reachable: { type: 'boolean' }, runpack_path: { type: ['string', 'null'] }, reason: { type: 'string' } } }
 const WRITER_SCHEMA = { type: 'object', required: ['run_label'], properties: { run_label: { type: 'string' }, ledger_path: { type: 'string' }, ledger_json_path: { type: 'string' }, shortlist_path: { type: 'string' }, shortlist: { type: 'array', items: { type: 'string' } } } }
 
@@ -64,7 +78,7 @@ const coworkShare = a.coworkSharePath || null
 // Setup — prior ledger + cap K
 phase('Setup')
 const prior = await agent(
-  `Read prior funnel ledgers under docs/ideas-stages/_funnel-runs/. Resurrect IDs (treat as NOT settled): ${JSON.stringify(a.resurrect || [])}. Return the settled candidates from the latest run.`,
+  `Read prior funnel ledgers under docs/ideas-stages/_funnel-runs/. Resurrect IDs (treat as NOT settled, and return their FULL prior records so they can re-enter the funnel): ${JSON.stringify(a.resurrect || [])}. Return: (1) settled — lightweight {candidate_id, status, killed_at, score, resurrect} for every prior candidate; (2) resurrected — the FULL candidate object {id, title, seed, idea_type, killed_at, gates} from the latest ledger.json for each resurrect id you find.`,
   { agentType: 'ledger-reader', schema: READER_SCHEMA, phase: 'Setup', label: 'ledger-reader' }
 )
 const settledKilled = new Set()
@@ -75,6 +89,7 @@ if (prior && prior.run_history_found && Array.isArray(prior.settled)) {
     if (s.status === 'killed' && !s.resurrect) settledKilled.add(s.candidate_id)
   }
 }
+const resurrectedFull = (prior && Array.isArray(prior.resurrected)) ? prior.resurrected : []
 
 let kVal = a.k
 let capacityRationale = a.k ? `explicit k=${a.k}` : ''
@@ -111,11 +126,37 @@ if (Array.isArray(a.seeds) && a.seeds.length) {
 
 const resurrectSet = new Set(a.resurrect || [])
 const candidates = seeds.map(mkCandidate).filter(c => !settledKilled.has(c.id) || resurrectSet.has(c.id))
-log(`${candidates.length} candidates enter the funnel (${settledKilled.size} prior kills skipped)`)
+
+// Resurrect/appeal (W1–W3): re-enter prior-killed candidates AT their kill gate, reconstructing any
+// that aren't in the current seed set so a pure appeal isn't a silent no-op.
+const byId = new Map(candidates.map(c => [c.id, c]))
+for (const rc of resurrectedFull) {
+  if (!rc || !rc.id) continue
+  const resumeFrom = STAGE_INDEX[rc.killed_at] != null ? STAGE_INDEX[rc.killed_at] : 0
+  if (byId.has(rc.id)) {
+    const c = byId.get(rc.id)
+    c.gates = rc.gates || c.gates
+    c.status = 'advancing'; c.killed_at = null; c.resumeFrom = resumeFrom
+  } else {
+    const c = {
+      id: rc.id, slug: rc.id.replace(/^cand-/, ''),
+      title: rc.title || rc.id, seed: rc.seed || { problem: '', who: '', why_now: '' },
+      idea_type: rc.idea_type || 'default',
+      status: 'advancing', killed_at: null, rank: null, resumeFrom,
+      gates: rc.gates || { gate0_fmf: null, gate1_sharpen: null, gate2_disconfirmation: null, gate3_cd_design: null },
+    }
+    candidates.push(c); byId.set(c.id, c)
+  }
+}
+for (const rid of resurrectSet) {
+  if (!byId.has(rid)) log(`⚠ resurrect id not found in seeds or prior ledger — ignored: ${rid}`)
+}
+log(`${candidates.length} candidates enter the funnel (${settledKilled.size} prior kills skipped; ${resurrectedFull.length} resurrected)`)
 
 // ---------- gate stages (pipelined; each passes the candidate through, never null) ----------
 async function gate0(c) {
   if (c.status === 'killed') return c
+  if (c.resumeFrom > 0) return c // resurrected: resume at its kill gate, keep prior verdict
   const v = await agent(
     `Founder-Market-Fit screen (Gate 0). Candidate id=${c.id}, seed=${JSON.stringify(c.seed)}, title=${JSON.stringify(c.title)}. Read docs/founder-profile.md and .claude/skills/idea-funnel/references/gate-rubrics.md (Gate 0).`,
     { agentType: 'fmf-screen', schema: FMF_SCHEMA, phase: 'Gate 0 — FMF', label: `fmf:${c.id}`, model: 'haiku' }
@@ -126,6 +167,7 @@ async function gate0(c) {
 }
 async function gate1(c) {
   if (c.status === 'killed') return c
+  if (c.resumeFrom > 1) return c // resurrected: resume at its kill gate, keep prior verdict
   const ns = `docs/ideas-stages/${c.slug}/`
   const v = await agent(
     `Testability gate (Gate 1). Candidate id=${c.id}, seed=${JSON.stringify(c.seed)}, title=${JSON.stringify(c.title)}. Output namespace ${ns}; write hypothesis.md there on advance. Read .claude/skills/idea-funnel/references/gate-rubrics.md (Gate 1).`,
@@ -139,6 +181,7 @@ async function gate2(c) {
   if (c.status === 'killed') return c
   const ns = `docs/ideas-stages/${c.slug}/`
   const lenses = lensesFor(c.idea_type)
+  if (!lensTypeKnown(c.idea_type)) log(`⚠ Gate 2: unknown idea_type "${c.idea_type}" for ${c.id} — used default lenses (possible coverage gap)`)
   const hypo = c.gates.gate1_sharpen && c.gates.gate1_sharpen.hypothesis
   const objections = await parallel(lenses.map(slug => () => agent(
     `Objection lens. Channel ${slug} against candidate id=${c.id}: seed=${JSON.stringify(c.seed)}, hypothesis=${JSON.stringify(hypo)}. Read its lens-card in .claude/skills/idea-funnel/references/expert-lens-map.md. Fire ONE strongest disconfirming objection + what evidence would rebut it.`,
@@ -186,8 +229,10 @@ if (shortlisted.length) {
 
 // ---------- Persist ----------
 phase('Persist')
+// Dedupe: a candidate processed this run (incl. a resurrected one) overrides its prior-settled record.
+const priorOnly = priorSettled.filter(s => !processed.some(c => c.id === s.candidate_id))
 const writer = await agent(
-  `Persist this funnel run. Thesis slug=${thesisSlug}. K=${kVal} (capacity: ${capacityRationale}). Follow .claude/skills/idea-funnel/references/ledger-schema.md exactly. Write ledger.json, ledger.md (the board), and shortlist.md.\nResults (this run): ${JSON.stringify(processed)}\nPrior settled (carry into the board): ${JSON.stringify(priorSettled)}`,
+  `Persist this funnel run. Thesis slug=${thesisSlug}. K=${kVal} (capacity: ${capacityRationale}). Follow .claude/skills/idea-funnel/references/ledger-schema.md exactly. Write ledger.json, ledger.md (the board), and shortlist.md. Dedupe by id — a candidate in "Results" overrides any prior record.\nResults (this run): ${JSON.stringify(processed)}\nPrior-only settled (not in this run; carry into the board): ${JSON.stringify(priorOnly)}`,
   { agentType: 'ledger-writer', schema: WRITER_SCHEMA, phase: 'Persist', label: 'ledger-writer' }
 )
 
