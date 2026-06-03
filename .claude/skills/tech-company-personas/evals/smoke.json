@@ -1,0 +1,11 @@
+{
+  "prompt": "I'm generating an agent that reviews backend code. Pick a realistic Staff Engineer persona at Stripe and produce the persona block I should paste into the agent's prompt.",
+  "expected_output_glob": null,
+  "success_criteria": [
+    "Output mentions 'Staff Engineer' (level matches the role card title)",
+    "Output mentions 'Stripe' or a Stripe-distinctive term (idempotency, payment, API design, Sorbet, PCI)",
+    "Output names at least 3 push-back triggers in narrative or list form",
+    "Output is bounded — under ~400 words — and reads as a single coherent persona block, not just a citation of the reference files",
+    "Output references at least one role-card concept (mindset, communication style, vocabulary, or push-back) from references/roles/ic-generalist.md"
+  ]
+}

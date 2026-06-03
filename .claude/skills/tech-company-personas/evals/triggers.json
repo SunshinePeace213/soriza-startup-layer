@@ -1,0 +1,66 @@
+[
+  {
+    "query": "Pick a persona for an agent that reviews TypeScript code at a FAANG-style company",
+    "should_trigger": true
+  },
+  {
+    "query": "What persona should this code review subagent use?",
+    "should_trigger": true
+  },
+  {
+    "query": "Assign a realistic Staff Engineer persona to my system-design agent",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm generating a new agent and need a Stripe-style backend engineer persona",
+    "should_trigger": true
+  },
+  {
+    "query": "Craft a prompt with a CISO role for our security-review skill",
+    "should_trigger": true
+  },
+  {
+    "query": "Generate a Director of Engineering persona for the planning agent",
+    "should_trigger": true
+  },
+  {
+    "query": "What is the title ladder at Google for senior engineers?",
+    "should_trigger": true
+  },
+  {
+    "query": "Give me an SRE persona with Cloudflare-style edge engineering background",
+    "should_trigger": true
+  },
+  {
+    "query": "Run the test suite",
+    "should_trigger": false
+  },
+  {
+    "query": "What's the current branch?",
+    "should_trigger": false
+  },
+  {
+    "query": "Read the README",
+    "should_trigger": false
+  },
+  {
+    "query": "Fix the TypeScript error in src/main.ts",
+    "should_trigger": false
+  },
+  {
+    "query": "Show me the diff",
+    "should_trigger": false
+  },
+  {
+    "query": "Search the codebase for `useEffect`",
+    "should_trigger": false
+  },
+  {
+    "query": "Open the Pencil document for our design review",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a Notion page summarizing this conversation",
+    "should_trigger": false
+  }
+]

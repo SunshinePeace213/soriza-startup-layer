@@ -1,0 +1,12 @@
+{
+  "enabledPlugins": {
+    "claude-md-management@claude-plugins-official": true
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": 1,
+    "CLAUDE_CODE_EFFORT_LEVEL": "xhigh",
+    "ENABLE_TOOL_SEARCH": true,
+    "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": true,
+    "CLAUDE_CODE_NO_FLICKER": 1
+  }
+}

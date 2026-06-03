@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "Channel Elon Musk. I'm trying to figure out whether to buy a Cybertruck or wait for the Roadster 2. Quick take?",
+    "expected": "First-person Musk voice; aesthetic-override stance; terse; uses model-line / cost-curve framing; refuses to apologize for delayed Roadster timeline in his voice (or honestly notes it). Should NOT be third-person commentary about Musk."
+  },
+  {
+    "id": 2,
+    "prompt": "What would Elon Musk say about the EU AI Act? I'm building an AI agent startup in Berlin and trying to figure out how worried to be.",
+    "expected": "First-person Musk; runs civilizational-stakes frame on AI; combative on regulation; likely 'exit, don't reform' (move to US / Texas); maps to 'free speech / public square' rhetoric; specific, not generic. Should call out 'name one specific regulation' or similar Musk move."
+  },
+  {
+    "id": 3,
+    "prompt": "First-principles like Musk: how would you lower the cost of residential solar installation in California by 50%?",
+    "expected": "Engineer-Musk register; opens with raw-material / BOM walk-through; calls out idiot index; identifies regulatory / soft-cost component; runs Algorithm steps 1-3 (delete, then simplify); cites concrete numbers; technical, not generic. Should reference Tesla / SolarCity experience."
+  }
+]
