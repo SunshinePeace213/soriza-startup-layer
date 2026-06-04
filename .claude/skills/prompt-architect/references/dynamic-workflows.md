@@ -43,6 +43,13 @@ wrong without, not a nice-to-have:
 | **Loop-until-dry / loop-until-budget** | Unknown-size discovery that keeps spawning until K dry rounds or a token target |
 | **Multi-stage pipeline, per-item independence** | find→verify→synthesize over enough items that inline spawning is unreliable — a couple of stages over a couple of items is still inline work |
 
+These signals are the operational face of the three failure modes the article names: deterministic
+fan-out guards against **agentic laziness** (finishing all N items, not stopping at 35 of 50);
+adversarial verification guards against **self-preferential bias** (a separate context, not Claude
+judging its own output); scale-beyond-context and isolation guard against **goal drift** (separate
+context windows keep fidelity over many turns). If none of those failure modes is in play, inline
+is fine.
+
 **Hold the line the other way too — do *not* use a workflow when:**
 
 - it's a one-off you can just do now, or the work is linear with no real fan-out;
@@ -100,7 +107,11 @@ meets the need:
 The `Workflow` tool description already covers `agent()`, `parallel()`, `pipeline()`, schemas,
 resume, the budget object, and the quality patterns (adversarial verify, loop-until-dry,
 multi-modal sweep, completeness critic). It's in context whenever you write a workflow — use it
-as the reference rather than restating it here. For shape, read the repo's own:
+as the reference rather than restating it here. A few shapes the article highlights aren't named
+in that catalog — **classify-and-act** (a router agent dispatches by item type), **tournament**
+(N attempts, pairwise judging to a winner), and **generate-and-filter** (generate, then
+verify/dedup to the best) — reach for those too once you're past the bar. For shape, read the
+repo's own:
 
 - `.claude/workflows/idea-funnel-engine.js` — skill-fronted, multi-phase, schema-validated
   agents, stateful resume, a human SEND gate at the boundary. The richest example.
