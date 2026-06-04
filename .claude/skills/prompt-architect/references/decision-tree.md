@@ -21,6 +21,12 @@ Commands and skills have been merged. `.claude/commands/deploy.md` (single file)
 ```
 What does the user want?
 │
+├─ Is the CORE of the work ORCHESTRATION? (deterministic fan-out, multi-stage
+│  pipeline, adversarial verification, scale beyond one context, loop-until-dry)
+│  └─ A DYNAMIC WORKFLOW is in play — but as an orchestration LAYER, usually
+│     fronted by a thin skill, NOT instead of one. See dynamic-workflows.md for the
+│     conservative bar + which shape, then pick the fronting artifact below.
+│
 ├─ Reusable expertise / workflow invoked many times
 │  ├─ Needs context isolation, tool restrictions, or persistent memory?
 │  │  ├─ Yes → SUBAGENT
@@ -34,6 +40,21 @@ What does the user want?
 └─ Upgrade existing prompt for 4.8
    └─ Same artifact type; apply anti-pattern review + add hooks if warranted
 ```
+
+## Dynamic workflow — the orthogonal axis
+
+The first branch above is **orthogonal** to skill/command/subagent, not a fifth mutually
+exclusive box. A dynamic workflow (`Workflow` tool) writes a JS harness that fans out subagents
+deterministically; it runs headless and returns a value, so it's almost never what the user
+invokes directly. The build target is normally *a saved workflow plus a thin trigger skill*
+(the `/idea-funnel` → `idea-funnel-engine.js` pattern), or a skill that emits an ad-hoc
+workflow at runtime.
+
+Reach for one **only when fan-out is load-bearing** — a correctness requirement, not "there's
+some parallelism." 4.8 spawns fewer subagents by default and the `Workflow` tool requires
+explicit opt-in (it can spawn dozens of agents), so the bar is high. `dynamic-workflows.md`
+carries the full bar, the guardrails, and the shape ladder (inline-spawn → ad-hoc emit →
+skill-fronts-saved → standalone).
 
 ## When to pick skill (directory format) — the default
 

@@ -49,6 +49,8 @@ The lever for reasoning depth is effort, not prose. If an artifact (especially a
 
 **Implication for artifact design:** If an artifact genuinely benefits from parallel subagent work, give explicit guidance about when fan-out is desirable: *"Spawn subagents in parallel when fanning out across multiple files or independent items. For single-file edits or work you can complete directly, do it inline rather than delegating."*
 
+When the fan-out is not just desirable but **load-bearing** — it must reliably spawn N, run an independent verification panel, sweep at a scale that floods one context, or loop until dry — a prose "spawn N subagents" instruction under-fires here, and the fix is to escalate from inline spawning to a **dynamic workflow**, whose `agent()` calls execute deterministically. The bar and the shape ladder live in `decision-tree.md` → `dynamic-workflows.md`. Keep the conservative default otherwise: parallelism alone is not the bar.
+
 ## 6. Higher-quality progress updates — remove the scaffolding
 
 4.8 provides more regular, higher-quality user-facing updates throughout long agentic traces, without prompting.
