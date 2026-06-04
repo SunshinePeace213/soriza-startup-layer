@@ -43,12 +43,16 @@ wrong without, not a nice-to-have:
 | **Loop-until-dry / loop-until-budget** | Unknown-size discovery that keeps spawning until K dry rounds or a token target |
 | **Multi-stage pipeline, per-item independence** | find→verify→synthesize over enough items that inline spawning is unreliable — a couple of stages over a couple of items is still inline work |
 
-These signals are the operational face of the three failure modes the article names: deterministic
-fan-out guards against **agentic laziness** (finishing all N items, not stopping at 35 of 50);
-adversarial verification guards against **self-preferential bias** (a separate context, not Claude
-judging its own output); scale-beyond-context and isolation guard against **goal drift** (separate
-context windows keep fidelity over many turns). If none of those failure modes is in play, inline
-is fine.
+Those five signals are the decision face of why isolation and determinism matter; three failure
+modes the "harness for every task" article names sit behind them, each one the bar guards against
+— though deterministic fan-out and multi-stage independence earn the bar on their own, without a
+named mode. **Agentic laziness** (the model declaring done at 35 of 50): decompose into focused
+subagents so no single agent faces the whole slog, and loop until the work is actually dry.
+**Self-preferential bias** (Claude favouring its own output when it judges it): verify in a
+separate, independent context, not the one that produced the work. **Goal drift** (fidelity lost
+across many turns and compactions): give each subtask a fresh context window so the original
+constraints don't decay. If no load-bearing *signal* from the bar is in play, none of these is
+either — inline is fine.
 
 **Hold the line the other way too — do *not* use a workflow when:**
 
@@ -73,7 +77,7 @@ orchestration *shape varies* run-to-run only chooses *among* the workflow rungs 
 saved); variability by itself never clears the bar. With that settled, pick the lowest rung that
 meets the need:
 
-1. **Inline spawn** — *the case where the bar was NOT met.* The skill/subagent body says "spawn
+1. **Inline spawn** — *the case where the bar was not met — including a signal that matched in kind but not at a scale where inline is unreliable.* The skill/subagent body says "spawn
    subagents in parallel when fanning out across independent items; do single-item work inline."
    Light, occasional fan-out. Honors §5; no workflow fires.
 2. **Skill emits an ad-hoc workflow at runtime** — the skill body authors a `Workflow({script})`
@@ -107,11 +111,11 @@ meets the need:
 The `Workflow` tool description already covers `agent()`, `parallel()`, `pipeline()`, schemas,
 resume, the budget object, and the quality patterns (adversarial verify, loop-until-dry,
 multi-modal sweep, completeness critic). It's in context whenever you write a workflow — use it
-as the reference rather than restating it here. A few shapes the article highlights aren't named
-in that catalog — **classify-and-act** (a router agent dispatches by item type), **tournament**
-(N attempts, pairwise judging to a winner), and **generate-and-filter** (generate, then
-verify/dedup to the best) — reach for those too once you're past the bar. For shape, read the
-repo's own:
+as the reference rather than restating it here. The "harness for every task" article also names
+some useful shapes — **classify-and-act**, **tournament**, and **generate-and-filter** — read it
+for the details. They're shapes, not bar-clearers: a 3-attempt tournament or a
+generate-and-filter over a couple of ideas is still inline (rung 1); reach for a workflow only on
+a load-bearing instance at a scale where inline is unreliable. For shape, read the repo's own:
 
 - `.claude/workflows/idea-funnel-engine.js` — skill-fronted, multi-phase, schema-validated
   agents, stateful resume, a human SEND gate at the boundary. The richest example.
@@ -142,6 +146,7 @@ bites in practice.
 
 ## Cross-references
 
+- ["A harness for every task" (Anthropic)](https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code) — source for the three failure modes + the named patterns
 - `decision-tree.md` — the orthogonal "is the core orchestration?" branch routes here
 - `4-8-principles.md §5` — fewer subagents by default; this file is when to override that
 - `../../../workflows/idea-funnel-engine.js` — the skill-fronts-workflow exemplar

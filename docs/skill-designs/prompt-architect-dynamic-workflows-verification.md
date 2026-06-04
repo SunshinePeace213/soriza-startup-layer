@@ -60,3 +60,32 @@ rule, called non-blocking and partly deliberate.
 
 Net: the decision sense is verified perfect (12/12, 0 false positives) and the reference is
 internally consistent after tightening. `quick_validate` → "Skill is valid!"
+
+## Full re-verification after the article-coverage additions (3 rounds)
+
+Triggered by adding the three failure modes + named patterns. A run-until-pass loop with a hard
+PASS/FAIL gate.
+
+**Round 1 (`verify-dwf-full-r1`, 20 agents) — FAIL.** Routing 15/16 (false-positive-workflow **0**;
+the one false-negative, `triage-issues`, was a confounded gold label — "continuously + filesystem
++ side-effects" are real do-not-use triggers, so the guidance was right and the scenario was
+wrong). Three **blocking** content defects, all in the freshly-added material:
+1. *agentic laziness* tied to the wrong signal (deterministic fan-out is a spawn-count problem; "stops at 35/50" is loop-until-dry) — self-contradiction with the bar table (all 3 skeptics);
+2. the closer collapsed the 5-signal bar into 3 failure modes, leaving loop-until-dry + multi-stage routable to inline (≥2 skeptics);
+3. the named patterns invited small-instance over-recommendation; the "don't restate" sentence then restated pattern defs (Tip-1).
+
+**Fixes applied:** re-paired laziness → decompose + loop-until-done; closer now keys off "load-bearing
+*signal* from the bar" (all 5); patterns point-not-restate + a scale-qualified small-instance guard;
+added the source-article link to Cross-references; reworded the `triage` scenario to its unconfounded
+batch form.
+
+**Round 2 (`verify-dwf-r2`, 14 agents) — PASS.** Routing **10/10** (FP 0, FN 0); all three blockers
+resolved unanimously by all three skeptics; zero blocking issues; remaining items LOW polish.
+
+**Post-round-2 polish (applied):** named the two mode-less signals to kill the 5-vs-3 apposition;
+broadened rung-1 to "matched in kind but not at a load-bearing scale"; softened "a few more shapes" →
+"also names some useful shapes".
+
+**Round 3 final (`verify-dwf-r3-final`, 4 agents) — PASS.** Three skeptics, no blocking defect, all
+five risk categories clean; the only ≥2-skeptic finding both reviewers explicitly judged a non-defect.
+`quick_validate` → "Skill is valid!" Verified text == shipped text.
