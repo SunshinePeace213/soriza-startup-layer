@@ -71,7 +71,10 @@ const CD_SCHEMA = { type: 'object', required: ['candidate_id', 'verdict', 'reach
 const WRITER_SCHEMA = { type: 'object', required: ['run_label'], properties: { run_label: { type: 'string' }, ledger_path: { type: 'string' }, ledger_json_path: { type: 'string' }, shortlist_path: { type: 'string' }, shortlist: { type: 'array', items: { type: 'string' } } } }
 
 // ---------- run ----------
-const a = args || {}
+// Accept args whether the harness forwards them as a parsed object OR a JSON string
+// (the Workflow `args` field is typed `any`, so some harnesses pass it through verbatim as text).
+let a = args || {}
+if (typeof a === 'string') { try { a = JSON.parse(a) } catch (e) { a = {} } }
 const thesisSlug = slugify(a.thesis || (Array.isArray(a.seeds) ? 'founder-seeds' : 'idea-funnel'))
 const coworkShare = a.coworkSharePath || null
 
