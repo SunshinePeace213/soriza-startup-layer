@@ -134,8 +134,9 @@ delta applied — and write `solution-design/validated-baseline.md`. This baseli
 
 Extract, don't ask blank. From the docs, crystallize a *draft* concept: **wedge** (narrowest first
 version), **validated who** (narrowed by discovery), **core job/workflow it owns**, **what it
-deliberately does NOT do**, and the **win thesis** (tie to the founder's agentic-coding edge + any
-defensible signal discovery surfaced). See `references/solution-design-template.md` for the shape.
+deliberately does NOT do**, and the **win thesis** (tie to the founder's stated unfair advantage, read
+from `docs/founder-profile.md`, + any defensible signal discovery surfaced). See
+`references/solution-design-template.md` for the shape.
 
 Fire one `AskUserQuestion` that shows the crystallized concept and lets the founder confirm/correct in `notes`:
 - The concept (wedge / validated-who / core job / non-goals / win thesis). **This is the highest-leverage human input** — a wrong crystallization aims the whole challenge at a strawman.
@@ -189,7 +190,7 @@ Do not set model/effort on the dispatch — the `solution-red-team` frontmatter 
 ### solution-red-team (Step 5, dispatched BLIND — no draft card)
 
 ```
-You are the solution-red-team for a committed startup idea that has been through sharpen-hypothesis, pressure-test, market-research, and customer-discovery. You are NOT a balanced reviewer — your job is to find where this solution concept fails and where the founder is fooling himself. You are working BLIND: you do not get the founder's drafted design card, only the validated evidence and the bare concept wedge, so that your assumptions and drift findings are independent.
+You are the solution-red-team for a committed startup idea that has been through sharpen-hypothesis, pressure-test, market-research, and customer-discovery. You are NOT a balanced reviewer — your job is to find where this solution concept fails and where the founder is fooling themselves. You are working BLIND: you do not get the founder's drafted design card, only the validated evidence and the bare concept wedge, so that your assumptions and drift findings are independent.
 
 First: Read ${CLAUDE_SKILL_DIR}/references/red-team-brief.md and follow it.
 
@@ -204,8 +205,8 @@ Context (the validation evidence):
 Produce, independently:
 1. Your OWN top load-bearing assumptions this concept depends on — the ones that, if false, collapse it. For each: why it's load-bearing + what would have to be true. (Do not try to guess the founder's list — generate yours from scratch.)
 2. Drift: every place a concept built on this wedge is still serving the problem the hypothesis ASSUMED rather than the one discovery VALIDATED. Cite the delta/verdict.
-3. Scale failure: how this breaks at scale (distribution, unit economics, defensibility, the agentic-leverage assumption).
-4. The single most likely way this founder is fooling himself here.
+3. Scale failure: how this breaks at scale (distribution, unit economics, defensibility, whether the founder's stated edge is durable).
+4. The single most likely way this founder is fooling themselves here.
 
 Be specific and cite the evidence. Do not soften to be fair — fairness is the main conversation's job.
 Write your challenge to: docs/ideas-stages/<SLUG>/solution-design/red-team.md

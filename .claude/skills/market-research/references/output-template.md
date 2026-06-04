@@ -23,7 +23,7 @@ The unresolved complaint (from review-synthesis) this idea is uniquely placed to
 The single most-dangerous competitor and the steelman's core "they win, you lose" argument — plus the survival bar it implies.
 
 ## Sizing Reality
-SOM + willingness-to-pay + budget-holder, in 2–3 lines. Bootstrapper framing: is this a business at the founder's scale?
+SOM + willingness-to-pay + budget-holder, in 2–3 lines. Scale check: is this a business at the founder's stated scale and capital posture?
 
 ## Timing
 Net tailwind/headwind across the three trends — one line, with the dominant driver named.

@@ -21,7 +21,9 @@ never deep, and never pre-narrow.
   Read it; ground every seed in evidence it surfaced. If the path doesn't resolve, Glob for
   `**/idea-exploration/**/research/*.md` and read what's there.
 - **Founder profile** — `docs/founder-profile.md`. Bias seeds toward the founder's serviceable market,
-  skills, and interests (don't hard-filter — that's Gate 0's job — but don't generate obvious misfits).
+  skills, and interests, and toward the idea **shapes** that fit their Goals & ambition (venture-scale
+  vs lifestyle) and Capital & runway (don't lean toward capital-heavy seeds against a thin runway).
+  Don't hard-filter — that's Gate 0's job — but don't generate obvious misfits.
 - **N** — how many seeds to emit (default 10; honor the number given).
 
 ## Process

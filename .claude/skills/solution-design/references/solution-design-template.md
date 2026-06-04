@@ -22,8 +22,8 @@ below. Non-binding. If proceeding past a KILL Discovery Read, see the Override l
 - **Core job / workflow it owns** — the one job it does end-to-end.
 - **The whole-product sketch** — what the end-to-end experience is (2–4 lines).
 - **What it deliberately does NOT do** — focus = subtraction; name the tempting scope you're cutting.
-- **Why it wins** — the unfair-advantage / moat thesis, tied to the founder's agentic-coding edge + any
-  defensible signal discovery surfaced.
+- **Why it wins** — the unfair-advantage / moat thesis, tied to the founder's stated unfair advantage
+  (from the profile) + any defensible signal discovery surfaced.
 
 ## Drift Audit — assumed → validated
 *(Baseline = original hypothesis + accumulated flagged deltas from pressure-test / market-research /
@@ -51,7 +51,7 @@ honestly, where one of them might beat it. (The Playbook's "what alternatives ex
 
 ## Scale Conditions
 What must hold for this to work at scale: distribution (how the 1000th user arrives), unit economics,
-defensibility, and the agentic-leverage assumption. (The Playbook's "what would have to be true at scale?")
+defensibility, and whether the founder's stated edge is durable. (The Playbook's "what would have to be true at scale?")
 
 ## Challenge (independent blind solution-red-team)
 <the red-team's challenge, folded in: where the concept is weakest, the scale-failure modes, and the

@@ -21,10 +21,16 @@ fits THIS founder — not whether it's a good idea in the abstract (that comes l
 - **Rubric** — read `.claude/skills/idea-funnel/references/gate-rubrics.md` → Gate 0.
 
 ## Process
-Score 0–100 on fit across: serviceable geography/market, risk & regulatory appetite, capital needs,
-part-time capacity, and skill / unfair advantage. Apply the rubric's **hard fails** — any one is an
-instant kill regardless of score (e.g. needs a licence, needs significant capital, can't move
-part-time, outside the founder's buildable surface).
+Score 0–100 on fit across five factors, each comparing the idea's *requirement* to the founder's
+*stated value* from the profile: serviceable geography/market, risk & regulatory appetite, capital &
+runway, time capacity, and skill / unfair advantage. The factor definitions and hard fails are the
+general standard in the rubric; the founder's specifics come from the profile as data — do not assume
+any particular founder's situation (don't assume part-time, full-time, or any specific edge; read what
+the profile states). Apply the rubric's **hard fails** — any one is an instant kill regardless of
+score (e.g. needs a licence beyond the stated risk appetite, capital beyond the stated runway, more
+time or a bigger day-one team than the stated commitment, or skills outside the stated buildable
+surface with no declared unfair advantage). A missing or declined profile value is scored
+conservatively (treat the constraint as tight, never as absent).
 
 Bar: advance if `score ≥ 55` AND no hard fail; otherwise kill.
 

@@ -25,13 +25,13 @@ in the ledger. Hunt these patterns:
 
 ### 3. Scale failure
 How this breaks at scale, not at n=1:
-- **Distribution** — how does the 1000th user arrive? A founder who can build leanly with AI still has to be *found*.
+- **Distribution** — how does the 1000th user arrive? However lean and fast the build, the product still has to be *found*.
 - **Unit economics** — does it make money per user at scale, or only look good as a demo?
 - **Defensibility / moat** — what stops a better-funded incumbent (or the AI labs themselves) from copying the wedge once it works?
-- **Agentic-leverage assumption** — "I can build it leaner with AI" cuts both ways; the incumbent can too. Is the founder's edge durable or a 6-month head start?
+- **Founder-edge durability** — whatever unfair advantage the founder claims (build speed, distribution, domain access, audience — read it from the profile), can a well-funded incumbent match it? Is the edge durable or a 6-month head start?
 
 ### 4. The single most likely self-deception
-Close with the one sentence: the most likely way this founder is fooling himself about this concept.
+Close with the one sentence: the most likely way this founder is fooling themselves about this concept.
 
 ## Stance
 

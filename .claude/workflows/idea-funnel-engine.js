@@ -95,11 +95,11 @@ let kVal = a.k
 let capacityRationale = a.k ? `explicit k=${a.k}` : ''
 if (!kVal) {
   const cap = await agent(
-    `Read docs/founder-profile.md. From time-commitment, founding-team status, and risk appetite, return the default number of customer-discovery campaigns this founder can run well AT ONCE (part-time solo => 1; full-time team => up to team size; cap at 5). Output {k, rationale}.`,
+    `Read docs/founder-profile.md. From time-commitment (available hours/cadence), founding-team status (day-one people who can run a campaign), and risk appetite, return the number of customer-discovery campaigns this founder can run well AT ONCE — capacity scales with available hours and day-one headcount; cap at 5; when capacity is unknown or undeclared, default conservatively to 1. Output {k, rationale}.`,
     { agentType: undefined, schema: KCAP_SCHEMA, phase: 'Setup', label: 'capacity', model: 'haiku' }
   )
   kVal = cap && cap.k ? cap.k : 1
-  capacityRationale = (cap && cap.rationale) || 'defaulted to 1 (part-time solo)'
+  capacityRationale = (cap && cap.rationale) || 'defaulted to 1 (conservative default when capacity is unknown)'
 }
 log(`Cap K = ${kVal} (${capacityRationale})`)
 
@@ -115,7 +115,7 @@ if (Array.isArray(a.seeds) && a.seeds.length) {
     { agentType: 'startup-idea-researcher', phase: 'Top of funnel', label: 'grounding' }
   )
   const gen = await agent(
-    `Expand thesis "${a.thesis}" into ${a.n || 10} thin Candidate seeds, WIDE (no narrowing). Read the grounding doc at docs/idea-exploration/${thesisSlug}/research/grounding.md and docs/founder-profile.md. Tag each with an idea_type.`,
+    `Expand thesis "${a.thesis}" into ${a.n || 10} thin Candidate seeds, WIDE (no narrowing). Read the grounding doc at docs/idea-exploration/${thesisSlug}/research/grounding.md and docs/founder-profile.md (bias toward the idea shapes that fit the founder's Goals & ambition and Capital & runway). Tag each with an idea_type.`,
     { agentType: 'seed-generator', schema: SEED_SCHEMA, phase: 'Top of funnel', label: 'seed-gen' }
   )
   seeds = (gen && gen.seeds) || []

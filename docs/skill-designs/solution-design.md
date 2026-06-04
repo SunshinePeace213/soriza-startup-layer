@@ -154,10 +154,10 @@ customer-discovery, applied or not. Measured against the reconstruction, never t
 the other concepts/approaches + why this one wins (or honestly, where one might beat it)
 
 ## Scale Conditions
-what must hold for this to work at scale (distribution, unit economics, defensibility, agentic-leverage)
+what must hold for this to work at scale (distribution, unit economics, defensibility, founder-edge durability)
 
 ## Challenge (independent blind solution-red-team agent)
-where the concept is weakest; the single most likely way the founder is fooling himself; reconciliation
+where the concept is weakest; the single most likely way the founder is fooling themselves; reconciliation
 gaps (assumptions/drift the adversary found that the draft missed)
 
 ## MVP Brief (forward contract → MVP stage)

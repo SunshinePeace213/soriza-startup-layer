@@ -13,18 +13,25 @@ because it has evidence in hand).
 
 ## Gate 0 — Founder-Market-Fit  (bar: score ≥ 55)
 
-Reads `docs/founder-profile.md`. Score = how well the idea fits THIS founder. Kill below 55, OR on any
-single **hard fail** regardless of score.
+Reads `docs/founder-profile.md` (the summary; read `docs/founder-dossier.md` for depth if a factor is
+ambiguous). Score = how well the idea fits THIS founder. The rubric below is the **general standard**;
+the founder's specifics are **data read from the profile**, never hard-coded here — so the same rubric
+scores any founder fairly (a different founder's regulatory appetite, capital, capacity, and skills
+yield a different verdict on the same idea). Each factor compares the idea's *requirement* to the
+founder's *stated value* from the named profile section. Kill below 55, OR on any single **hard fail**
+regardless of score.
 
-| Dimension | Hard fail (instant kill) | Soft signal (lowers score) |
-|---|---|---|
-| Geography / market | Requires a market the founder cannot credibly serve | Weak language/cultural fit |
-| Risk & regulatory | Needs a licence / regulated activity / heavy compliance | Adjacent to regulation |
-| Capital | Needs significant up-front capital / inventory / hardware | Modest but non-trivial spend |
-| Capacity | Cannot be moved at all part-time / needs a full team day-one | Demanding for part-time |
-| Skill / unfair advantage | Outside the founder's buildable surface, no agentic-coding edge | Stretch but learnable |
+| Dimension | Reads from profile | Hard fail (instant kill) | Soft signal (lowers score) |
+|---|---|---|---|
+| Geography / market | Location & serviceable geography | Requires a market/language the profile says the founder cannot credibly serve | Weak language/cultural fit for the target |
+| Risk & regulatory | Risk & regulatory appetite | Requires regulated activity / a licence / heavy compliance beyond the founder's stated appetite | Adjacent to regulation, within stated tolerance |
+| Capital | Capital & runway | Needs up-front capital / inventory / hardware beyond the founder's stated capital & runway | Modest spend, non-trivial against the stated runway |
+| Capacity | Time commitment | Needs more sustained time, or a larger day-one team, than the founder's stated commitment allows | Demanding for the founder's stated capacity |
+| Skill / unfair advantage | Skills & unfair advantage | Outside the founder's stated buildable surface — no relevant skill and no declared unfair advantage | Stretch beyond current level but learnable |
 
-Output: `{ verdict, score, reason, hard_fail | null, fit_flags }`.
+A missing or declined value (e.g. runway not shared) is scored **conservatively** — treat the
+constraint as tight, not absent, so a blank never flatters. Output:
+`{ verdict, score, reason, hard_fail | null, fit_flags }`.
 
 ## Gate 1 — Testability  (bar: score ≥ 50)
 

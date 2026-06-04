@@ -69,7 +69,7 @@ Output shape:
 
 ## W3 — Market sizing + buyer map → `market-sizing.md`
 
-Lean, SOM-weighted, and sourced — the founder is bootstrapping, not raising. Order-of-magnitude ranges with cited assumptions beat false precision.
+Lean, SOM-weighted, and sourced — weight toward bottom-up reachable SOM, and calibrate ambition to the founder's stated capital posture (read from the profile; bootstrapping vs. raising changes how much SAM/TAM headroom matters). Order-of-magnitude ranges with cited assumptions beat false precision.
 
 - **TAM / SAM / SOM** as ranges. Tag every assumption with its source. Weight effort toward the **bottom-up SOM**: reachable users × realistic price × plausible conversion.
 - **Buyer landscape** — who holds the budget, who influences, who decides; note whether they're the same person.
