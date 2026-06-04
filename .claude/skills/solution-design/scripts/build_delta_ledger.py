@@ -6,7 +6,7 @@
 """Assemble the validation delta ledger for /solution-design Step 3.
 
 The "validated problem" is NOT just customer-discovery.md. Every upstream stage emits a
-"Hypothesis Updates Flagged" block, and only /sharpen-hypothesis folds those back into
+"Hypothesis Updates Flagged" block, and only /idea-funnel folds those back into
 hypothesis.md — so mid-pipeline hypothesis.md is usually stale. This script scans the idea's
 docs and prints every flagged delta + the Discovery Read verdict + the TRIPPED/CLEARED criteria
 + any override stamp, VERBATIM, so none is silently dropped before the drift audit reasons over
@@ -33,7 +33,7 @@ import re
 import sys
 from pathlib import Path
 
-DEFAULT_DOCS = ["pressure-test.md", "market-research.md", "customer-discovery.md"]
+DEFAULT_DOCS = ["disconfirmation-brief.md", "market-research.md", "customer-discovery.md"]
 # Compound verdict first so it isn't shadowed; final selection is by position, not list order.
 VERDICTS = ["KEEP-DISCOVERING", "CONTINUE", "PIVOT", "KILL"]
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.*\S)\s*$")

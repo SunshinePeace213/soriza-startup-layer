@@ -6,10 +6,11 @@
 """Score customer-discovery interview evidence against LOCKED kill-criteria thresholds.
 
 Deterministic implementation of /customer-discovery Step S3. Bundled so the thresholds
-the founder pre-registered in pressure-test.md (encoded once into kill-criteria.json) are
-applied mechanically — the model tags each interview (reasoning), the script applies the
-threshold (arithmetic), and a criterion can't be quietly soft-pedaled by eye to keep an
-idea alive. Mirrors /pressure-test's compute_verdict.py (Thariq Tip 8).
+the founder pre-registered from the funnel's Disconfirmation Brief (OPEN assumptions +
+interview questions, encoded once into kill-criteria.json) are applied mechanically — the
+model tags each interview (reasoning), the script applies the threshold (arithmetic), and a
+criterion can't be quietly soft-pedaled by eye to keep an idea alive. Same write-once,
+never-soften discipline (Thariq Tip 8).
 
 The script decides ONLY per-criterion status (TRIPPED / CLEARED / INCONCLUSIVE / MANUAL)
 and reports coverage. The overall CONTINUE/PIVOT/KILL/KEEP-DISCOVERING call is the model's
@@ -18,12 +19,12 @@ soft judgment, made downstream from this output.
 Usage:
   python3 score_criteria.py <kill_criteria.json> <scoring.json>
 
-kill_criteria.json (written once in Step D2, never edited after data exists):
+kill_criteria.json (written once in Step S0, never edited after data exists):
   {
     "slug": "...", "locked_on": "YYYY-MM-DD",
     "criteria": [
       {"id": "wtp-against-free", "label": "No willingness-to-pay against free",
-       "source": "pressure-test.md Kill Criteria #1",
+       "source": "disconfirmation-brief.md open assumption #1",
        "type": "support_proportion", "field": "ever_paid_comparable",
        "clear_at": 0.20, "trip_below": 0.10, "min_n": 8},
       {"id": "fomo-not-need", "label": "Behaviour is FOMO, not need",

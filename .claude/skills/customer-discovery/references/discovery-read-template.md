@@ -11,9 +11,10 @@ watches the read evolve as `n` grows. Keep each section tight.
 ```markdown
 # Customer Discovery: <slug>
 
-> **This Read scores real interview evidence against the kill criteria you pre-registered in
-> pressure-test.md BEFORE collecting data. Thresholds are locked. n is small — read the caveats.
-> "They said they'd pay" is not willingness-to-pay; only behaviour counts.**
+> **This Read scores real interview evidence against the kill criteria you pre-registered from the
+> funnel's disconfirmation-brief.md (its OPEN assumptions + interview questions) BEFORE collecting data.
+> Thresholds are locked. n is small — read the caveats. "They said they'd pay" is not
+> willingness-to-pay; only behaviour counts.**
 
 ## Discovery Read — Round <N> (<date>, n=<N>)
 **<CONTINUE | PIVOT | KILL | KEEP-DISCOVERING>** — 1 line + 1–2 sentences of rationale tied to the
@@ -22,7 +23,7 @@ evidence below. Non-binding; if proceeding past a TRIPPED criterion, see the Ove
 ## Kill-Criteria Scorecard
 *(Statuses verbatim from `scripts/score_criteria.py` against the locked `kill-criteria.json`.)*
 
-| Criterion (from pressure-test.md) | Threshold (LOCKED) | Evidence | n | Status |
+| Criterion (from disconfirmation-brief.md) | Threshold (LOCKED) | Evidence | n | Status |
 |---|---|---|---|---|
 | <label> | <e.g. <10% pay → trip> | <2/12 ever paid> | <12> | TRIPPED / CLEARED / INCONCLUSIVE / MANUAL / ERROR |
 
@@ -54,8 +55,8 @@ data, each point tied to an interview, and the single most likely way the founde
 Do NOT soften the scorecard to accommodate this — surface the tension.>
 
 ## Hypothesis Updates Flagged
-Evidence that should sharpen or correct the hypothesis. Route to `/sharpen-hypothesis` — do NOT edit
-hypothesis.md here.
+Evidence that should sharpen or correct the hypothesis. Route back through `/idea-funnel` (pivot/resurrect
+— it re-sharpens the hypothesis and re-runs the Disconfirmation Brief) — do NOT edit hypothesis.md here.
 - <update> — what the interviews showed
 
 ## Override (only if proceeding past a TRIPPED criterion)
@@ -72,6 +73,6 @@ hypothesis.md here.
 - `customer-discovery/prospects-<date>.csv` — the coverage snapshot (optional; from the Cowork tracking sheet)
 ```
 
-Honesty rule (mirrors `/market-research`): never present a small-n or coverage-skewed signal as
-validation. A TRIPPED criterion that the founder overrides stays TRIPPED in the scorecard — the override
-is recorded alongside it, not substituted for it.
+Honesty rule (mirrors the funnel's market-research demand read): never present a small-n or
+coverage-skewed signal as validation. A TRIPPED criterion that the founder overrides stays TRIPPED in the
+scorecard — the override is recorded alongside it, not substituted for it.

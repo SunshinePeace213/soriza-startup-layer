@@ -1,14 +1,16 @@
 ## Soriza Startup Layer — founder profile
 
-This project runs the Soriza Startup Layer — an interview-driven Idea Stage taking a founder
-from idea to a validated solution concept (/generate-ideas → /sharpen-hypothesis → /pressure-test
-→ /market-research → /customer-discovery → /solution-design).
+This project runs the Soriza Startup Layer — an Idea Stage taking a founder from many raw ideas to a
+validated solution concept. The path is the automated `/idea-funnel` (breadth: generate →
+fit-screen → hypothesis → disconfirmation brief → demand-detection → checkpoint → sealed Phase A
+pack) → [human Phase B outreach] → /customer-discovery (SYNTHESIS) → /solution-design → the PoC
+workflow.
 
-The whole Idea Stage can also run as an automated distillation funnel — the **Idea-Stage
-Validator** — via the `/idea-funnel` workflow: it runs many ideas through founder-fit,
-testability, an evidence-based disconfirmation screen, and customer-discovery design, and returns
-a ranked Shortlist, stopping at the human SEND gate. Design: CONTEXT.md, docs/adr/0001–0004,
-docs/skill-designs/idea-funnel.md.
+The funnel — the **Idea-Stage Validator** — runs many ideas through founder-fit, testability, an
+evidence-based disconfirmation screen, and customer-discovery DESIGN, writing per-idea artifacts
+under docs/ideas-stages/<slug>/ (hypothesis.md, market-research.md, disconfirmation-brief.md, and a
+sealed Phase A pack) and returning a ranked Shortlist, stopping at the human SEND gate. Design:
+CONTEXT.md, docs/adr/0001–0004, docs/skill-designs/idea-funnel-v2-redesign.md.
 
 In all startup-layer work, tailor advice to the founder's background, skills, constraints,
 and stated interaction preferences — prefer facts already in the profile over re-asking

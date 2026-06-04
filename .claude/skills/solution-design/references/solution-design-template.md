@@ -26,8 +26,8 @@ below. Non-binding. If proceeding past a KILL Discovery Read, see the Override l
   (from the profile) + any defensible signal discovery surfaced.
 
 ## Drift Audit — assumed → validated
-*(Baseline = original hypothesis + accumulated flagged deltas from pressure-test / market-research /
-customer-discovery, applied or not — see `solution-design/validated-baseline.md`. Measured against the
+*(Baseline = original hypothesis + accumulated flagged deltas from the disconfirmation brief / market
+research / customer-discovery, applied or not — see `solution-design/validated-baseline.md`. Measured against the
 reconstruction, never the stale hypothesis.md.)*
 
 | Originally assumed (hypothesis.md) | What validation revealed (reconstructed baseline) | Does the concept serve the VALIDATED version? |
@@ -67,7 +67,7 @@ Self-contained handoff for the not-yet-built MVP stage:
 
 ## Hypothesis Updates Flagged
 Evidence the design surfaced that should sharpen or correct the hypothesis. Route to
-`/sharpen-hypothesis` — do NOT edit hypothesis.md here.
+`/idea-funnel` — do NOT edit hypothesis.md here.
 - <update> — what the design exposed
 
 ## Override (only if proceeding past a KILL Discovery Read)
@@ -86,6 +86,6 @@ KEEP-DISCOVERING never carry an override line.)*
 - `solution-design/rounds/round-<N>.md` — per-round provenance when the concept is redesigned + re-run
 ```
 
-Honesty rule (mirrors `/market-research` and `/customer-discovery`): never present a `⚠️`/`❌` drift row
+Honesty rule (mirrors the funnel's market research and `/customer-discovery`): never present a `⚠️`/`❌` drift row
 or an unsupported top-3 assumption as if the concept were build-ready. The Concept Read must follow the
 evidence — a concept that still serves the assumed problem is a `redesign`, not a `build` with caveats.

@@ -50,8 +50,8 @@ can clone this layer and run their own profile.
   capture the evidence that earns it per `references/level-rubric.md`. If a rating has nothing behind
   it, challenge it once — don't silently record the optimistic label.
 - **On re-run, don't re-ask filled fields.** Read the existing dossier (and summary) first and grill
-  only on empty, `(pending)`, or explicitly-changed sections — the same idempotent pattern as
-  `/sharpen-hypothesis` resuming a `hypothesis.md`.
+  only on empty, `(pending)`, or explicitly-changed sections — the same idempotent pattern as the
+  `/idea-funnel` hypothesis stage resuming a `hypothesis.md`.
 - **`CLAUDE.md` and the funnel rubrics stay founder-agnostic.** Founder facts live *only* in the
   dossier/summary. The rubrics (`gate-rubrics.md`, `fmf-screen.md`) hold the *general* standard and
   pull the founder's specifics from the profile at runtime — never hard-code one founder's situation
@@ -141,9 +141,10 @@ Founder-agnostic block to ensure is present:
 ```markdown
 ## Soriza Startup Layer — founder profile
 
-This project runs the Soriza Startup Layer — an interview-driven Idea Stage taking a founder
-from idea to a validated solution concept (/generate-ideas → /sharpen-hypothesis → /pressure-test
-→ /market-research → /customer-discovery → /solution-design), or the automated /idea-funnel.
+This project runs the Soriza Startup Layer — an Idea Stage taking a founder from many raw ideas
+to a validated solution concept via the automated /idea-funnel (breadth: generate → fit-screen →
+hypothesis → disconfirmation brief → demand-detection → checkpoint → sealed Phase A pack) →
+[human Phase B] → /customer-discovery (SYNTHESIS) → /solution-design → the PoC workflow.
 
 The founder's context lives in two tiers: the lean summary imported below (loaded every session)
 and a complete docs/founder-dossier.md (read on demand for depth). In all startup-layer work,
@@ -157,8 +158,8 @@ skills.
 @docs/founder-profile.md
 ```
 
-Then in chat (not in any file): `Profile + dossier saved and wired. Next: run /generate-ideas (no
-idea yet) or /sharpen-hypothesis (you have one).`
+Then in chat (not in any file): `Profile + dossier saved and wired. Next: run /idea-funnel to
+distill many ideas (a thesis to expand, or a list) into a ranked, ready-to-test Shortlist.`
 
 ## Output constraints
 
@@ -189,9 +190,9 @@ idea yet) or /sharpen-hypothesis (you have one).`
 - In: building the dossier + deriving the summary, level-rating skills against the rubric, ingesting
   provided material, wiring/verifying the `CLAUDE.md` `@import`.
 - Out: **per-idea constraints** (a specific idea's budget, B2B-vs-consumer, target geography, stage) —
-  those stay captured ad-hoc inside `/generate-ideas` and `/sharpen-hypothesis`.
-- Out: idea generation, hypothesis sharpening, market sizing, persona review — the downstream Idea
-  Stage steps. This skill only creates the record and wiring.
+  those stay captured ad-hoc inside the `/idea-funnel` stages (generation, fit-screen, hypothesis).
+- Out: idea generation, hypothesis sharpening, market/demand detection, disconfirmation — the
+  downstream `/idea-funnel` stages. This skill only creates the record and wiring.
 - Note: the funnel rubrics consume the summary by reading it as **data** against their own
   founder-agnostic standard. This skill writes the profile; the funnel's de-biasing lives in
   `gate-rubrics.md` / `fmf-screen.md`, not here.

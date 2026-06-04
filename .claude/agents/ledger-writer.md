@@ -23,10 +23,17 @@ three artifacts. Follow `.claude/skills/idea-funnel/references/ledger-schema.md`
 1. **Derive run-label**: Glob `docs/ideas-stages/_funnel-runs/*/` for existing `<thesis-slug>-NN`,
    take the highest `NN`, add 1 (start at `01`). Never use a clock/timestamp.
 2. Write `docs/ideas-stages/_funnel-runs/<run-label>/ledger.json` — the full machine state.
-3. Write `ledger.md` — the human board: a header block with funnel counts (in → per-gate survivors →
-   shortlist) and the cap K + its profile justification, then the table (one row per Candidate; columns
-   ID · Title · G0 · G1 · G2 · G3 · Status · Rank · Kill-reason · Coverage-gap; cells `✅ score` /
-   `❌ score`; sorted shortlisted → advancing → killed-by-score-desc).
+3. Write `ledger.md` — the human board: a header block with funnel counts (entered → per-stage
+   survivors → `queued-alive` → shortlisted, plus n seeds) and the cap K + its profile justification,
+   then the table (one row per Candidate). Columns: `ID · Title · Fit-screen · Hypothesis ·
+   Disconfirmation · Demand-detection · Phase A · Demand-strength · Founder-fit · Status · Rank ·
+   Kill-reason · Coverage-gap`. **Demand-strength** and **Founder-fit** are two distinct, adjacent
+   columns — never merged into one fused number (the load-bearing v2 visual contract: idea axis vs
+   founder axis). Cells: gating stages (Fit-screen, Hypothesis, Checkpoint) = `✅ score` / `❌ score`;
+   no-kill stages show artifact state — Disconfirmation = `brief (k open)`, Demand-detection = the
+   demand signal, Phase A = `sealed` / `—`. **Sort:** shortlisted first, then `queued-alive` /
+   `advancing` by **demand-strength** desc (founder-fit breaks ties), then `killed` by demand-strength
+   desc.
 4. Write `shortlist.md` — the ≤K survivors with their hypothesis + the strongest objection each
    survived + run-pack path, framed as the set the founder approves before any outreach.
 

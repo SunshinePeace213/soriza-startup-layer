@@ -9,7 +9,7 @@ audit is the load-bearing anti-self-deception device. Read this in Step 3 (basel
 
 `hypothesis.md` is the **assumed** problem — what the founder believed before any validation. Every
 downstream stage then emitted corrections in a *"Hypothesis Updates Flagged"* block, but **only
-`/sharpen-hypothesis` is allowed to fold those back into `hypothesis.md`.** Mid-pipeline the founder
+`/idea-funnel` is allowed to fold those back into `hypothesis.md`.** Mid-pipeline the founder
 usually hasn't re-run it, so `hypothesis.md` is **stale**. Measuring the concept against the stale file
 would let real, evidence-based corrections silently disappear — which is exactly the drift you're hunting.
 
@@ -19,7 +19,7 @@ So the audit has two inputs:
 
 ## Step 1 — Assemble the delta ledger (script)
 
-`scripts/build_delta_ledger.py` scans `pressure-test.md`, `market-research.md`, and
+`scripts/build_delta_ledger.py` scans `disconfirmation-brief.md`, `market-research.md`, and
 `customer-discovery.md` for every *"Hypothesis Updates Flagged"* block + the Discovery Read verdict + the
 TRIPPED criteria + any override, and prints them **verbatim**. Run it and write the output to
 `solution-design/delta-ledger.md`. Trust the `warnings` field — when a doc's header deviated from the

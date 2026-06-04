@@ -1,156 +1,123 @@
 ---
 name: customer-discovery
 description: |
-  Fourth step in the Idea Stage of Soriza Startup Layer — takes ONE idea that passed
-  /market-research into customer discovery with real people. Two phases: DESIGN builds a
-  precise target profile + reachability map, per-persona kill-criteria-anchored interview
-  guides (Mom-Test audited), and a sealed, paste-and-go Cowork run-pack for
-  outreach/scheduling/tracking; SYNTHESIS scores real interview evidence against the LOCKED
-  kill-criteria thresholds and writes a bias-checked customer-discovery.md Discovery Read.
-  Structurally cannot send email — sending lives in Cowork, gated per batch. Reads
-  pressure-test.md + market-research.md; writes customer-discovery.md.
+  SYNTHESIS step in the Idea Stage of Soriza Startup Layer — takes ONE idea that came through
+  the /idea-funnel (which produced its hypothesis.md, market-research.md, disconfirmation-brief.md,
+  and a sealed Phase A run-pack) and scores the REAL interview evidence the founder gathered against
+  the LOCKED kill-criteria thresholds, writing a bias-checked customer-discovery.md Discovery Read.
+  The interview-DESIGN phase is superseded by the funnel's Phase A — for a target profile,
+  reachability map, warm list, and interview guide, run /idea-funnel. This skill is synthesis-only:
+  it locks kill criteria from the Disconfirmation Brief's OPEN assumptions + interview questions,
+  scores behaviour against them, and never softens a threshold after data. Structurally cannot send
+  email — sending lives in Cowork, gated per batch. Reads disconfirmation-brief.md + hypothesis.md
+  (+ market-research.md); writes customer-discovery.md.
 when_to_use: |
-  Use when the founder says "customer discovery", "talk to users", "interview customers",
-  "build my interview guide", "who should I talk to", "design my outreach", "synthesize my
-  interviews", "I did N interviews — what do they say", or "what's next" WHEN a market-research.md
-  exists but customer-discovery.md does NOT yet, in the idea's docs/ideas-stages folder
-  (precedence: market-research.md → here; customer-discovery.md → /solution-design). Also trigger
-  on "Mom Test", "problem interview", "prospect list". Do NOT trigger to edit hypothesis.md
-  (/sharpen-hypothesis), size the market (/market-research), or SEND outreach / schedule calls
-  (Cowork sends, gated). Once customer-discovery.md exists, a bare "what's next" hands
-  off to /solution-design (explicit "synthesize my interviews" still runs another round here).
+  Use when the founder says "synthesize my interviews", "I did N interviews — what do they say",
+  "score my interviews", "customer discovery synthesis", or "what's next" WHEN a
+  disconfirmation-brief.md + hypothesis.md exist but customer-discovery.md does NOT yet, in the
+  idea's docs/ideas-stages folder (precedence: disconfirmation-brief.md → here; customer-discovery.md
+  → /solution-design). Also trigger on "Mom Test scoring", "score against my kill criteria". Do NOT
+  trigger to edit hypothesis.md, size the market, run the expert debate, or DESIGN the interview
+  guide / outreach (all of that is /idea-funnel now), nor to SEND outreach / schedule calls (Cowork
+  sends, gated). Once customer-discovery.md exists, a bare "what's next" hands off to /solution-design
+  (explicit "synthesize my interviews" still runs another round here).
 argument-hint: "[slug]"
 allowed-tools: AskUserQuestion, Read, Write, Bash, Glob, Agent, Task, WebSearch, WebFetch
 effort: high
 ---
 
-# Customer Discovery
+# Customer Discovery (Synthesis)
 
-Fourth step in the **Idea Stage** of the Soriza Startup Layer. Turns the upstream `pressure-test.md`
-Kill Criteria / Disconfirmation Questions and `market-research.md` buyer map into a customer-discovery
-campaign with real humans, then scores what those humans actually said against the thresholds the
-founder pre-registered *before* collecting data. Source method: *The Founder's Playbook: Building an
-AI-Native Startup* — "Plan and design customer discovery."
+The **SYNTHESIS** step in the **Idea Stage** of the Soriza Startup Layer. The interview **DESIGN** phase
+(target profile, reachability, warm list, interview guide, sealed run-pack) is now produced upstream by
+the **`/idea-funnel`** workflow's **Phase A** — this skill no longer designs discovery. It picks up after
+the founder has run that pack with real humans, and scores what those humans actually said against the
+thresholds the founder pre-registered *before* collecting data. Source method: *The Founder's Playbook:
+Building an AI-Native Startup* — "Plan and design customer discovery."
 
-- **Input:** `docs/ideas-stages/<slug>/pressure-test.md` (required floor) + `market-research.md`, `hypothesis.md` (folded if present) + `docs/founder-profile.md`.
+For DESIGN (a precise target profile + reachability map + warm list + Mom-Test interview guide), run
+**`/idea-funnel`** — it builds and seals the Phase A pack per idea.
+
+- **Input:** `docs/ideas-stages/<slug>/disconfirmation-brief.md` (required floor — its OPEN assumptions + interview questions are the kill-criteria source) + `hypothesis.md` (required) + `market-research.md` (folded if present) + `docs/founder-profile.md` + the founder's interview notes under `customer-discovery/interviews/`.
 - **Output:** `docs/ideas-stages/<slug>/customer-discovery.md` (the Discovery Read) + provenance under `customer-discovery/`.
-- **Workers:** `customer-discovery-personas-worker` and `customer-discovery-bias-check` subagents (`.claude/agents/`), read at runtime.
-- **Off-surface:** Cowork + Gmail/Calendar/Drive MCP executes the run-pack the skill emits. The skill never sends.
+- **Workers:** `customer-discovery-bias-check` subagent (`.claude/agents/`), read at runtime.
+- **Off-surface:** Cowork + Gmail/Calendar/Drive MCP executes the Phase A run-pack `/idea-funnel` emits. This skill never sends.
 
-## The seam — design here, send in Cowork
+## The seam — design + send upstream, synthesize here
 
-This skill is a **design + synthesis engine**, not an outreach bot. It splits the work the way the
-Playbook does:
+This skill is a **synthesis engine**, not a design or outreach bot. The funnel designs the discovery pack
+(Phase A) and Cowork runs the outreach; this skill scores the evidence that comes back:
 
-| Claude Code (this skill) | Cowork + Gmail/Calendar/Drive MCP |
-|---|---|
-| target profile, interview guides, post-interview synthesis, bias-check; **emits** `cowork-runpack.md` (drafts, NOT sent) | builds/enriches the prospect list, personalized outreach, scheduling, day-7 follow-up cadence, live tracking sheet |
+| Claude Code (`/idea-funnel` Phase A) | Cowork + Gmail/Calendar/Drive MCP | This skill (SYNTHESIS) |
+|---|---|---|
+| target profile, reachability map, warm list, interview guide; **emits** sealed `cowork-runpack.md` (drafts, NOT sent) | builds/enriches the prospect list, personalized outreach, scheduling, day-7 follow-up cadence, live tracking sheet | scores real interview evidence against the LOCKED kill criteria; bias-check; writes the Discovery Read |
 
 The seam in one line: **Cowork tracks *that* you talked to someone (status, schedule); the repo holds
 *what they said* (transcripts, synthesis, kill-criteria verdicts).** Ops data vs. reasoning data.
 
 ## When this skill applies
 
-- Founder has a `market-research.md` at `docs/ideas-stages/<slug>/` and asks "what's next"
-- "Customer discovery", "talk to users", "build my interview guide", "who should I talk to"
-- "Design my outreach" / "draft outreach emails" / "prospect list" / "schedule interviews"
-- "Synthesize my interviews" / "I did 5 interviews — what do they say" (the synthesis phase)
+- Founder has a `disconfirmation-brief.md` + `hypothesis.md` at `docs/ideas-stages/<slug>/`, has run the funnel's Phase A pack with real people, and asks "what's next" or "synthesize my interviews"
+- "Synthesize my interviews" / "I did 5 interviews — what do they say" / "score my interviews against my kill criteria"
 
-Out of scope: sending any email (that is Cowork's job, structurally — see Gotchas); editing `hypothesis.md`
-(that's `/sharpen-hypothesis`); the adversarial persona panel (`/pressure-test`); market sizing
-(`/market-research`); solution-concept design (`/solution-design`, the next stage) and MVP/build work (after it).
+Out of scope: **designing the discovery pack** — target profile, reachability, warm list, interview guide,
+the Cowork run-pack (that is `/idea-funnel` Phase A now); sending any email (Cowork's job, structurally —
+see Gotchas); editing `hypothesis.md` or running a pivot/resurrect (`/idea-funnel`); the adversarial expert
+debate (`/idea-funnel`'s Disconfirmation Brief); market sizing / demand detection (`/idea-funnel`'s
+market-research); solution-concept design (`/solution-design`, the next stage) and MVP/build work (after it).
 
 ## Gotchas
 
-- **The skill structurally cannot send email — and that is the design, not a limitation.** `allowed-tools` excludes every send-capable MCP tool. Cold outreach is irreversible, outward-facing, and reputation-/jurisdiction-sensitive. The skill writes drafts + a run-pack; *Cowork* sends, gated per batch. Never reach for a Gmail-send tool to "be helpful" — there is no such tool in your hands here, and adding one breaks the safety guarantee.
-- **Kill-criteria thresholds are LOCKED — never relitigate them after seeing data.** They are pre-registered in `pressure-test.md` *before* interviews, as an anti-self-deception device. On first synthesis, encode them once into `customer-discovery/kill-criteria.json` (write-once); reuse that file every round. If interview data comes back ugly, you do not soften a threshold to keep the idea alive — you score it honestly and let the founder override *on the record*. This founder's documented failure mode is "concede the diagnosis, keep the prescription"; this rule exists to stop exactly that.
+- **The skill structurally cannot send email — and that is the design, not a limitation.** `allowed-tools` excludes every send-capable MCP tool. Cold outreach is irreversible, outward-facing, and reputation-/jurisdiction-sensitive. Outreach drafts live in the funnel's sealed Phase A run-pack; *Cowork* sends, gated per batch. Never reach for a Gmail-send tool to "be helpful" — there is no such tool in your hands here, and adding one breaks the safety guarantee.
+- **Kill-criteria thresholds are LOCKED — never relitigate them after seeing data.** Their source is the funnel's `disconfirmation-brief.md`: each OPEN assumption + its interview question becomes a kill criterion, pre-registered *before* interviews as an anti-self-deception device. On first synthesis, encode them once into `customer-discovery/kill-criteria.json` (write-once); reuse that file every round. If interview data comes back ugly, you do not soften a threshold to keep the idea alive — you score it honestly and let the founder override *on the record*. This founder's documented failure mode is "concede the diagnosis, keep the prescription"; this rule exists to stop exactly that.
 - **The bias-check MUST run in a separate context from the agent that wrote the Discovery Read.** An agent grading its own synthesis rationalizes it. Dispatch `customer-discovery-bias-check` as an independent subagent given the notes + the draft read + the coverage snapshot, prompted to *refute*. Do not "self-check" the read inline.
-- **Headless Cowork cannot see this repo.** The run-pack must be *sealed* — every input Cowork needs (target-profile excerpt, templates, send protocol, schedule windows, tracking schema) inlined. Do not write a run-pack that says "read `target-profile.md`"; that file does not exist from Cowork's vantage point.
-- **Phase is detected from folder state, not asked blindly.** No `customer-discovery/target-profile.md` → run the DESIGN phase. `interviews/` holds notes newer than the latest `synthesis/round-*.md` → run a SYNTHESIS round. When genuinely ambiguous (both done, founder re-running), fire one `AskUserQuestion`.
-- **Create subdirectories before dispatching writers.** Workers Write to fixed paths (`customer-discovery/`, `customer-discovery/interviews/`, `synthesis/`); if the parent doesn't exist the Write fails and the fan-out aborts. (Mirrors `/pressure-test` and `/market-research`.)
-- **A `kill-suggested` pressure-test verdict makes discovery *more* pointed, not pointless.** If `pressure-test.md`'s verdict is `kill-suggested`, surface it loudly at scope-lock and reframe discovery as "go trip-or-clear these kill criteria with real people — resurrect with evidence the panel lacked, or bury it honestly." Do not silently proceed as if the panel had passed it.
-- **This skill needs a real subagent-spawn tool for its two fan-outs.** If neither `Agent` nor `Task` is available, degrade gracefully (run the per-persona design inline, and run the bias-check as a deliberately adversarial *second pass* in a fresh framing) — but tell the founder the bias-check is weaker without context isolation, because a same-context self-critique is structurally compromised.
+- **Don't try to design discovery here — the funnel already did.** No target profile, reachability map, warm list, or interview guide is built in this skill; all of that is `/idea-funnel` Phase A, sealed into `customer-discovery/cowork-runpack.md`. If the founder asks for a guide or outreach, point them at `/idea-funnel`. This skill only consumes the interview notes that pack produced.
+- **Phase is implicit — this skill is synthesis-only.** Discovery DESIGN is superseded by the funnel's Phase A; there is no DESIGN phase to detect. Run a SYNTHESIS round whenever `interviews/*.md` hold notes newer than the latest `synthesis/round-*.md` (or no round exists yet). If no interview notes exist at all, say so and point the founder to run the funnel's Phase A pack first.
+- **Create subdirectories before writing.** This skill Writes to fixed paths (`customer-discovery/`, `customer-discovery/synthesis/`); if the parent doesn't exist the Write fails. Create them before scoring.
+- **A high-risk Disconfirmation Brief makes synthesis *more* pointed, not pointless.** The funnel never kills on subjective merit — it ranks risk and hands you OPEN assumptions to test. If the brief's top-ranked risks are severe (high `risk_score`, load-bearing assumptions), surface that loudly and frame synthesis as "go trip-or-clear these with real people — the desk deliberately left them OPEN for users to settle."
+- **This skill needs a real subagent-spawn tool for the bias-check.** If neither `Agent` nor `Task` is available, degrade gracefully (run the bias-check as a deliberately adversarial *second pass* in a fresh framing) — but tell the founder the bias-check is weaker without context isolation, because a same-context self-critique is structurally compromised.
 
 ## Interaction model
 
-Hybrid, like the sibling stages: **scope-lock checkpoint → autonomous fan-out → final review**, with
-founder decisions routed through `AskUserQuestion` (a `notes` escape hatch on every choice — house
-style; read `/market-research` or `/pressure-test` for voice). Two phases, auto-detected:
+Hybrid, like the sibling stages: **autonomous tag→score→read→bias-check → final review**, with founder
+decisions routed through `AskUserQuestion` (a `notes` escape hatch on every choice — house style; read
+`/solution-design` for sibling voice). One phase only — **SYNTHESIS** — which runs after the founder
+returns with interview notes from the funnel's Phase A pack: autonomous tag→score→read→bias-check, one
+review gate (with an override gate) before appending the round. Discovery DESIGN is superseded by
+`/idea-funnel` Phase A.
 
-- **DESIGN** — one scope-lock gate up front, autonomous per-persona generation, one review gate before writing the run-pack.
-- **SYNTHESIS** — runs after the founder returns with interview notes; autonomous tag→score→read→bias-check, one review gate before appending the round.
-
-Quality scales with reasoning depth — run at `high` effort or above; the subagents carry their own.
+Quality scales with reasoning depth — run at `high` effort or above; the subagent carries its own.
 
 ## Workflow
 
-Goal: in DESIGN, produce a target profile + per-persona kill-anchored guides + a sealed Cowork run-pack;
-in SYNTHESIS, score real evidence against locked thresholds and write a bias-checked Discovery Read.
-Steps are ordered where order is real (guard before scope-lock; lock criteria before scoring; score
-before the read; read before bias-check); within each step the bullets are constraints, not a script.
+Goal: score real interview evidence against the kill criteria locked from the funnel's Disconfirmation
+Brief, then write a bias-checked Discovery Read. Steps are ordered where order is real (guard before
+locking criteria; lock criteria before scoring; score before the read; read before bias-check); within
+each step the bullets are constraints, not a script.
 
-### Step 1 — Resolve slug, entry guard, detect phase
+### Step 1 — Resolve slug, entry guard, confirm interviews exist
 
 If invoked with a slug, use it. Otherwise `glob docs/ideas-stages/*/` and fire `AskUserQuestion` with the available slugs.
 
-Read, in order: `pressure-test.md` (the floor), then `market-research.md`, `hypothesis.md`, and `docs/founder-profile.md` if present.
+Read, in order: `disconfirmation-brief.md` (the floor — its OPEN assumptions + interview questions are the kill-criteria source), then `hypothesis.md`, `market-research.md`, and `docs/founder-profile.md` if present.
 
-**Entry guard:** if `pressure-test.md` is missing, refuse with exactly: *"No pressure-test at `docs/ideas-stages/<slug>/pressure-test.md`. Run /pressure-test first — customer discovery tests the Kill Criteria it produces."* Stop. Write nothing.
+**Entry guard:** if `disconfirmation-brief.md` **or** `hypothesis.md` is missing, refuse with exactly: *"No Disconfirmation Brief + hypothesis at `docs/ideas-stages/<slug>/`. Run /idea-funnel first — it produces the hypothesis, Disconfirmation Brief, market research, and the sealed Phase A discovery pack that this synthesis scores."* Stop. Write nothing.
 
-- If `market-research.md` is **absent**, do not refuse — say so in chat and make proceeding an explicit choice (*"No market-research.md yet — the target profile will be less sharp on segment/geography/willingness-to-pay. Proceed with discovery now, or run /market-research first?"*).
-- Read the verdict value on the line **under** the `## Verdict` heading of `pressure-test.md` (the value follows the heading, e.g. `**kill-suggested** — …`, not on the heading line itself). If it is `kill-suggested` / `refine-hypothesis` / override, hold it and surface it loudly at Step D1.
+- If `market-research.md` is **absent**, do not refuse — say so in chat (*"No market-research.md for this idea — coverage/segment context will be thinner; proceeding."*) and continue.
+- The Disconfirmation Brief's `ranked_risks` carry a `risk_score` and per-risk severity. If the top-ranked risks are severe, hold that and surface it loudly at Step S0.
 
-**Detect phase** from `docs/ideas-stages/<slug>/customer-discovery/`:
-- folder or `target-profile.md` missing → **DESIGN phase** (Steps D1–D6)
-- `interviews/*.md` exist and are newer than the latest `synthesis/round-*.md` (or no synthesis round yet) → **SYNTHESIS phase** (Steps S1–S6)
-- both design complete and interviews already synthesized, or genuinely ambiguous → `AskUserQuestion`: *Re-run design / New synthesis round / Skip*.
-
----
-
-### DESIGN phase
-
-#### Step D1 — Scope-lock checkpoint
-
-Extract, don't ask blank. From `hypothesis.md`/`market-research.md`: the **personas** (the distinct user types in `Who` + the buyer map — e.g. PM / marketer / dev / founder), the **target-profile seed** (titles, company types, seniority), candidate **reachability channels** (communities, Slack, LinkedIn groups, events), and from `pressure-test.md` the **Disconfirmation Questions + Kill Criteria** (these become the spine of every interview guide). From `founder-profile.md`: the founder's **interview availability** and geography, to compute scheduling overlap windows.
-
-Fire one `AskUserQuestion` that shows what you extracted and lets the founder confirm/correct in `notes`:
-- The persona list (each persona gets its own guide + question set — the Playbook: *"a single interview framework will flatten that distinction"*).
-- The founder's availability windows + target geographies (so the run-pack only proposes both-sides-sane interview slots — see `references/run-pack-template.md` for the overlap-window logic).
-- If the verdict was `kill-suggested`, state it plainly and make proceeding the explicit choice.
-
-#### Step D2 — Lock the kill criteria (write-once)
-
-If `customer-discovery/kill-criteria.json` does **not** exist, encode each Kill Criterion / Disconfirmation Question from `pressure-test.md` into it, following the schema and scoring-type guide in `references/kill-criteria-anchoring.md`. This file pins the thresholds for every future round. If it already exists, read and reuse it unchanged — never edit a threshold after data exists (see Gotchas).
-
-#### Step D3 — Fan out per-persona design workers (parallel)
-
-Create the output directory first: `docs/ideas-stages/<slug>/customer-discovery/`.
-
-Dispatch one `customer-discovery-personas-worker` per persona in a single assistant message (parallel), at high effort. Each worker produces, for its persona: the precise sub-profile + reachability ranking, a kill-criteria-anchored + Mom-Test-audited interview guide, and per-channel outreach-email drafts. Use the dispatch template below; the worker reads `references/kill-criteria-anchoring.md` and `references/mom-test-audit.md`.
-
-**Degrade:** if no spawn tool exists, generate the per-persona guides inline using the same two references, and tell the founder it ran inline (no parallel isolation).
-
-When workers report, Read each persona doc and assemble `customer-discovery/target-profile.md` (the merged profile + reachability + prioritization across personas). Offer to **audit any questions the founder drafts** against `references/mom-test-audit.md` (the Playbook exercise).
-
-#### Step D4 — Compose the sealed run-pack
-
-Read `references/run-pack-template.md`. Compose `customer-discovery/cowork-runpack.md` — fully self-contained (Gotchas: headless Cowork can't see the repo). It inlines: mission, target-profile excerpt, sourcing rules, per-persona outreach templates, the **send-gate protocol** (per-batch founder approval, ~5–10/day ramp, opt-out line, auto-stop on bounces/complaints, channel-norm respect), the **overlap-window scheduling rules**, the day-7 follow-up cadence, the **tracking-sheet schema**, the MCP-setup reminder, and the report-back contract.
-
-**Output path:** by default write the run-pack to `customer-discovery/cowork-runpack.md`. When a Cowork shared folder is configured (`/mnt/c/dev/soriza-cowork/`, per ADR-0003), also write it there so Cowork reads it natively and drops interview notes back into the repo; otherwise the founder pastes the sealed run-pack into Cowork. The `/idea-funnel` workflow passes this path to its `cd-design-gate` for Shortlist survivors.
-
-Surface a **pre-flight note** to the founder in chat (not legal advice): a one-paragraph jurisdiction caution (HK PDPO / EU GDPR / US CAN-SPAM for B2B cold outreach) and a nudge to prefer warm/community channels where the target congregates.
-
-#### Step D5 — Review and write
-
-Print the target profile + one sample persona guide + the run-pack's send-protocol section in chat. Fire `AskUserQuestion`: **Ship it** (write the files) / **Refine** (founder names what to redo in `notes`) / **Abort** (write nothing).
-
-#### Step D6 — Exit message
-
-*"Design written. Next: in Cowork, connect Gmail/Calendar/Drive (MCP), paste `customer-discovery/cowork-runpack.md`, and approve the first outreach batch (~5–10). Run interviews in your overlap windows; drop each conversation's notes into `customer-discovery/interviews/<date>-<prospect>.md`. Come back after ~5 interviews and I'll synthesize."*
+**Confirm interviews exist.** This skill is synthesis-only — it needs real interview notes. Check `docs/ideas-stages/<slug>/customer-discovery/interviews/*.md`:
+- notes exist and are newer than the latest `synthesis/round-*.md` (or no round yet) → run a **SYNTHESIS round** (Steps S0–S6).
+- no interview notes at all → say so and point the founder at the funnel's sealed Phase A pack: *"No interview notes yet at `customer-discovery/interviews/`. The discovery DESIGN (target profile, warm list, interview guide) is built by /idea-funnel's Phase A — run it (or paste its `cowork-runpack.md` into Cowork), interview real people, drop each conversation's notes into `customer-discovery/interviews/<date>-<prospect>.md`, then come back."* Write nothing.
+- all current interviews already synthesized, or genuinely ambiguous → `AskUserQuestion`: *New synthesis round / Skip*.
 
 ---
 
 ### SYNTHESIS phase
+
+#### Step S0 — Lock the kill criteria (write-once)
+
+If `customer-discovery/kill-criteria.json` does **not** exist, create `docs/ideas-stages/<slug>/customer-discovery/` first, then encode each kill criterion from `disconfirmation-brief.md` into it: each **OPEN assumption** (`open_assumptions[].assumption` — "What would have to be true: …") + its matching **interview question** (`interview_questions[]`) becomes one criterion, with a trip-threshold chosen following the schema and scoring-type guide in `references/kill-criteria-anchoring.md`. Set each criterion's `source` to the brief's open assumption it came from. Use the `ranked_risks` order to prioritize which assumptions matter most. This file pins the thresholds for every future round. If it already exists, read and reuse it unchanged — never edit a threshold after data exists (see Gotchas).
 
 #### Step S1 — Gather
 
@@ -190,37 +157,13 @@ Print the full draft Read in chat. Fire `AskUserQuestion`:
 #### Step S7 — Exit message
 
 - If any criterion is **TRIPPED** and no override: *"Discovery Read written. Criterion `<x>` tripped at n=<N> — the kill criterion you pre-registered fired. See customer-discovery.md. To proceed anyway, re-run and choose the override."*
-- If **CONTINUE / PIVOT / KEEP-DISCOVERING**: *"Discovery Read written. Next: keep interviewing in your overlap windows toward ~10–15; re-run synthesis every ~5. When the call is a confident CONTINUE or a PIVOT, run /solution-design <slug> — it crystallizes the wedge + validated profile into a challenged final solution concept (a PIVOT just means the drift audit centers the pivot; this is the stage before MVP)."*
-- If **hypothesis updates flagged**: *"The interviews flagged hypothesis updates — run /sharpen-hypothesis <slug> to apply them, then re-run /pressure-test before you build."*
+- If **CONTINUE / PIVOT / KEEP-DISCOVERING**: *"Discovery Read written. Next: keep interviewing toward ~10–15 (use the funnel's sealed Phase A pack via Cowork); re-run synthesis every ~5. When the call is a confident CONTINUE or a PIVOT, run /solution-design <slug> — it crystallizes the wedge + validated profile into a challenged final solution concept (a PIVOT just means the drift audit centers the pivot; this is the stage before MVP)."*
+- If the call is **PIVOT** (sharper/different problem, or right problem wrong segment): *"This is a PIVOT — the problem the interviews revealed differs from the hypothesis. Re-enter /idea-funnel to redesign the hypothesis (and a fresh Disconfirmation Brief + Phase A pack) for the sharpened problem, or take it straight to /solution-design if the pivot is small enough to design around."*
+- If **hypothesis updates flagged**: *"The interviews flagged hypothesis updates — re-enter /idea-funnel to apply them (it re-sharpens the hypothesis and re-runs the Disconfirmation Brief) before you build."*
 
 ## Subagent dispatch templates
 
-Literal templates. Substitute `<UPPER_PLACEHOLDERS>` at dispatch. **Resolve `${CLAUDE_SKILL_DIR}` to this skill's absolute path** when composing — the subagent runs in its own context and won't expand it. Dispatch at high effort; the agents' frontmatter pins Opus + `high`.
-
-### customer-discovery-personas-worker (Step D3, one per persona)
-
-```
-You are the customer-discovery-personas-worker for a committed startup idea that has passed sharpen-hypothesis, pressure-test, and market-research. Design the customer-discovery materials for ONE persona — reason hard about how THIS persona experiences the problem, and tie every interview question to a kill criterion.
-
-First: Read ${CLAUDE_SKILL_DIR}/references/kill-criteria-anchoring.md and ${CLAUDE_SKILL_DIR}/references/mom-test-audit.md and follow both.
-
-Persona to design for: <PERSONA_NAME> (<PERSONA_ONE_LINER>)
-
-Context:
-- Hypothesis (full): <HYPOTHESIS_FULL_CONTENT>
-- Kill Criteria + Disconfirmation Questions (from pressure-test.md): <KILL_CRITERIA_AND_QUESTIONS>
-- Locked thresholds (the canonical customer-discovery/kill-criteria.json): <KILL_CRITERIA_JSON> — anchor each question's trip-threshold to these verbatim; do not re-derive or alter them.
-- Buyer/segment/geography/WTP (from market-research.md, if any): <MARKET_CONTEXT or "none">
-- Founder reachability/geography constraints: <FOUNDER_CONSTRAINTS>
-
-Produce, for THIS persona only:
-1. Precise sub-profile (titles, company type, seniority, team structure) + where they congregate (communities, Slack, LinkedIn groups, events) + a proximity-to-pain ranking for who to reach first.
-2. A kill-criteria-anchored interview guide: every question traces to a specific criterion with its trip-threshold, framed as PAST BEHAVIOUR ("tell me about the last time…"), never future-hypothetical ("would you…"). Then run the Mom-Test audit on your own questions and rewrite any that are leading / future-facing / too broad / socially-desirable. Add 2–3 deflection probes.
-3. Per-channel outreach-email drafts (personalized, with an opt-out line) — DRAFTS ONLY; you do not send.
-
-Write to: docs/ideas-stages/<SLUG>/customer-discovery/persona-<PERSONA_SLUG>.md
-Return one line naming the persona + the doc path — not the contents.
-```
+Literal templates. Substitute `<UPPER_PLACEHOLDERS>` at dispatch. Dispatch at high effort; the agent's frontmatter pins Opus + `high`.
 
 ### customer-discovery-bias-check (Step S5)
 
@@ -241,23 +184,22 @@ Return your challenge as prose (no file write needed) — the main conversation 
 
 ## Reference files
 
-- `references/kill-criteria-anchoring.md` — how to turn a Kill Criterion into a past-behaviour question + trip-threshold, the `kill-criteria.json` schema, and the per-interview scoring-JSON shape. Read in Steps D2, D3, S2.
-- `references/mom-test-audit.md` — the audit checklist (leading / future-facing / too-broad / socially-desirable) + deflection-probe design. Read in Step D3 (and when auditing founder-drafted questions).
-- `references/run-pack-template.md` — the sealed Cowork run-pack structure + overlap-window scheduling logic. Read in Step D4.
+- `references/kill-criteria-anchoring.md` — how to turn a Disconfirmation Brief OPEN assumption + its interview question into a trip-threshold, the `kill-criteria.json` schema, and the per-interview scoring-JSON shape. Read in Steps S0, S2.
 - `references/discovery-read-template.md` — the `customer-discovery.md` Discovery Read structure. Read in Step S4.
+- `references/mom-test-audit.md`, `references/run-pack-template.md` — design-phase references, **superseded** by `/idea-funnel` Phase A; this synthesis-only skill no longer reads them (kept for the funnel's design logic / portability).
 
 ## Bundled scripts
 
-- `scripts/score_criteria.py` — deterministic Step-S3 scoring. Reads the locked `kill-criteria.json` + the per-interview scoring JSON, applies each threshold (proportion / count / majority), and prints per-criterion `TRIPPED` / `CLEARED` / `INCONCLUSIVE` + `n` + small-sample flag + a per-persona coverage breakdown, surfacing qualitative criteria as `manual`. Bundled so the thresholds are applied mechanically and can't be soft-pedaled by eye (mirrors `/pressure-test`'s `compute_verdict.py`). Stdlib-only; runs under `python3` or self-executes via `uv run --script`.
+- `scripts/score_criteria.py` — deterministic Step-S3 scoring. Reads the locked `kill-criteria.json` + the per-interview scoring JSON, applies each threshold (proportion / count / majority), and prints per-criterion `TRIPPED` / `CLEARED` / `INCONCLUSIVE` + `n` + small-sample flag + a per-persona coverage breakdown, surfacing qualitative criteria as `manual`. Bundled so the thresholds are applied mechanically and can't be soft-pedaled by eye. Stdlib-only; runs under `python3` or self-executes via `uv run --script`.
 
 ## Composition
 
-- **Upstream:** `/market-research` (and `/pressure-test` for the Kill Criteria + Disconfirmation Questions). Floor guard = `pressure-test.md`.
-- **Downstream:** `/solution-design` consumes `customer-discovery.md` — the validated profile, the wedge, and the Discovery Read verdict — to crystallize and challenge the final solution concept; the MVP stage (not yet built) follows it. Hypothesis updates route back through `/sharpen-hypothesis`.
-- **Off-surface:** Cowork (+ Gmail/Calendar/Drive MCP) executes the generated `cowork-runpack.md`. Not a versioned artifact — regenerated per run.
-- **Workers:** `customer-discovery-personas-worker`, `customer-discovery-bias-check` under `.claude/agents/`, dispatched at runtime.
+- **Upstream:** `/idea-funnel` — it produces `hypothesis.md`, `disconfirmation-brief.md` (the kill-criteria source: OPEN assumptions + interview questions), `market-research.md`, and the **sealed Phase A discovery pack** (`customer-discovery/cowork-runpack.md`) the founder runs. Floor guard = `disconfirmation-brief.md` + `hypothesis.md`.
+- **Downstream:** `/solution-design` consumes `customer-discovery.md` — the validated profile, the wedge, and the Discovery Read verdict — to crystallize and challenge the final solution concept; the MVP stage (not yet built) follows it. Pivots and hypothesis updates route back through `/idea-funnel`.
+- **Off-surface:** Cowork (+ Gmail/Calendar/Drive MCP) executes the funnel's `cowork-runpack.md`. Not a versioned artifact — regenerated per run.
+- **Workers:** `customer-discovery-bias-check` under `.claude/agents/`, dispatched at runtime.
 
 ## Scope
 
-- **In:** target profile + reachability, per-persona kill-anchored interview guides, the sealed Cowork run-pack, scoring real evidence against locked thresholds, the bias-checked Discovery Read + provenance.
-- **Out:** sending any email (Cowork's job, structurally). Editing `hypothesis.md` (`/sharpen-hypothesis`). Market sizing / competitor mapping (`/market-research`). The persona panel (`/pressure-test`). Solution-concept design (`/solution-design`) and MVP/build work (later stages). Inventing persona skills (`/nuwa-skill`).
+- **In:** locking kill criteria from the Disconfirmation Brief's OPEN assumptions + interview questions, scoring real interview evidence against those locked thresholds, the bias-checked Discovery Read + provenance.
+- **Out:** designing the discovery pack — target profile, reachability, warm list, interview guide, the Cowork run-pack (all `/idea-funnel` Phase A). Sending any email (Cowork's job, structurally). Editing `hypothesis.md` or pivot/resurrect (`/idea-funnel`). Market sizing / competitor mapping / demand detection (`/idea-funnel`). The expert debate (`/idea-funnel`'s Disconfirmation Brief). Solution-concept design (`/solution-design`) and MVP/build work (later stages). Inventing persona skills (`/nuwa-skill`).

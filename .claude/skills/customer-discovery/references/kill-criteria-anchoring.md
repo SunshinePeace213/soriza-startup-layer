@@ -1,30 +1,37 @@
 # Kill-Criteria Anchoring
 
-The thing that makes this skill different from a generic interview-guide generator: **discovery exists
-to trip-or-clear the kill criteria the founder pre-registered in `pressure-test.md`** — not to "learn
-about users" in the abstract. So every interview question anchors to a specific criterion, and every
-synthesis scores real behaviour against a *locked* threshold.
+The thing that makes this synthesis different from eyeballing transcripts: **discovery exists to
+trip-or-clear the kill criteria the founder pre-registered from the funnel's `disconfirmation-brief.md`**
+— not to "learn about users" in the abstract. Each **OPEN assumption** + its matching **interview
+question** in that brief becomes one criterion, and every synthesis scores real behaviour against a
+*locked* threshold.
 
 ## The anchoring pattern
 
-For each Kill Criterion / Disconfirmation Question in `pressure-test.md`, build:
+For each OPEN assumption (with its interview question) in `disconfirmation-brief.md`, build:
 
 ```
-CRITERION (verbatim from pressure-test.md)
-  → PAST-BEHAVIOUR QUESTION   (queries a concrete past event, never a hypothetical future)
+OPEN ASSUMPTION (verbatim from disconfirmation-brief.md open_assumptions[].assumption)
+  → INTERVIEW QUESTION        (the brief's matching interview_questions[] entry — already past-behaviour shaped)
   → TRIP-THRESHOLD            (the pre-registered number that decides TRIPPED vs CLEARED)
   → DEFLECTION PROBE          (the follow-up for the dodge this question usually draws)
 ```
 
-Worked examples (from the `personalized-ai-digest` pressure-test — use the founder's real file):
+The interview questions in the brief are already Mom-Test / past-behaviour shaped (the disconfirmation
+judge built them that way). Your job in synthesis is to attach a **trip-threshold** to each and score
+behaviour against it — not to redesign the question.
 
-> **Criterion:** *"No willingness-to-pay against free — if <10–20% will pay any non-zero price → abandon."*
-> **Question:** *"Tell me about the last time you paid for something to keep up with AI — a course, a newsletter, a tool. What pushed you to actually put a card in?"*
+Worked examples (for an `personalized-ai-digest`-style idea — use the founder's real brief):
+
+> **Open assumption:** *"What would have to be true: users will pay a non-zero price against free
+> alternatives."*
+> **Interview question (from the brief):** *"Tell me about the last time you paid for something to keep up
+> with AI — a course, a newsletter, a tool. What pushed you to actually put a card in?"*
 > **Threshold:** ever-paid proportion `<10%` → TRIPPED; `≥20%` → CLEARED; in between → INCONCLUSIVE.
 > **Probe (on the dodge "I'd pay for the right thing"):** *"Set aside what you'd pay for — what did you actually pay for, most recently?"*
 
-> **Criterion:** *"Behaviour is identity/FOMO, not need."*
-> **Question** (Disconfirmation Q1): *"Walk me through what you actually did in the last 7 days to keep up with AI — did you try a tool or ship something, or only read?"*
+> **Open assumption:** *"What would have to be true: the behaviour is driven by real need, not identity/FOMO."*
+> **Interview question (from the brief):** *"Walk me through what you actually did in the last 7 days to keep up with AI — did you try a tool or ship something, or only read?"*
 > **Threshold:** took-concrete-action proportion `<30%` → TRIPPED (it's FOMO); `≥30%` → CLEARED.
 > **Probe:** *"What was the most recent thing you read about and then actually used? When?"*
 
@@ -34,17 +41,18 @@ last time…" produces behaviour. (See `mom-test-audit.md`.)
 
 ## `kill-criteria.json` — write once, then locked
 
-Encode each criterion once in Step D2. After interview data exists, **never edit a threshold** — that is
-the goalpost-moving this whole design prevents. Pick the scoring `type` from how `pressure-test.md` phrases
-the kill:
+Encode each criterion once in Step S0. After interview data exists, **never edit a threshold** — that is
+the goalpost-moving this whole design prevents. The OPEN assumptions in `disconfirmation-brief.md` are
+phrased as "What would have to be true: …" — pick the scoring `type` from what the assumption claims and
+the threshold *you* set when locking it:
 
-| Pressure-test phrasing | `type` | Fields |
+| What the OPEN assumption claims | `type` | Fields |
 |---|---|---|
-| "if **<X%** [do a supporting thing] → abandon" | `support_proportion` | `field`, `clear_at`, `trip_below`, `min_n` |
-| "if **<N/10** [do a supporting thing] → abandon" | `support_proportion` (use the rate, e.g. 3/10 → `clear_at`=`trip_below`=0.30) | same |
-| "if [a refuting thing] above **X%** → abandon" | `against_proportion` | `field`, `trip_at`, `clear_below`, `min_n` |
-| "if the **majority** [refuting thing] → abandon" | `against_majority` | `field`, `min_n` |
-| qualitative ("if you cannot name a signal…") | `manual` | — (the model judges in prose) |
+| "**≥X%** [do a supporting thing] (else it fails)" → trip if **<X%** | `support_proportion` | `field`, `clear_at`, `trip_below`, `min_n` |
+| "at least **N in 10** [do a supporting thing]" → use the rate, e.g. 3/10 → `clear_at`=`trip_below`=0.30 | `support_proportion` | same |
+| "a refuting thing stays under **X%**" → trip if it goes above | `against_proportion` | `field`, `trip_at`, `clear_below`, `min_n` |
+| "the **majority** do NOT [a refuting thing]" → trip if the majority do | `against_majority` | `field`, `min_n` |
+| qualitative ("you can name a signal the incumbent lacks…") | `manual` | — (the model judges in prose) |
 
 **Boundary rule:** a value exactly at `clear_at` resolves **CLEARED** (the test is `p ≥ clear_at`); a
 value exactly at `trip_below` is **not** tripped (the test is `p < trip_below`). So for "if <30% → trip",
@@ -61,18 +69,18 @@ auto-scored criterion — if you omit it the small-sample floor silently drops t
   "locked_on": "<YYYY-MM-DD>",
   "criteria": [
     {"id": "wtp-against-free", "label": "No willingness-to-pay against free",
-     "source": "pressure-test.md Kill Criteria #1",
+     "source": "disconfirmation-brief.md open assumption #1",
      "type": "support_proportion", "field": "ever_paid_comparable",
      "clear_at": 0.20, "trip_below": 0.10, "min_n": 8},
     {"id": "fomo-not-need", "label": "Behaviour is FOMO, not need",
-     "source": "pressure-test.md Kill Criteria #2",
+     "source": "disconfirmation-brief.md open assumption #2",
      "type": "support_proportion", "field": "took_concrete_action",
      "clear_at": 0.30, "trip_below": 0.30, "min_n": 8},
     {"id": "native-good-enough", "label": "Native personalization is good enough",
-     "source": "pressure-test.md Kill Criteria #3",
+     "source": "disconfirmation-brief.md open assumption #3",
      "type": "against_majority", "field": "native_suffices", "min_n": 8},
     {"id": "no-capturable-signal", "label": "No capturable signal the labs lack",
-     "source": "pressure-test.md Kill Criteria #4", "type": "manual"}
+     "source": "disconfirmation-brief.md open assumption #4", "type": "manual"}
   ]
 }
 ```

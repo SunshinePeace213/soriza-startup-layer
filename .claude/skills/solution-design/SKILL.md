@@ -13,12 +13,11 @@ when_to_use: |
   Use when the founder says "design my solution", "design the solution", "solution concept",
   "final solution concept", "develop and challenge my concept", "red-team my solution", "what
   assumptions does my design make", or "what's next" WHEN a customer-discovery.md exists in the idea's
-  docs/ideas-stages folder but solution-design.md does not yet (precedence: no hypothesis.md →
-  /sharpen-hypothesis; hypothesis.md only → /pressure-test; pressure-test.md → /market-research;
-  market-research.md → /customer-discovery; customer-discovery.md → here). Do NOT trigger to edit
-  hypothesis.md (/sharpen-hypothesis), size the market (/market-research), run/synthesize interviews
-  (/customer-discovery), or for software/architecture/code-level design — this is startup
-  solution-concept design.
+  docs/ideas-stages folder but solution-design.md does not yet (precedence: no idea folder →
+  /idea-funnel; idea folder without customer-discovery.md → /customer-discovery; customer-discovery.md
+  → here). Do NOT trigger to edit hypothesis.md (/idea-funnel owns it), size the market (/idea-funnel's
+  market research), run/synthesize interviews (/customer-discovery), or for software/architecture/code-level
+  design — this is startup solution-concept design.
 argument-hint: "[slug]"
 allowed-tools: AskUserQuestion, Read, Write, Bash, Glob, Agent, Task, WebSearch, WebFetch, Skill
 effort: high
@@ -33,7 +32,7 @@ the founder *assumed going in*? Source method: *The Founder's Playbook: Building
 "Design your final solution concept" (develop **and challenge** from every angle: gaps, alternatives,
 scale, and the assumed-vs-validated reality check).
 
-- **Input:** `docs/ideas-stages/<slug>/customer-discovery.md` (required floor) + `hypothesis.md`, `pressure-test.md`, `market-research.md` (folded if present) + `docs/founder-profile.md`.
+- **Input:** `docs/ideas-stages/<slug>/customer-discovery.md` (required floor) + `hypothesis.md`, `disconfirmation-brief.md`, `market-research.md` (folded if present) + `docs/founder-profile.md`.
 - **Output:** `docs/ideas-stages/<slug>/solution-design.md` (the action card) + provenance under `solution-design/`.
 - **Worker:** the `solution-red-team` subagent (`.claude/agents/`), read at runtime.
 
@@ -45,11 +44,11 @@ then attack it. The load-bearing attack is the **drift audit**: discovery may ha
 diagnosis*, and the failure mode this whole stage guards against is keeping the old prescription anyway.
 
 The trap inside the trap: **the "validated problem" is not just `customer-discovery.md`.** Every upstream
-stage emits a *"Hypothesis Updates Flagged"* block, and only `/sharpen-hypothesis` may fold those back
+stage emits a *"Hypothesis Updates Flagged"* block, and only `/idea-funnel` may fold those back
 into `hypothesis.md`. Mid-pipeline, `hypothesis.md` is usually **stale**. So the validated baseline you
 measure the concept against = **original hypothesis + all accumulated, possibly-unapplied flagged
-deltas** from pressure-test, market-research, and discovery. `scripts/build_delta_ledger.py` assembles
-those verbatim so none is silently dropped before the reasoning starts.
+deltas** from the disconfirmation brief, market research, and discovery. `scripts/build_delta_ledger.py`
+assembles those verbatim so none is silently dropped before the reasoning starts.
 
 ## When this skill applies
 
@@ -57,19 +56,20 @@ those verbatim so none is silently dropped before the reasoning starts.
 - "Design my solution", "solution concept", "final solution concept", "design the solution"
 - "Develop and challenge my concept", "what are my design's load-bearing assumptions"
 
-Out of scope: editing `hypothesis.md` (`/sharpen-hypothesis`); market sizing / competitor mapping
-(`/market-research`); the adversarial persona panel (`/pressure-test`); running or synthesizing
-interviews (`/customer-discovery`); MVP/build work (the next stage, not yet built).
+Out of scope: editing `hypothesis.md` (`/idea-funnel` owns it); market sizing / competitor mapping
+(`/idea-funnel`'s market research); the adversarial expert disconfirmation (folded into the
+`disconfirmation-brief.md` the funnel writes); running or synthesizing interviews (`/customer-discovery`);
+MVP/build work (the next stage, not yet built).
 
 ## Gotchas
 
 - **The drift audit is the point — never let "concede the diagnosis, keep the prescription" through.** This founder's documented failure mode IS drift: discovery revised the diagnosis, the design keeps serving the old prescription. Measure the concept against the **reconstructed** validated baseline (hypothesis + unapplied deltas), never the stale `hypothesis.md`. A `❌ still solving the old problem` row is a finding, not an inconvenience to soften.
 - **A KILL Discovery Read is a loud stop, not a speed bump.** This stage gathers **no new evidence about the problem** — designing a slick concept proves nothing about whether the killed problem is real. The only legitimate proceed: the founder contests the kill as an *artifact* (e.g. coverage skew — no founders interviewed, marketer truncated) AND designs only the *narrowed* concept the cleared evidence supports. Surface it at Gate 1; stamp the override on record. Never silently design a corpse. `customer-discovery.md` is **append-round**, so the binding verdict is the **latest** round (the ledger script selects it); aim any narrowing at the script's `cleared_criteria`.
 - **The `solution-red-team` MUST run in a separate context, dispatched BLIND.** It gets the validation docs + the founder-confirmed concept wedge but NOT the main agent's draft card. Blind by construction = it generates its own assumptions and drift suspicions independently, so the reconcile catches assumptions the draft never listed. An agent grading its own design rationalizes it (the customer-discovery-bias-check principle).
-- **The Concept Read is non-binding — do not overclaim it as a gate.** Like `/market-research`'s Market Read, it's a recommendation, not a pass/fail verdict the founder must "accept." Proceeding past a KILL is the only thing stamped as an override.
-- **Never edit `hypothesis.md`.** This skill *flags* hypothesis updates and routes to `/sharpen-hypothesis`, which owns that file. Writing into it duplicates ownership and breaks the contract the other stages depend on.
-- **No persona panel here.** The `*-perspective` advisors live exclusively at `/pressure-test`. You may run ONE named perspective skill as an a-la-carte design lens if the founder asks (e.g. `/steve-jobs-perspective` for "is this focused / whole-widget?") — but never reconstruct the panel or its verdict machinery.
-- **Don't re-run market research or discovery.** WebSearch/WebFetch are for *light* verification only (does an "alternative" already exist; is a scale-economics claim sane). Re-deriving the competitive landscape or re-interviewing is scope creep into the prior stages.
+- **The Concept Read is non-binding — do not overclaim it as a gate.** Like the funnel's Market Read, it's a recommendation, not a pass/fail verdict the founder must "accept." Proceeding past a KILL is the only thing stamped as an override.
+- **Never edit `hypothesis.md`.** This skill *flags* hypothesis updates and routes to `/idea-funnel`, which owns that file. Writing into it duplicates ownership and breaks the contract the other stages depend on.
+- **No persona panel here.** The `*-perspective` advisors live exclusively in the funnel's expert disconfirmation (the `disconfirmation-brief.md`). You may run ONE named perspective skill as an a-la-carte design lens if the founder asks (e.g. `/steve-jobs-perspective` for "is this focused / whole-widget?") — but never reconstruct the panel or its verdict machinery.
+- **Don't re-run market research or discovery.** WebSearch/WebFetch are for *light* verification only (does an "alternative" already exist; is a scale-economics claim sane). Re-deriving the competitive landscape (the funnel's market research) or re-interviewing is scope creep into the prior stages.
 - **Create `solution-design/` (and `rounds/`) before dispatching the worker / running scripts.** Writes to a fixed path fail if the parent doesn't exist (mirrors the sibling stages).
 - **Degrade gracefully if no spawn tool.** If neither `Agent` nor `Task` exists, run the red-team as a deliberately adversarial *second pass* in a fresh framing — and tell the founder it is weaker without context isolation, because a same-context self-critique is structurally compromised.
 
@@ -77,7 +77,7 @@ interviews (`/customer-discovery`); MVP/build work (the next stage, not yet buil
 
 Hybrid, like the sibling stages: **concept-confirm gate → autonomous challenge → final review**, with
 founder decisions routed through `AskUserQuestion` (a `notes` escape hatch on every choice — house
-style; read `/customer-discovery` or `/market-research` for voice). One phase, two gates — there is no
+style; read `/customer-discovery` for voice). One phase, two gates — there is no
 external interlude (crystallize → challenge → card is continuous). Quality scales with reasoning depth —
 run at `high` effort or above; the worker carries its own.
 
@@ -94,10 +94,10 @@ step the bullets are constraints, not a script.
 If invoked with a slug, use it. Otherwise `glob docs/ideas-stages/*/` for ideas with a
 `customer-discovery.md`: exactly one → use it (state which in chat); more than one → `AskUserQuestion`;
 none → if idea folders exist but none has `customer-discovery.md`, point at `/customer-discovery`; if no
-idea folders, point at `/sharpen-hypothesis`. Stop.
+idea folders, point at `/idea-funnel`. Stop.
 
-Read, in order: `customer-discovery.md` (the floor), then `hypothesis.md`, `pressure-test.md`,
-`market-research.md`, and `docs/founder-profile.md` if present. If `pressure-test.md` /
+Read, in order: `customer-discovery.md` (the floor), then `hypothesis.md`, `disconfirmation-brief.md`,
+`market-research.md`, and `docs/founder-profile.md` if present. If `disconfirmation-brief.md` /
 `market-research.md` are absent, do not refuse — note in chat that the validated baseline will be
 thinner (the ledger script flags each missing doc in its `warnings`).
 
@@ -178,8 +178,8 @@ Print the full draft card in chat. Fire `AskUserQuestion`:
 
 - `build` / `narrow`: *"Solution design written. Next: the MVP stage (not yet built) will consume the MVP Brief — the wedge, the prioritized riskiest-assumption-tests, the validated profile, the non-goals. Build the cheapest test of the #1 assumption first."*
 - `redesign`: *"The drift audit flagged the concept is still serving the assumed problem. Re-run /solution-design (Refine) on the corrected concept before building."*
-- `reconsider`: *"The load-bearing assumptions aren't supported (or discovery was KILL). Step back: more /customer-discovery on the riskiest assumptions, or /sharpen-hypothesis to rework the problem."*
-- If **Hypothesis Updates Flagged** is non-empty: *"The design flagged hypothesis updates — run /sharpen-hypothesis <slug> to apply them, then re-run the downstream stages."*
+- `reconsider`: *"The load-bearing assumptions aren't supported (or discovery was KILL). Step back: more /customer-discovery on the riskiest assumptions, or re-run /idea-funnel to rework the problem."*
+- If **Hypothesis Updates Flagged** is non-empty: *"The design flagged hypothesis updates — re-run /idea-funnel on <slug> to apply them, then re-run the downstream stages."*
 
 ## Subagent dispatch template
 
@@ -190,7 +190,7 @@ Do not set model/effort on the dispatch — the `solution-red-team` frontmatter 
 ### solution-red-team (Step 5, dispatched BLIND — no draft card)
 
 ```
-You are the solution-red-team for a committed startup idea that has been through sharpen-hypothesis, pressure-test, market-research, and customer-discovery. You are NOT a balanced reviewer — your job is to find where this solution concept fails and where the founder is fooling themselves. You are working BLIND: you do not get the founder's drafted design card, only the validated evidence and the bare concept wedge, so that your assumptions and drift findings are independent.
+You are the solution-red-team for a committed startup idea that has been through the idea-funnel (hypothesis, expert disconfirmation, market research) and customer-discovery. You are NOT a balanced reviewer — your job is to find where this solution concept fails and where the founder is fooling themselves. You are working BLIND: you do not get the founder's drafted design card, only the validated evidence and the bare concept wedge, so that your assumptions and drift findings are independent.
 
 First: Read ${CLAUDE_SKILL_DIR}/references/red-team-brief.md and follow it.
 
@@ -199,7 +199,7 @@ The concept wedge (founder-confirmed): <WEDGE_ONE_LINER + VALIDATED_WHO + CORE_J
 Context (the validation evidence):
 - Reconstructed validated baseline (assumed problem + applied deltas): <VALIDATED_BASELINE>
 - Delta ledger (every flagged update + Discovery verdict + tripped criteria, verbatim): <DELTA_LEDGER>
-- Hypothesis / pressure-test / market-research highlights: <UPSTREAM_HIGHLIGHTS>
+- Hypothesis / disconfirmation-brief / market-research highlights: <UPSTREAM_HIGHLIGHTS>
 - Founder edge + constraints (from founder-profile.md): <FOUNDER_CONTEXT>
 
 Produce, independently:
@@ -227,12 +227,12 @@ Return one line naming the concept + the doc path — not the contents.
 
 ## Composition
 
-- **Upstream:** `/customer-discovery` writes the required `customer-discovery.md`; `/pressure-test`, `/market-research`, `/sharpen-hypothesis` supply the assumptions, positioning, and the assumed baseline. Floor guard = `customer-discovery.md`.
-- **Downstream:** the **MVP stage (not yet built)** consumes `solution-design.md`'s **MVP Brief** — the wedge, the prioritized riskiest-assumption-tests, the validated profile, the non-goals. Hypothesis updates route back through `/sharpen-hypothesis`; a `reconsider` Read routes back to `/customer-discovery`.
+- **Upstream:** `/customer-discovery` writes the required `customer-discovery.md`; `/idea-funnel` writes `hypothesis.md`, `disconfirmation-brief.md`, and `market-research.md`, which supply the assumptions, positioning, and the assumed baseline. Floor guard = `customer-discovery.md`.
+- **Downstream:** the **MVP stage (not yet built)** consumes `solution-design.md`'s **MVP Brief** — the wedge, the prioritized riskiest-assumption-tests, the validated profile, the non-goals. Hypothesis updates route back through `/idea-funnel`; a `reconsider` Read routes back to `/customer-discovery`.
 - **Worker:** `solution-red-team` under `.claude/agents/`, dispatched at runtime.
 - **Optional:** any one `*-perspective` skill as an a-la-carte design lens (never the full panel).
 
 ## Scope
 
 - **In:** crystallizing the concept from the validated docs, the drift audit, the three-assumptions exercise (script-ranked), alternatives + scale conditions, the blind red-team + reconciliation, the action card + MVP Brief + provenance.
-- **Out:** editing `hypothesis.md` (`/sharpen-hypothesis`). Market sizing / competitor mapping (`/market-research`). The persona panel (`/pressure-test`). Running/synthesizing interviews (`/customer-discovery`). MVP/build work (next stage). Inventing persona skills (`/nuwa-skill`).
+- **Out:** editing `hypothesis.md` (`/idea-funnel` owns it). Market sizing / competitor mapping (`/idea-funnel`'s market research). The persona panel (the funnel's expert disconfirmation → `disconfirmation-brief.md`). Running/synthesizing interviews (`/customer-discovery`). MVP/build work (next stage). Inventing persona skills (`/nuwa-skill`).
