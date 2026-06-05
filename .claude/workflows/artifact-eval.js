@@ -15,7 +15,11 @@ export const meta = {
 //   graderRubricPath: string,                       // path to agents/meta-skill-grader.md
 //   evals: [{ name: string, prompt: string, assertions: string[], files?: string[] }]
 // }
-const { artifactPath, artifactType, artifactName, iterationDir, graderRubricPath, evals } = args
+// Accept args whether the harness forwards them as a parsed object OR a JSON string
+// (the Workflow `args` field is typed `any`; some harnesses pass it through verbatim as text).
+let a = args || {}
+if (typeof a === 'string') { try { a = JSON.parse(a) } catch (e) { a = {} } }
+const { artifactPath, artifactType, artifactName, iterationDir, graderRubricPath, evals } = a
 
 // Validates what meta-skill-grader returns; the agent also writes the full grading.json to disk.
 const GRADING_SCHEMA = {
