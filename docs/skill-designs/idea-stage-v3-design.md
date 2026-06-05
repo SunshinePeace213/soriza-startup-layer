@@ -1,8 +1,8 @@
 # Idea Stage v3 — Design Contract
 
-> **Status:** locked design contract, produced by a `/grill-me` session (2026-06).
-> **Supersedes:** the v2 `idea-funnel` (the automated batch ranker) — see *Cleanup*.
-> **Consumed by:** `/prompt-architect`, which builds each artifact from this spec.
+> **Status:** ✅ **BUILT** — fully implemented across two committed phases on branch `worktree-idea-stage-v3-design` (Phase 1 `93e2f30` knowledge layer · Phase 2 `1912f13` stage spine). As-built records: `phase1-build-record.md` · `phase2-build-record.md`. Kept as the V3 **design record** (the decisions), not a live to-do.
+> **Supersedes:** the v2 `idea-funnel` (the automated batch ranker) — retired in Phase 2 (see *Cleanup*).
+> **Built by:** `/prompt-architect` from this spec, off a `/grill-me` design session (2026-06).
 > **Source method:** *The Founder's Playbook: Building an AI-Native Startup* (Anthropic) — Idea Stage — plus the founder's doctrine (Lean Startup, "Why Startups Fail," Zero to One, the forward-deployed-founder / business-builder thesis, the solo-founder model).
 
 ---
@@ -71,13 +71,13 @@ Doctrine-map (stage → doctrine):
 
 ### 2c. Two REUSED + ENRICHED persona lenses
 
-**`peter-thiel-perspective`** ← enrich with Zero to One operational frameworks (research: `docs/skill-designs/research/zero-to-one.md`). Frame additions as **tools Thiel fires** (it's a first-person persona, not a methodology doc):
+**`peter-thiel-perspective`** ← enrich with Zero to One operational frameworks (research migrated to `peter-thiel-perspective/references/research/07-zero-to-one-frameworks.md`). Frame additions as **tools Thiel fires** (it's a first-person persona, not a methodology doc):
 - Add a decision tool **"Run the Seven Questions"** (Engineering · Timing · Monopoly · People · **Distribution** · Durability · Secret) — fired when channelled as a disconfirmation lens.
 - **Distribution test** (PRIORITY for this founder's GTM weakness): the channel spectrum (complex sales $1M+ / personal sales $10K–100K / **the "dead zone" $100–10K** / marketing & ads / viral) + **CAC < CLV** gate + **"nail ONE channel"** (power law of distribution) + "sales works best when hidden."
 - Extend Model 1 (Monopoly) with the **4 monopoly characteristics + 10× rule** and the **start-small → scale-up → don't-disrupt** sequence.
 - Add CEO-pay/equity operating rules — **$150k cap** (~$100–125k empirically), cash-is-present / equity-is-future, don't split equity equally. **Correction:** *not* $300k (that's the warn-level, not the recommendation).
 
-**`tom-eisenmann-perspective`** ← enrich with the full *Why Startups Fail* (research: `docs/skill-designs/research/why-startups-fail.md`). It is the Chinese 不受傷創業; the **six stories are written in English**. Additions / fixes:
+**`tom-eisenmann-perspective`** ← enrich with the full *Why Startups Fail* (research migrated to `tom-eisenmann-perspective/references/research/07-why-startups-fail.md`). It is the Chinese 不受傷創業; the **six stories are written in English**. Additions / fixes:
 - **Fix:** RAWI is a **scaling** gate (Ready/Able/Willing/Impelled = "should we floor it into hypergrowth *now*?"), **not** a should-I-found gate.
 - **Fix:** horse-or-jockey = **"it's *neither*, usually"** — failure most often traces to **Bad Bedfellows** (a third party).
 - **Fix:** Baroo = **False Positives** (Speed-Trap's anchor is **Fab.com**).
@@ -88,7 +88,7 @@ Doctrine-map (stage → doctrine):
 - **Add Recovery module** (重整旗鼓): Recovery → Reflection → Reentry (Kübler-Ross frame; ~half of failed founders try again).
 - **Failure definition** (two-layer): general = "outcome short of expectations (whose? which?)"; operational = "early investors never made / will make money." Shutting down ≠ failing.
 
-**Research lifecycle (migrate-then-clean).** The staging docs `docs/skill-designs/research/{zero-to-one,why-startups-fail}.md` are **migrated INTO each persona skill's own `references/research/`** (the nuwa citation backbone — e.g. a new `07-zero-to-one-frameworks.md` / `07-why-startups-fail.md`), so each skill stays **self-contained and portable**. Once Phase 1 is built **and verified**, **delete `docs/skill-designs/research/`** to stay clean. The 3 new methodology skills have no staging docs (their content is baked in from the founder-supplied source text). **Keep** this design contract in `docs/skill-designs/` as the V3 design record (human-only background, per the v2-redesign convention).
+**Research lifecycle (migrate-then-clean) — ✅ done.** The book-research was **migrated into each persona skill's own `references/research/`** (`07-zero-to-one-frameworks.md` in `peter-thiel-perspective`, `07-why-startups-fail.md` in `tom-eisenmann-perspective`), so each skill is self-contained and portable, and the staging `docs/skill-designs/research/` was **deleted** after Phase-1 verification. The 3 new methodology skills had no staging docs (baked in from the founder-supplied source text). This design contract is kept in `docs/skill-designs/` as the V3 design record.
 
 ### 2d. References
 
@@ -208,8 +208,8 @@ Three zones that never mix: `.claude/` (the machine) · `docs/` (layer meta) · 
   peter-thiel-perspective/  tom-eisenmann-perspective/  …other *-perspective
   create-founder-profile/  nuwa-skill/  …meta
 .claude/agents/        # kept workers (see Cleanup)
-.claude/workflows/     # phase-2 auto-orchestration lands here later
-docs/                  # LAYER META ONLY: founder-profile, founder-dossier, skill-designs/, research/
+.claude/workflows/     # (future auto-orchestration workflow lands here — deferred)
+docs/                  # LAYER META ONLY: founder-profile, founder-dossier, skill-designs/
 ideas/                 # FOUNDER WORK PRODUCT
   _exploration/<thesis>/{slate.md, grounding.md}
   <idea-slug>/{hypothesis.md, disconfirmation-brief.md(+disconfirmation/),
@@ -230,12 +230,12 @@ ideas/                 # FOUNDER WORK PRODUCT
 
 ---
 
-## 8. Build plan
+## 8. Build plan (executed)
 
-- **Phase 1 — knowledge layer first** (it's deliverable #1, the stages depend on it, and it's where the research feeds): build `lean-startup`, `forward-deployed-founder`, `solo-founder` + enrich `peter-thiel-perspective` & `tom-eisenmann-perspective` + the `doctrine-map` & `failure-patterns` references. Build via `/prompt-architect`.
-- **Phase 2 — the stage spine:** the 8 stage skills + `idea-stage` index + `idea-stage-exit`; rename/rewire `customer-discovery` → `customer-discovery-synthesis` and `solution-design`; retire the funnel + ledger; rewire the kept workers.
-- **Deferred:** the automatic orchestration workflow (validate the human-gated version first).
+- **Phase 1 — knowledge layer ✅ built (`93e2f30`):** `lean-startup`, `forward-deployed-founder`, `solo-founder` + the `peter-thiel-perspective` & `tom-eisenmann-perspective` enrichments + the `doctrine-map` & `failure-patterns` references. Verified via `artifact-eval` (3/3 each); see `phase1-build-record.md`.
+- **Phase 2 — the stage spine ✅ built (`1912f13`):** the 8 stage skills + `idea-stage` index + `idea-stage-exit`; `customer-discovery` → `customer-discovery-synthesis` and `solution-design` rewired; the funnel + ledger + fmf-screen + sharpen-gate retired; the kept workers rewired. Verified (`quick_validate` all 14 + worker; `artifact-eval` on `generate-ideas` 2/2); see `phase2-build-record.md`.
+- **Deferred (not yet built):** the automatic orchestration workflow — validate the human-gated version with real ideas first.
 
-## 9. Deferred to `/prompt-architect` (implementation, not design)
+## 9. Implementation details (resolved during the build)
 
-Template section-lists per skill; exact frontmatter field sets; the `slate.md` and `learning-log.md` layouts; the generate-ideas pick interaction (AskUserQuestion); per-skill `description`/trigger tuning; eval prompts.
+Left to the build and now implemented: per-skill output templates (each skill's `assets/`), the frontmatter handoff fields (`idea-stage/references/stage-pipeline.md`), the `slate.md` layout (`generate-ideas/assets/slate-template.md`), the generate-ideas pick interaction (`AskUserQuestion`), per-skill descriptions, and eval prompts. The `learning-log.md` layout is authored on first use by the `idea-stage` index.
