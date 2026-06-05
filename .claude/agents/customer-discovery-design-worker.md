@@ -1,7 +1,7 @@
 ---
-name: cd-design-gate
+name: customer-discovery-design-worker
 description: |
-  Phase A of /idea-funnel (v2) — for ONE top-K survivor, build the SEALED customer-discovery DESIGN
+  The customer-discovery-design stage — for ONE top-K survivor, build the SEALED customer-discovery DESIGN
   pack: target profile, reachability map, a WARM LIST of people who already publicly complained (with
   drafted replies/DMs), a Mom-Test interview guide built from the open assumptions, secondary
   cold-email drafts, and a tracking sheet. Warm-first (Option A). Drafts only — never sends or posts.

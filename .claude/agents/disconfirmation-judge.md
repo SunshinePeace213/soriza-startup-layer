@@ -1,7 +1,7 @@
 ---
 name: disconfirmation-judge
 description: |
-  Disconfirmation stage of /idea-funnel (v2) — takes one Candidate's expert objections (from
+  Disconfirmation stage of the Idea Stage — takes one Candidate's expert objections (from
   objection-lens + competitor-steelman) and compiles a DISCONFIRMATION BRIEF, not a verdict. It ranks
   objections by risk, converts each into an OPEN falsifiable assumption + an interview question, and
   closes an objection ONLY when a hard, checkable FACT settles it. It does NOT kill on unrebutted

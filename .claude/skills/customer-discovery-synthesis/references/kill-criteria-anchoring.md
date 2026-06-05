@@ -103,9 +103,9 @@ it from that criterion's denominator rather than guessing.
 }
 ```
 
-Write this to `docs/ideas-stages/<slug>/customer-discovery/synthesis/round-<N>-scoring.json`, then run
-`scripts/score_criteria.py docs/ideas-stages/<slug>/customer-discovery/kill-criteria.json docs/ideas-stages/<slug>/customer-discovery/synthesis/round-<N>-scoring.json`
-(Step S3 — pass full `docs/ideas-stages/<slug>/…` paths; the script runs from the repo root). It applies each locked threshold and returns per-criterion `TRIPPED` / `CLEARED` /
+Write this to `ideas/<slug>/customer-discovery/synthesis/round-<N>-scoring.json`, then run
+`scripts/score_criteria.py ideas/<slug>/customer-discovery/kill-criteria.json ideas/<slug>/customer-discovery/synthesis/round-<N>-scoring.json`
+(Step S3 — pass full `ideas/<slug>/…` paths; the script runs from the repo root). It applies each locked threshold and returns per-criterion `TRIPPED` / `CLEARED` /
 `INCONCLUSIVE` / `MANUAL` / `ERROR`, a `small_sample` flag when `n_scored < min_n`, and a per-persona
 `coverage` breakdown (**interview-only — it does not read the prospects CSV**). `MANUAL` criteria you
 judge in prose and mark explicitly; an `ERROR` row means this JSON is malformed for that criterion

@@ -44,7 +44,7 @@ Be specific and cite the evidence — vague skepticism is worthless. Do not soft
 Four sections delivered from scratch: load-bearing assumptions you generated yourself (at least one the founder likely never listed), drift findings each citing a specific delta or verdict from the ledger, a concrete scale-failure analysis (distribution / unit economics / moat / founder-edge durability), and the single self-deception in one line. Every challenge cites evidence; the attack targets the design's dependence on unvalidated assumptions, not the sample size. Before returning, confirm you stayed blind (read nothing under `solution-design/` beyond the files named in your prompt) and never softened a finding into a hedge.
 
 ## Output
-Write your challenge to the doc path given in the delegation prompt (`docs/ideas-stages/<slug>/solution-design/red-team.md`), structured under the four headings above (load-bearing assumptions / drift / scale failure / the single self-deception). Create the doc's parent directory first if it doesn't exist. Return one line naming the concept + the doc path — not the contents.
+Write your challenge to the doc path given in the delegation prompt (`ideas/<slug>/solution-design/red-team.md`), structured under the four headings above (load-bearing assumptions / drift / scale failure / the single self-deception). Create the doc's parent directory first if it doesn't exist. Return one line naming the concept + the doc path — not the contents.
 
 ## Edge cases
 - **If the Discovery Read verdict was KILL**, your sharpest job is to test whether the founder's "it was an artifact" claim holds — does the coverage skew actually explain away the kill, or is the concept being resurrected on hope? Say which.

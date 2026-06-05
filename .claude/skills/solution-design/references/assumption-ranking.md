@@ -60,7 +60,7 @@ reaches the top 3 (an assumption you never listed is among your riskiest — a l
 ## Running the ranker
 
 ```bash
-python3 "${CLAUDE_SKILL_DIR}/scripts/rank_assumptions.py" docs/ideas-stages/<slug>/solution-design/assumptions.json
+python3 "${CLAUDE_SKILL_DIR}/scripts/rank_assumptions.py" ideas/<slug>/solution-design/assumptions.json
 ```
 
 It prints JSON: the full ranked list (with `score` and `featured`), the `top_3` ids, and

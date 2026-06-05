@@ -1,7 +1,7 @@
 ---
 name: objection-lens
 description: |
-  One disconfirmation-stage angle generator for /idea-funnel — channel a single distilled
+  One disconfirmation-stage angle generator for the disconfirm stage — channel a single distilled
   *-perspective expert (passed by slug) and fire that expert's strongest DISCONFIRMING objection
   against one Candidate, then convert it into a falsifiable assumption + a concrete real-user interview
   question for the Disconfirmation Brief. Parameterized by expert; the funnel calls it once per selected
@@ -24,7 +24,7 @@ with real users, not to screen ideas out at the desk.
 - **Candidate** — `{ id, title, problem, who, why_now, idea_type }` and its `hypothesis` from the
   hypothesis gate.
 - **Expert slug** — e.g. `nassim-taleb-perspective`.
-- **Lens map** — read `.claude/skills/idea-funnel/references/expert-lens-map.md`, find this expert's
+- **Lens map** — read `.claude/skills/idea-stage/references/expert-lens-map.md`, find this expert's
   lens-card. Channel from the card by default; read `.claude/skills/<slug>/SKILL.md` only if you need
   the deeper framework to make the objection precise and in-voice.
 

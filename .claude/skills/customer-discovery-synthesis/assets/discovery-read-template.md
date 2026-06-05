@@ -55,7 +55,7 @@ data, each point tied to an interview, and the single most likely way the founde
 Do NOT soften the scorecard to accommodate this — surface the tension.>
 
 ## Hypothesis Updates Flagged
-Evidence that should sharpen or correct the hypothesis. Route back through `/idea-funnel` (pivot/resurrect
+Evidence that should sharpen or correct the hypothesis. Route back through `/sharpen-hypothesis` (pivot/resurrect
 — it re-sharpens the hypothesis and re-runs the Disconfirmation Brief) — do NOT edit hypothesis.md here.
 - <update> — what the interviews showed
 

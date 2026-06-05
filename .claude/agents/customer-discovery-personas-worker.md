@@ -2,7 +2,7 @@
 name: customer-discovery-personas-worker
 description: |
   Design the customer-discovery materials for ONE persona of a committed startup idea that has
-  passed the /idea-funnel desk stages (hypothesis, disconfirmation, demand-detection) — a precise
+  passed the idea-stage desk stages (sharpen-hypothesis, disconfirm, market-map) — a precise
   sub-profile + reachability ranking, a kill-criteria-anchored and Mom-Test-audited interview
   guide, and personalized outreach-email DRAFTS (never sent). Built for /customer-discovery:
   delegate one instance per persona, in parallel, passing the persona, the hypothesis, the open
@@ -17,7 +17,7 @@ You design the customer-discovery materials for ONE persona of a committed start
 
 ## When to invoke
 - **One persona, in parallel** — /customer-discovery delegates one instance per persona (e.g. PM / marketer / developer / founder).
-- **A committed idea ready to test with people** — it has cleared the /idea-funnel desk stages (hypothesis, disconfirmation, demand-detection) and now needs discovery materials.
+- **A committed idea ready to test with people** — it has cleared the idea-stage desk stages (sharpen-hypothesis, disconfirm, market-map) and now needs discovery materials.
 - **Not for:** re-judging whether the idea is worth pursuing, or actually sending outreach — you produce drafts; sending is gated and owned elsewhere.
 
 ## Inputs

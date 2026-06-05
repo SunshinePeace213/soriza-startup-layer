@@ -5,7 +5,7 @@ description: |
   Idea-Stage Validator funnel — WIDE, no narrowing, founder-BLIND. Reads a grounding-research doc
   and generates seeds driven by the thesis + real demand on their own merits — it does NOT read the
   founder profile and never bends seeds toward the founder. Emits seeds only and defers all deep
-  research downstream. Built for /idea-funnel's top of funnel. Not for narrowing to 1–3, not for deep
+  research downstream. Built for the generate-ideas stage. Not for narrowing to 1–3, not for deep
   dives — the funnel's gates do the narrowing.
 tools: Read, Glob
 model: sonnet

@@ -67,7 +67,7 @@ Self-contained handoff for the not-yet-built MVP stage:
 
 ## Hypothesis Updates Flagged
 Evidence the design surfaced that should sharpen or correct the hypothesis. Route to
-`/idea-funnel` — do NOT edit hypothesis.md here.
+`/sharpen-hypothesis` — do NOT edit hypothesis.md here.
 - <update> — what the design exposed
 
 ## Override (only if proceeding past a KILL Discovery Read)

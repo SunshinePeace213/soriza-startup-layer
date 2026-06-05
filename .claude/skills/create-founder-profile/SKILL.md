@@ -51,11 +51,11 @@ can clone this layer and run their own profile.
   it, challenge it once — don't silently record the optimistic label.
 - **On re-run, don't re-ask filled fields.** Read the existing dossier (and summary) first and grill
   only on empty, `(pending)`, or explicitly-changed sections — the same idempotent pattern as the
-  `/idea-funnel` hypothesis stage resuming a `hypothesis.md`.
-- **`CLAUDE.md` and the funnel rubrics stay founder-agnostic.** Founder facts live *only* in the
-  dossier/summary. The rubrics (`gate-rubrics.md`, `fmf-screen.md`) hold the *general* standard and
-  pull the founder's specifics from the profile at runtime — never hard-code one founder's situation
-  (e.g. "part-time", a specific edge) into a rubric. Doing so re-introduces the bias this design fixes.
+  `/sharpen-hypothesis` stage resuming a `hypothesis.md`.
+- **`CLAUDE.md` and the idea-stage skills stay founder-agnostic.** Founder facts live *only* in the
+  dossier/summary. The skills hold the *general* standard and pull the founder's specifics from the
+  profile at runtime — never hard-code one founder's situation (e.g. "part-time", a specific edge) into
+  a skill. Doing so re-introduces the bias this design fixes.
 
 ## Interaction model
 
@@ -142,24 +142,25 @@ Founder-agnostic block to ensure is present:
 ## Soriza Startup Layer — founder profile
 
 This project runs the Soriza Startup Layer — an Idea Stage taking a founder from many raw ideas
-to a validated solution concept via the automated /idea-funnel (breadth: generate → fit-screen →
-hypothesis → disconfirmation brief → demand-detection → checkpoint → sealed Phase A pack) →
-[human Phase B] → /customer-discovery (SYNTHESIS) → /solution-design → the PoC workflow.
+to a validated solution concept and a lightweight PoC, as a founder-gated pipeline of skills:
+/generate-ideas → /sharpen-hypothesis → /disconfirm → /market-map → /customer-discovery-design →
+[human interviews] → /customer-discovery-synthesis → /solution-design → /idea-stage-exit → /build-poc
+(run /idea-stage anytime to see where each idea sits).
 
 The founder's context lives in two tiers: the lean summary imported below (loaded every session)
 and a complete docs/founder-dossier.md (read on demand for depth). In all startup-layer work,
 tailor advice to the founder's background, skills, constraints, and stated interaction preferences,
-preferring facts already in the profile over re-asking them. Keep this file and the funnel rubrics
-founder-agnostic: the rubrics hold the general standard and read the founder's specifics from the
-profile as data — founder facts never belong in CLAUDE.md or in a rubric. If no profile is imported
+preferring facts already in the profile over re-asking them. Keep this file and the idea-stage skills
+founder-agnostic: the skills hold the general standard and read the founder's specifics from the
+profile as data — founder facts never belong in CLAUDE.md or in a skill. If no profile is imported
 (the file below is missing or empty), suggest running /create-founder-profile before the idea-stage
 skills.
 
 @docs/founder-profile.md
 ```
 
-Then in chat (not in any file): `Profile + dossier saved and wired. Next: run /idea-funnel to
-distill many ideas (a thesis to expand, or a list) into a ranked, ready-to-test Shortlist.`
+Then in chat (not in any file): `Profile + dossier saved and wired. Next: run /generate-ideas to
+expand a thesis (or your list) into a slate, pick one, and start validating — or /idea-stage to see the map.`
 
 ## Output constraints
 
@@ -175,7 +176,7 @@ distill many ideas (a thesis to expand, or a list) into a ranked, ready-to-test 
   runway / Time commitment / Founding-team status / Prior startup experience / Goals & ambition /
   Interaction preferences. Weave skill **levels** into Skills & unfair advantage (e.g. "senior
   fullstack (7 yrs, shipped X at scale)"). **Capital & runway** and **Goals & ambition** are required
-  because the funnel's Gate 0 and seed-generator read them. **Interaction preferences is optional:**
+  because /generate-ideas' recommendation and seed-generator read them. **Interaction preferences is optional:**
   if the founder skipped all three, omit the section; otherwise include `- Tone:` / `- Answer style:`
   / `- Preferred formats:` bullets, dropping any single one skipped. The summary-heading →
   dossier-section mapping (with the fan-ins) is in `references/dossier-schema.md` → Deriving the
@@ -190,9 +191,9 @@ distill many ideas (a thesis to expand, or a list) into a ranked, ready-to-test 
 - In: building the dossier + deriving the summary, level-rating skills against the rubric, ingesting
   provided material, wiring/verifying the `CLAUDE.md` `@import`.
 - Out: **per-idea constraints** (a specific idea's budget, B2B-vs-consumer, target geography, stage) —
-  those stay captured ad-hoc inside the `/idea-funnel` stages (generation, fit-screen, hypothesis).
+  those stay captured ad-hoc inside the idea-stage skills (`/generate-ideas`, `/sharpen-hypothesis`).
 - Out: idea generation, hypothesis sharpening, market/demand detection, disconfirmation — the
-  downstream `/idea-funnel` stages. This skill only creates the record and wiring.
-- Note: the funnel rubrics consume the summary by reading it as **data** against their own
-  founder-agnostic standard. This skill writes the profile; the funnel's de-biasing lives in
-  `gate-rubrics.md` / `fmf-screen.md`, not here.
+  downstream idea-stage skills. This skill only creates the record and wiring.
+- Note: the idea-stage skills consume the summary by reading it as **data** against their own
+  founder-agnostic standard. This skill writes the profile; the de-biasing lives in those skills (they
+  read the profile as data), not here.

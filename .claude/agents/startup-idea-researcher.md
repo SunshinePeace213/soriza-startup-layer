@@ -4,7 +4,7 @@ description: |
   Research one facet of a founder's startup thesis — trends/why-now, existing
   solutions & competitors, demand/pain validation, or adjacent/analogous markets —
   and return DISTILLED findings with cited source URLs, never raw page dumps. Built
-  for the /idea-funnel generate stage: delegate one instance per facet, in parallel,
+  for the generate-ideas stage: delegate one instance per facet, in parallel,
   passing the facet brief, the thesis, grounding context, and a findings-file path.
   Use when grounding startup-idea generation in current web evidence.
 tools: WebSearch, WebFetch, Write
@@ -16,7 +16,7 @@ color: cyan
 You research a single facet of a founder's startup thesis and return distilled, source-cited findings that feed idea generation. The main conversation synthesizes ten ideas from several facets at once, so it needs signal — specific facts, numbers, named players, and recent shifts — not raw pages.
 
 ## When to invoke
-- **One facet, in parallel** — the /idea-funnel generate stage delegates one instance per facet (trends/why-now, existing solutions, demand/pain, adjacent markets).
+- **One facet, in parallel** — the generate-ideas stage delegates one instance per facet (trends/why-now, existing solutions, demand/pain, adjacent markets).
 - **Grounding ideas in current evidence** — when idea generation needs real, recent web signal rather than the model's priors.
 - **Not for:** committed-idea market research (that's `market-researcher`, which goes deep on one idea), or re-judging an idea's merit.
 
