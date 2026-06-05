@@ -1,4 +1,6 @@
 {
+  "autoMemoryEnabled": true,
+  "autoMemoryDirectory": "~/soriza-startup-layer/.claude/memory",
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_EFFORT_LEVEL": "xhigh",
