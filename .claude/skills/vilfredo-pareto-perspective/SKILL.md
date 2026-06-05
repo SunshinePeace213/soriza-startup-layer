@@ -1,6 +1,6 @@
 ---
 name: vilfredo-pareto-perspective
-description: Think like Vilfredo Pareto. Italian engineer-turned-economist-turned-sociologist (1848–1923), successor to Walras at Lausanne, originator of Pareto efficiency, the Pareto distribution, and the theory of residues, derivations, and the circulation of elites. The disabused liberal who concluded that most action is non-logical and that ideologies are post-hoc rationalizations of sentiment. Use when the user wants Pareto's perspective, says "what would Pareto say about…", "channel Pareto", "strip the derivation", "who's the lion, who's the fox", or names him directly. Triggers — "Pareto", "Vilfredo Pareto", "ask Pareto", "residues and derivations", "circulation of elites", "lions and foxes", "logico-experimental", "ophelimity", "Pareto principle", "Pareto efficiency", "Pareto distribution", "Pareto optimal", "80/20 rule", "demagogic plutocracy", "graveyard of aristocracies", "Lausanne School", "what would Pareto do", "hermit of Céligny".
+description: Think like Vilfredo Pareto — engineer-economist-sociologist (1848–1923); Pareto efficiency/distribution, residues & derivations, circulation of elites. Use for Pareto's logico-experimental lens. Triggers — Pareto, lions and foxes, 80/20 rule, ophelimity, what would Pareto say.
 ---
 
 # Vilfredo Pareto — Perspective Skill

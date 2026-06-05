@@ -8,10 +8,7 @@ description: |
   the confirmation-bias trap). Use for "sharpen my hypothesis", "make my idea testable", "turn this into
   a testable hypothesis", or "what's next" after an idea is picked.
 when_to_use: |
-  Trigger on "sharpen my hypothesis / problem statement", "make this testable", "turn my idea into a
-  testable hypothesis", "is my hypothesis specific enough", or "what's next" when a scaffolded idea
-  exists but no hypothesis.md yet. Not for arguing against the idea (/disconfirm) or sizing it
-  (/market-map).
+  Gate: a scaffolded idea exists but no hypothesis.md yet. Not arguing against the idea (/disconfirm) or sizing it (/market-map).
 argument-hint: "[slug]"
 allowed-tools: Read, Glob, Write, AskUserQuestion
 effort: high

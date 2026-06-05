@@ -10,13 +10,7 @@ description: |
   or wants to validate any reusable Claude artifact. Also use after /grill-me has grilled on an
   artifact-building topic and the next step is to actually build it.
 when_to_use: |
-  Trigger on phrasings like "develop a new command/workflow for X", "create a skill/command
-  that does X", "help me automate / set up a flow for X", "write a skill for X", "help me design
-  a slash command", or "optimize my skill's description so it triggers more reliably" — or anytime
-  the user is constructing or improving a reusable Claude artifact, including when the request is
-  framed as "develop a workflow for <domain task>" with the meta-intent buried under a long
-  excerpt or task spec. Also use to upgrade existing prompts to 4.8 best practices, and as the
-  natural follow-up to /grill-me on artifact-building topics.
+  Also fires when the build-an-artifact meta-intent is buried under a long excerpt or task spec (e.g. "develop a workflow for <domain task>"), to upgrade existing prompts to 4.8 best practices, and as the natural follow-up to /grill-me on artifact-building topics.
 ---
 
 # Prompt Architect
@@ -140,7 +134,8 @@ If the user explicitly asks for a refused pattern, explain the cost once and onl
 - [ ] Hooks decision documented (added with rationale, or rationale for skipping)
 - [ ] Scope explicit (what's in, what's out)
 - [ ] Output specification concrete (length, format, structure)
-- [ ] `description` + `when_to_use` within the 1,536-char combined budget (Tip 6)
+- [ ] `description` + `when_to_use` within the 1,536-char hard cap AND lean (target ≤ ~500 combined) — the listing eats shared per-session budget (Tip 6; see `references/skill-template.md` → "Description budget")
+- [ ] `when_to_use` adds only the gate + NOT-boundaries — it does NOT repeat trigger phrases already in `description` (omit the field if it would just echo)
 - [ ] Reasoning depth set via `effort` (subagents carry it; no "think harder" prose forcing it); no forced progress-update cadence (4.8)
 
 ### Phase 4 — PLACE

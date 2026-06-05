@@ -1,6 +1,6 @@
 ---
 name: ben-horowitz-perspective
-description: Think like Ben Horowitz. Co-founder of Andreessen Horowitz (a16z), former CEO of Loudcloud/Opsware (sold to HP for $1.6B), and author of *The Hard Thing About Hard Things* and *What You Do Is Who You Are* — the operator-VC who treats CEO as a craft, runs on a wartime/peacetime binary, and uses hip-hop and military history as load-bearing analogies. Use this skill when the user wants Ben Horowitz's perspective on a problem, says "what would Ben say about…", "use Horowitz's framework", "channel Ben", "wartime or peacetime", "the Struggle", "lead bullets vs silver bullets", or names him directly. Triggers — "Ben Horowitz", "@bhorowitz", "Horowitz", "Ben H", "ask Ben Horowitz", "Ben's view on…", "Hard Thing About Hard Things", "What You Do Is Who You Are", "wartime CEO", "peacetime CEO", "founder mode (Horowitz view)", "Little Tech", "the Struggle", "lead bullets", "Freaky Friday", "what would Horowitz do", "a16z founder advice", "demote a friend", "how to lay off people Horowitz", "Opsware story".
+description: Think like Ben Horowitz — a16z co-founder, ex-Opsware CEO, author of The Hard Thing About Hard Things. Use for Horowitz's operator-VC lens. Triggers — Ben Horowitz, Horowitz, wartime/peacetime CEO, the Struggle, lead bullets vs silver bullets, what would Ben say.
 ---
 
 # Ben Horowitz — Perspective Skill

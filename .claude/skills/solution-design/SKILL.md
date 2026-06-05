@@ -10,14 +10,7 @@ description: |
   Read (build / narrow / redesign / reconsider) + an MVP Brief. Reads customer-discovery.md; never
   edits hypothesis.md.
 when_to_use: |
-  Use when the founder says "design my solution", "design the solution", "solution concept",
-  "final solution concept", "develop and challenge my concept", "red-team my solution", "what
-  assumptions does my design make", or "what's next" WHEN a customer-discovery.md exists in the idea's
-  ideas folder but solution-design.md does not yet (precedence: no idea folder →
-  /generate-ideas; idea folder without customer-discovery.md → /customer-discovery-synthesis;
-  customer-discovery.md → here). Do NOT trigger to edit hypothesis.md (/sharpen-hypothesis owns it),
-  size the market (/market-map), run/synthesize interviews (/customer-discovery-synthesis), or for
-  software/architecture/code-level design — this is startup solution-concept design.
+  Gate: a customer-discovery.md exists but no solution-design.md yet (precedence: no idea folder -> /generate-ideas; folder without customer-discovery.md -> /customer-discovery-synthesis). Not editing hypothesis.md (/sharpen-hypothesis), sizing (/market-map), running interviews (/customer-discovery-synthesis), or software/code-level design — this is startup solution-concept design.
 argument-hint: "[slug]"
 allowed-tools: AskUserQuestion, Read, Write, Bash, Glob, Agent, Task, WebSearch, WebFetch, Skill
 effort: high

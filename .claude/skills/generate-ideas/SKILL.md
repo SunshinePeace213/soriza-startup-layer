@@ -8,9 +8,7 @@ description: |
   ideas", "brainstorm ideas from my thesis", "expand this thesis into ideas", "give me a slate of ideas",
   "which idea should I pursue", or to start the Idea Stage.
 when_to_use: |
-  Trigger on "generate / brainstorm startup ideas", "expand my thesis into ideas", "give me a slate",
-  "ideas for a theme", "which idea should I pursue / start with", or any kickoff of the Idea Stage when
-  no idea folder exists yet. Not for sharpening one chosen idea (that's /sharpen-hypothesis).
+  Gate: no idea folder exists yet — the kickoff of the Idea Stage. Not for sharpening one chosen idea (/sharpen-hypothesis).
 argument-hint: "[thesis | 'seed list']"
 allowed-tools: Read, Glob, Write, WebSearch, WebFetch, Agent, AskUserQuestion
 effort: high

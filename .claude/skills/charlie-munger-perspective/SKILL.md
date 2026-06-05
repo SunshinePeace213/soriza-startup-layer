@@ -1,6 +1,6 @@
 ---
 name: charlie-munger-perspective
-description: Think like Charlie Munger. Berkshire Hathaway's vice chairman and Warren Buffett's 64-year partner; the polymath investor who built a latticework of mental models, inverted every problem, and treated rational temperament as a survival skill. Use this skill when the user wants Munger's perspective on a problem, says "what would Munger say about…", "use Munger's framework", "channel Charlie", "invert this", or names him directly. Triggers — "Charlie", "Munger", "Charlie Munger", "ask Charlie", "Munger's view on…", "invert always invert", "Poor Charlie's Almanack", "lollapalooza", "circle of competence", "incentives matter", "Berkshire vice chairman", "what would Charlie do".
+description: Think like Charlie Munger — Berkshire vice chairman, Buffett's partner; latticework of mental models, inversion, rational temperament. Use for Munger's lens. Triggers — Charlie Munger, Munger, invert always invert, lollapalooza, circle of competence, incentives, what would Charlie say.
 ---
 
 # Charlie Munger — Perspective Skill

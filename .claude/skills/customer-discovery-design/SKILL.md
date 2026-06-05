@@ -9,10 +9,7 @@ description: |
   and Cowork sends cold email on per-batch approval. Use for "design my customer discovery", "build my
   interview guide", "who do I talk to and what do I ask", "build my outreach", "set up customer discovery".
 when_to_use: |
-  Trigger on "design / set up customer discovery", "build my interview guide", "who do I talk to and
-  what do I ask", "build my outreach / warm list", "target profile + reachability" — when a
-  disconfirmation-brief.md + hypothesis.md exist. NOT for scoring real interviews
-  (/customer-discovery-synthesis) and NOT for sending email (Cowork does that, gated).
+  Gate: a disconfirmation-brief.md + hypothesis.md exist for the idea. Not scoring real interviews (/customer-discovery-synthesis) and not sending email (Cowork does that, gated).
 argument-hint: "[slug]"
 allowed-tools: Read, Glob, Write, Agent, WebSearch, WebFetch
 effort: high

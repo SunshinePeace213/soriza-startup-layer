@@ -232,7 +232,7 @@ Fill the template section by section from Phase 2 output:
 
 | Template section | Filled from |
 |------------------|-------------|
-| Frontmatter `description` | Source count + model count + trigger phrases |
+| Frontmatter `description` | Tight routing card only (≤ ~300 chars): `Think like X — <identity>. Use for X's lens. Triggers — …`. No bio — that lives in the Identity Card. See `references/skill-template.md` → description guidance. |
 | Role-play rules | Use template defaults; no customization needed |
 | Agentic response protocol | Auto-derived from mental models (see the template for the recipe) |
 | Identity card | Timeline (06) + Writings (01) → 50-word self-intro in the person's voice |

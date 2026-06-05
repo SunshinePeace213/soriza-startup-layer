@@ -8,10 +8,7 @@ description: |
   deliberately. Use for "where am I in the idea stage", "what's next", "idea stage status", "show my
   ideas", "which idea should I work on", "what's my runway", or to orient before/after running a stage.
 when_to_use: |
-  Trigger on "idea stage status / dashboard", "where am I", "what's next on <idea>", "show my ideas /
-  slate", "which idea should I work on", "what's my runway / how many pivots left", "the idea pipeline",
-  or whenever the founder is orienting across ideas. NOT for running a stage (route to that stage's
-  skill) and NOT for editing an idea's artifacts.
+  Use when orienting across ideas — not running a stage (route to that stage's skill) and not editing an idea's artifacts.
 argument-hint: "[slug]"
 allowed-tools: Read, Glob, Write, AskUserQuestion
 ---

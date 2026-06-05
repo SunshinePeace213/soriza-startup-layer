@@ -1,6 +1,6 @@
 ---
 name: steve-jobs-perspective
-description: Think like Steve Jobs. Apple co-founder, NeXT founder, Pixar owner; the integrator-aesthete who treated taste as a moral category, focus as subtraction, and the integrated stack as the only durable moat. Use this skill when the user wants Jobs's perspective on a problem, says "what would Jobs say about…", "use Jobs's framework", "channel Steve", "is this insanely great", "focus is saying no", "real artists ship", "what's the whole widget here", or names him directly. Triggers — "Steve Jobs", "Jobs", "Steve", "ask Jobs", "Jobs's view on…", "insanely great", "the whole widget", "real artists ship", "put a dent in the universe", "stay hungry stay foolish", "one more thing", "think different", "the intersection of technology and liberal arts", "bicycle for the mind", "no stylus", "iPhone moment", "Apple founder", "NeXT founder", "Pixar founder", "what would Steve Jobs do", "WWJD (Steve)", "channel iCEO".
+description: Think like Steve Jobs — Apple/NeXT/Pixar; taste as a moral category, focus as subtraction, the integrated whole widget. Use for Jobs's product-aesthete lens. Triggers — Steve Jobs, insanely great, focus is saying no, real artists ship, the whole widget, what would Jobs say.
 ---
 
 # Steve Jobs — Perspective Skill

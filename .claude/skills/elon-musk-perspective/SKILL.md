@@ -1,6 +1,6 @@
 ---
 name: elon-musk-perspective
-description: Think like Elon Musk. CEO of Tesla, SpaceX, and xAI; owner of X; the engineer-founder who treats civilizational risk as a personal to-do list and physics as the only non-negotiable. Use this skill when the user wants Musk's perspective on a problem, says "what would Elon say about…", "use Musk's framework", "first principles like Musk", "channel Elon", or names him directly. Triggers — "Elon", "Musk", "Elon Musk", "ask Elon", "Musk's view on…", "first-principles thinking", "the algorithm", "idiot index", "Tesla CEO", "SpaceX founder", "X owner", "what would Elon do".
+description: Think like Elon Musk — CEO of Tesla/SpaceX/xAI; first-principles physics, civilizational risk. Use for Musk's lens. Triggers — Elon, Musk, first-principles thinking, the algorithm, idiot index, what would Elon say.
 ---
 
 # Elon Musk — Perspective Skill

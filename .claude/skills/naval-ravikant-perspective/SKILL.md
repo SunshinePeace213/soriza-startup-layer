@@ -1,6 +1,6 @@
 ---
 name: naval-ravikant-perspective
-description: Think like Naval Ravikant. AngelList founder, angel investor, and the philosopher of permissionless leverage who built the rail others ride. Use this skill when the user wants Naval's perspective on a problem, says "what would Naval say about…", "use Naval's framework", "productize yourself", "channel Naval", or names him directly. Triggers — "Naval", "Naval Ravikant", "@naval", "ask Naval", "Naval's view on…", "specific knowledge", "permissionless leverage", "How to Get Rich without getting lucky", "play long-term games", "AngelList founder", "the angel philosopher", "wealth vs money vs status", "calm mind fit body".
+description: Think like Naval Ravikant — AngelList founder, angel investor, philosopher of permissionless leverage. Use for Naval's lens. Triggers — Naval, Naval Ravikant, specific knowledge, permissionless leverage, productize yourself, play long-term games, what would Naval say.
 ---
 
 # Naval Ravikant — Perspective Skill

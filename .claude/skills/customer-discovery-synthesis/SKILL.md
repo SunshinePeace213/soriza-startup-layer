@@ -1,25 +1,9 @@
 ---
 name: customer-discovery-synthesis
 description: |
-  SYNTHESIS stage of the Idea Stage — takes ONE idea whose sealed discovery pack the founder has run
-  with real people, and scores the REAL interview evidence against the LOCKED kill-criteria thresholds,
-  writing a bias-checked customer-discovery.md Discovery Read. The interview DESIGN (target profile,
-  reachability map, warm list, interview guide, sealed pack, locked kill-criteria.json) is built upstream
-  by /customer-discovery-design — this skill is synthesis-only: it scores behaviour against the
-  pre-registered thresholds and never softens one after data. Structurally cannot send email — sending
-  lives in Cowork, gated per batch. Reads kill-criteria.json + the founder's interview notes (+
-  disconfirmation-brief.md, hypothesis.md); writes customer-discovery.md. Use for "synthesize my
-  interviews", "score my interviews", "I did N interviews — what do they say", "customer discovery
-  synthesis", "Mom Test scoring".
+  SYNTHESIS stage of the Idea Stage — scores a founder's REAL interview evidence against the LOCKED kill-criteria thresholds and writes a bias-checked customer-discovery.md Discovery Read. Synthesis-only: the interview DESIGN (target profile, warm list, guide, sealed pack, kill-criteria.json) comes upstream from /customer-discovery-design; this never softens a threshold after data and cannot send email (Cowork does, gated). Reads kill-criteria.json + interview notes; writes customer-discovery.md. Use for "synthesize/score my interviews", "I did N interviews — what do they say", "customer discovery synthesis", "Mom Test scoring".
 when_to_use: |
-  Use when the founder says "synthesize my interviews", "I did N interviews — what do they say",
-  "score my interviews", "customer discovery synthesis", "score against my kill criteria", or "what's
-  next" WHEN a customer-discovery/kill-criteria.json + interview notes exist but customer-discovery.md
-  does NOT yet for the idea (precedence: kill-criteria.json + interviews → here; customer-discovery.md →
-  /solution-design). Do NOT trigger to DESIGN the discovery pack (/customer-discovery-design), edit the
-  hypothesis (/sharpen-hypothesis), size the market (/market-map), run the expert debate (/disconfirm),
-  or SEND outreach / schedule calls (Cowork sends, gated). Once customer-discovery.md exists, a bare
-  "what's next" hands off to /solution-design.
+  Gate: kill-criteria.json + interview notes exist but no customer-discovery.md yet -> here; once customer-discovery.md exists, "what's next" -> /solution-design. Not designing the pack (/customer-discovery-design), editing the hypothesis (/sharpen-hypothesis), sizing (/market-map), the expert debate (/disconfirm), or sending outreach (Cowork, gated).
 argument-hint: "[slug]"
 allowed-tools: AskUserQuestion, Read, Write, Bash, Glob, Agent, Task, WebSearch, WebFetch
 effort: high

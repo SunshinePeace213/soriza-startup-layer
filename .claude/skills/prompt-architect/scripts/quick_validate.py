@@ -169,6 +169,19 @@ def validate_artifact(artifact_path, artifact_type: str = "skill"):
         if len(description) > 1024:
             return False, f"Description is too long ({len(description)} chars). Maximum is 1024."
 
+    # The skill listing concatenates description + when_to_use per entry and caps
+    # it at 1,536 chars; over that, the entry is truncated mid-text in the listing.
+    when_to_use = frontmatter.get("when_to_use", "") or ""
+    if not isinstance(when_to_use, str):
+        return False, f"when_to_use must be a string, got {type(when_to_use).__name__}"
+    combined = len(description) + (1 + len(when_to_use.strip()) if when_to_use.strip() else 0)
+    if combined > 1536:
+        return False, (
+            f"description + when_to_use is {combined} chars, over the 1,536 per-entry listing "
+            "cap (the entry gets truncated). Trim it — and don't repeat trigger phrases across "
+            "the two fields; see references/skill-template.md -> 'Description budget'."
+        )
+
     compatibility = frontmatter.get("compatibility", "")
     if compatibility:
         if not isinstance(compatibility, str):
@@ -184,6 +197,39 @@ def validate_skill(skill_path):
     return validate_artifact(skill_path, "skill")
 
 
+def description_budget_warnings(frontmatter):
+    """Advisory (non-fatal) skill-listing-budget checks. The listing is injected
+    every session under a global ~1% budget; bloated or duplicated descriptions
+    evict other skills' descriptions. See references/skill-template.md ->
+    'Description budget'. Returns a list of human-readable warning strings."""
+    warnings = []
+    if not isinstance(frontmatter, dict):
+        return warnings
+    desc = (frontmatter.get("description") or "").strip()
+    wtu = (frontmatter.get("when_to_use") or "").strip()
+    combined = len(desc) + (1 + len(wtu) if wtu else 0)
+    if 1200 < combined <= 1536:
+        warnings.append(
+            f"description+when_to_use is {combined} chars — approaching the 1,536 truncation cap. "
+            "Trim now; aim well under it (~500 for a normal skill). The listing eats shared "
+            "per-session budget, so a long description evicts other skills' descriptions."
+        )
+    if wtu:
+        quoted = lambda s: set(re.findall(r'"([^"]{3,})"', s.lower()))
+        shared = quoted(desc) & quoted(wtu)
+        dw = set(re.findall(r"[a-z0-9/]{4,}", desc.lower()))
+        ww = set(re.findall(r"[a-z0-9/]{4,}", wtu.lower()))
+        overlap = (len(dw & ww) / len(ww)) if ww else 0.0
+        if shared or overlap > 0.5:
+            detail = (f"shared trigger phrases {sorted(shared)[:3]}; " if shared else "")
+            warnings.append(
+                f"when_to_use largely repeats description ({detail}{overlap*100:.0f}% word "
+                "overlap). when_to_use should add only the gate + NOT-boundaries; move triggers "
+                "into description, or drop when_to_use."
+            )
+    return warnings
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Validate an artifact's frontmatter")
     parser.add_argument("artifact_path", help="Path to skill directory or command/subagent .md file")
@@ -192,5 +238,18 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     valid, message = validate_artifact(args.artifact_path, args.artifact_type)
+
+    # Advisory budget warnings — printed to stderr, do not affect pass/fail.
+    try:
+        md_path = resolve_md_path(Path(args.artifact_path))
+        if md_path.exists():
+            m = re.match(r"^---\n(.*?)\n---", md_path.read_text(), re.DOTALL)
+            if m:
+                fm = _load_frontmatter(m.group(1))
+                for w in description_budget_warnings(fm):
+                    print(f"WARNING: {w}", file=sys.stderr)
+    except Exception:
+        pass
+
     print(message)
     sys.exit(0 if valid else 1)

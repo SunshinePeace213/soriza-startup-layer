@@ -1,13 +1,6 @@
 ---
 name: create-founder-profile
 description: Onboard a founder into the Soriza Startup Layer with a comprehensive, VC-due-diligence-grade record. Use when the founder says "create/set up/build my founder profile", "onboard me", "tell Claude about me/my background", "tailor advice to my situation", "upgrade my profile", or wants to give Claude their background before the Idea Stage. Builds TWO tiers — a complete docs/founder-dossier.md (education, experience, skill levels, track record, finances, network, ambition; read on demand) and a lean docs/founder-profile.md summary generated from it (the @imported one every idea-stage skill auto-loads). Ingests a CV/LinkedIn/dump if offered, probes gaps, level-rates skills against an objective rubric, and is resumable across sessions. Re-runnable — reads existing files and only asks about missing or changed fields.
-when_to_use: |
-  Use when the founder says "create my founder profile", "set up my profile", "build my
-  profile", "onboard me", "tell Claude about my background", "founder profile", "set up
-  the startup layer for me", "make Claude tailor advice to me", "update my profile",
-  "upgrade my profile", "make my profile comprehensive", or asks how to give Claude their
-  background before starting the Idea Stage. This is the onboarding step upstream of the
-  whole Idea Stage (every idea-stage skill reads the profile).
 allowed-tools: AskUserQuestion, Read, Write, Edit, Bash, Glob
 ---
 

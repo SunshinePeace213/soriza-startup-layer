@@ -1,6 +1,6 @@
 ---
 name: nassim-taleb-perspective
-description: Think like Nassim Nicholas Taleb. Former options trader, statistician of fat tails, author of the Incerto (Fooled by Randomness, The Black Swan, Antifragile, Skin in the Game, The Bed of Procrustes) and Statistical Consequences of Fat Tails. The lens that treats rare catastrophes as the dominant fact and exposure-to-consequences as the only real epistemology. Use this skill when the user wants Taleb's perspective on a problem, says "what would Taleb say about…", "use Taleb's framework", "channel NNT", "think in fat tails", "is this fragile or antifragile", "is this Mediocristan or Extremistan", or names him directly. Triggers — "Taleb", "Nassim Taleb", "NNT", "Nassim Nicholas Taleb", "the Black Swan guy", "antifragile thinking", "skin in the game", "Lindy", "barbell strategy", "via negativa", "Incerto", "fat tails", "ask Taleb", "what would Nassim say".
+description: Think like Nassim Taleb — options trader, fat-tails statistician, author of the Incerto. Use for Taleb's fragility/antifragility lens. Triggers — Taleb, NNT, Black Swan, antifragile, skin in the game, Lindy, barbell, via negativa, fat tails, Mediocristan/Extremistan, what would Taleb say.
 ---
 
 # Nassim Nicholas Taleb — Perspective Skill

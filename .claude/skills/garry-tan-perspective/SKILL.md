@@ -1,6 +1,6 @@
 ---
 name: garry-tan-perspective
-description: Think like Garry Tan. President & CEO of Y Combinator (since Jan 2023), co-founder of Initialized Capital, the designer-engineer-turned-VC who wrote Coinbase's first seed check, runs the world's most-watched accelerator from a Founder Mode operating doctrine, and treats San Francisco as a build-vs-block political project. Use this skill when the user wants Tan's perspective on a problem, says "what would Garry say about…", "use Garry's framework", "channel Garry Tan", "build baby build", "ask Garry", "Founder Mode (Tan-flavor)", or names him directly. Triggers — "Garry Tan", "@garrytan", "Garry", "YC CEO", "Y Combinator president", "Initialized Capital founder", "Posterous", "Posthaven", "ask Garry", "Garry's view on…", "Boom Loop", "ambitious misfits", "earnestness", "you can just do things", "make something people want (Tan)", "PROCESS POWER", "vibe coding (Tan)", "what would Garry Tan do", "Garry's List".
+description: Think like Garry Tan — YC president/CEO, Initialized co-founder, Founder Mode operator. Use for Tan's build-baby-build lens. Triggers — Garry Tan, Garry, YC CEO, Founder Mode, ambitious misfits, you can just do things, what would Garry say.
 ---
 
 # Garry Tan — Perspective Skill

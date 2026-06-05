@@ -8,9 +8,7 @@ description: |
   Use for "am I ready to build", "should I build this", "idea-stage exit", "go / no-go", "is this worth
   building a prototype for".
 when_to_use: |
-  Trigger on "am I ready to build", "should I build this now", "idea-stage exit / go-no-go", "is this
-  worth a prototype", "have I validated enough to build" — when a solution-design.md exists. Not for
-  designing the solution (/solution-design) or building the PoC (/build-poc).
+  Gate: a solution-design.md exists for the idea. Not designing the solution (/solution-design) or building the PoC (/build-poc).
 argument-hint: "[slug]"
 allowed-tools: Read, Glob, Write, AskUserQuestion
 ---

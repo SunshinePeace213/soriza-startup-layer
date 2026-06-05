@@ -1,6 +1,7 @@
 ---
 name: tech-company-personas
-description: Assigns a realistic FAANG-style tech-company persona to an agent, prompt, or workflow step. Use when the user asks to "pick a persona", "assign a role", "what persona should this use", "craft a prompt with a specific role", "generate a Staff Engineer persona", or when a generated component (command/agent/skill) needs a company-flavored, role-accurate persona block instead of generic "PM" or "developer" framing. Provides 25 company profiles (Google, Meta, Amazon, Apple, Netflix, Microsoft, Tesla, Stripe, Airbnb, DoorDash, Uber, Spotify, Salesforce, Databricks, Shopify, Anthropic, OpenAI, NVIDIA, GitHub, Cloudflare, HashiCorp, Snowflake, Datadog, GitLab, ByteDance) and 55+ role cards spanning executive, director, management, IC, and cross-functional tracks.
+description: |
+  Assigns a realistic FAANG-style tech-company persona (company + role) to an agent, prompt, or workflow step instead of generic "PM"/"developer" framing. Use to "pick a persona", "assign a role", "generate a Staff Engineer persona", or when a generated component needs a company-accurate persona block. Provides 25 company profiles + 55+ role cards across executive, director, IC, and cross-functional tracks.
 disable-model-invocation: true
 ---
 

@@ -8,11 +8,6 @@ description: |
   build-poc (scope / feasibility); also invocable standalone. Use for "should I build or delegate
   this?", "what should only I do?", "am I overextending solo?", "do I need a co-founder?", "how do I
   not burn out solo?", or scoping work to a one-person operation.
-when_to_use: |
-  Trigger on "solo founder", "one-person business", "should I do this myself or delegate/automate",
-  "what only I can do", "AI as cofounder", "contractor / outsource", "do I need a co-founder",
-  "founder burnout / decision fatigue / isolation", "am I overextending", "keep it lean", or scoping
-  whether a one-person team can actually run something.
 allowed-tools: Read, Glob
 ---
 

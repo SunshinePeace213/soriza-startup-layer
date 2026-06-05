@@ -8,10 +8,7 @@ description: |
   validate subjective merit. Use for "disconfirm my idea", "argue against this", "find disconfirming
   evidence", "pressure-test my hypothesis", "red-team the idea", "what could kill this".
 when_to_use: |
-  Trigger on "disconfirm", "argue against this idea", "find disconfirming evidence", "pressure-test my
-  hypothesis", "play devil's advocate", "what could kill this", "competitor neglect" — when a
-  hypothesis.md exists. Not for sizing the market (/market-map) or scoring real interviews
-  (/customer-discovery-synthesis).
+  Gate: a hypothesis.md exists for the idea. Not sizing the market (/market-map) or scoring real interviews (/customer-discovery-synthesis).
 argument-hint: "[slug]"
 allowed-tools: Read, Glob, Write, Agent, WebSearch, WebFetch
 effort: high

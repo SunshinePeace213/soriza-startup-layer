@@ -1,6 +1,6 @@
 ---
 name: tom-eisenmann-perspective
-description: Think like Tom Eisenmann. Howard H. Stevenson Professor at Harvard Business School and author of *Why Startups Fail* (2021) — the entrepreneurship scholar who turned post-mortem analysis into a discipline and refuses single-cause stories about why ventures die. Use this skill when the user wants Eisenmann's perspective on a problem, says "what would Eisenmann say about…", "diagnose this startup", "use the six failure patterns", "run RAWI on this", "channel Tom", or names him directly. Triggers — "Tom Eisenmann", "Thomas Eisenmann", "Eisenmann", "the failure professor", "Why Startups Fail", "ask Tom", "six failure patterns", "false start", "false positive", "speed trap", "cascading miracles", "good idea bad bedfellows", "help wanted", "RAWI test", "diamond and square", "founder-market fit", "horse or jockey", "HBS entrepreneurship professor", "Launching Tech Ventures".
+description: Think like Tom Eisenmann — HBS professor, author of Why Startups Fail; post-mortem discipline, no single-cause stories. Use for Eisenmann's failure-pattern lens. Triggers — Tom Eisenmann, Why Startups Fail, six failure patterns, RAWI test, founder-market fit, diagnose this startup.
 ---
 
 # Tom Eisenmann — Perspective Skill

@@ -64,8 +64,8 @@ hooks:
 | Field | Required | Purpose |
 |---|---|---|
 | `name` | No (defaults to dir name) | Display name; kebab-case, max 64 chars |
-| `description` | **Recommended** | What it does AND when. **Write for the model, not humans** (Thariq Tip 6). Combined with `when_to_use`, capped at 1,536 chars. |
-| `when_to_use` | No | Extra triggering context — phrasings, example requests |
+| `description` | **Recommended** | What it does AND its trigger phrases. **Write for the model, not humans** (Thariq Tip 6). Combined with `when_to_use`, hard-capped at 1,536 chars — but aim *far* lower (see "Description budget" below). |
+| `when_to_use` | No | Non-redundant routing only — the gate/precondition + which sibling to route to instead. **Never repeat trigger phrases already in `description`** (the listing concatenates both and counts every char). Omit it entirely if it would only echo the description. |
 | `argument-hint` | No | Shown in autocomplete (e.g., `[issue-number]`) |
 | `arguments` | No | Named positional arguments; map to `$name` in body |
 | `disable-model-invocation` | No (default `false`) | `true` = only user can `/name`; Claude can't auto-trigger |
@@ -78,6 +78,20 @@ hooks:
 | `hooks` | No | Lifecycle hooks scoped to this skill (see `hooks.md`). On-demand hooks (Thariq Tip 9). |
 | `paths` | No | Globs; skill auto-loads only when matching files in play |
 | `shell` | No | `bash` (default) or `powershell` |
+
+### Description budget (and the de-dup rule)
+
+The skill listing — every skill's `description` + `when_to_use` — is injected into **every session**, and it has two ceilings:
+
+- **Per-entry: 1,536 chars** (`description` + `when_to_use` combined). Over this, the entry is **truncated** mid-text in the listing — trigger phrases at the end silently vanish.
+- **Global: ~1% of the context window** for the whole listing. When it overflows, Claude **drops the least-used skills' descriptions first** — so one bloated skill silently evicts *other* skills from auto-discovery. Run `/doctor` to see whether the budget is overflowing and which skills are affected; the lever to raise it (`skillListingBudgetFraction`) costs tokens on every session, so trimming is the sustainable fix.
+
+A long description is not free and does **not** "trigger better" — past a tight trigger set it only burns shared budget. Rules for every artifact this skill generates:
+
+- **Front-load the primary use case + trigger phrases in `description`** — that is the part that survives truncation.
+- **`when_to_use` = gate + NOT-boundaries only.** The precondition ("when a `hypothesis.md` exists") and sibling-routing ("not for X → /other-skill"). Never duplicate trigger phrases already in `description`; if `when_to_use` would only echo it, delete the field.
+- **Target ≤ ~500 chars combined** for a normal skill; reference/doctrine/perspective skills should be tighter. Treat 1,536 as the hard wall, not the goal.
+- Validate: `python3 ${CLAUDE_SKILL_DIR}/scripts/quick_validate.py <artifact>` — it **fails** the combined 1,536 cap and **warns** when the description is bloated (> ~500) or when `when_to_use` largely repeats `description`.
 
 ### Reference vs Task content
 

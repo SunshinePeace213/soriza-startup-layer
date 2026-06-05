@@ -10,11 +10,6 @@ description: |
   defensible, asking "what's my moat in the AI era?", "is this just another SaaS?", "how would I
   reach/own these customers?", scoring an idea's distribution path, or applying the FDE /
   business-builder playbook.
-when_to_use: |
-  Trigger on "is this defensible", "what's my moat", "moat in the AI era", "is this just another
-  SaaS / undifferentiated", "SaaS is dead", "distribution", "how do I reach these customers",
-  "forward-deployed founder", "FDE", "business builder", "find customers first", "is this
-  AI-buildable" — or whenever an Idea-Stage stage needs the moat/distribution lens.
 allowed-tools: Read, Glob
 ---
 

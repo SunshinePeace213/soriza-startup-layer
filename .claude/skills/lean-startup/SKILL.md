@@ -8,11 +8,6 @@ description: |
   idea-stage-exit, and build-poc; also invocable standalone. Use for "what's the cheapest test?",
   "which MVP type?", "is this a vanity metric?", "should we pivot or persevere?", "what kind of pivot
   is this?", "how much runway do we have?", or "should we even build this?".
-when_to_use: |
-  Trigger on "cheapest experiment / MVP", "minimum viable product", "video/concierge/Wizard-of-Oz
-  MVP", "value hypothesis", "growth hypothesis", "vanity metric", "validated learning", "innovation
-  accounting", "pivot or persevere", "what pivot type", "runway as pivots", "build-measure-learn",
-  "should we even build this".
 allowed-tools: Read, Glob
 ---
 

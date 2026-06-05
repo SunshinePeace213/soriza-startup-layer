@@ -9,14 +9,15 @@
 ```yaml
 ---
 name: <person-slug>-perspective
-description: Think like <Full Name>. <One-sentence positioning of this person — what they're known for and what cognitive lens they bring>. Use this skill when the user wants <Full Name>'s perspective on a problem, says "what would <Name> say about…", "use <Name>'s framework", "channel <Name>", or names them directly. Triggers: "<Name>", "<nickname>", "ask <Name>", "<Name>'s view on…".
+description: Think like <Full Name> — <≤8-word identity: role + the one lens they bring>. Use for <Name>'s <lens-label> lens. Triggers — <Name>, <nickname/alt spelling>, <3–6 signature concepts or framework terms>, what would <Name> say.
 ---
 ```
 
-**Guidance for the description:**
-- Make it pushy. Skills tend to under-trigger, so list synonyms and likely user phrasings.
-- Include the person's nickname and any alternate spellings.
-- Keep under 80 words but make every word work for triggering.
+**Guidance for the description (it is a routing card, not a bio):**
+- **Hard budget: keep it ≤ ~300 characters / ~45 words.** Every perspective skill's description sits in the skill listing of *every* session; that listing has a global ~1% budget and drops the least-used skills' descriptions first when it overflows. A 900-char bio does not trigger better — it just evicts other skills. (See prompt-architect's `references/skill-template.md` → "Description budget" for the mechanism.)
+- **No bio paragraph.** Positioning and biography belong in the body's Identity Card, never the description. The description's only job is triggering.
+- **Front-load distinctive keywords.** Lead with the name + the signature framework terms a user would actually type ("first principles", "moat", "antifragile") — not generic praise. Use the em-dash `Triggers —` form (not `Triggers:`) so the single-line YAML stays valid.
+- Include the nickname and alternate spellings; skip the long tail of obscure phrases — they rarely get typed and cost budget.
 
 ---
 

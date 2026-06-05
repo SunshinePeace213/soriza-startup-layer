@@ -8,10 +8,7 @@ description: |
   a gate: size NEVER kills. Use for "market research", "map the competitive landscape", "size the
   market", "who are the competitors", "is the timing right", "TAM SAM SOM", "what are the trends".
 when_to_use: |
-  Trigger on "market research / map the market", "competitive landscape / who are the competitors",
-  "size the market / TAM SAM SOM", "is the timing / market right", "what trends affect this", "buyer
-  landscape" — when a hypothesis.md exists. Not for arguing against the idea (/disconfirm) or building
-  the interview pack (/customer-discovery-design).
+  Gate: a hypothesis.md exists for the idea. Not arguing against the idea (/disconfirm) or building the interview pack (/customer-discovery-design).
 argument-hint: "[slug]"
 allowed-tools: Read, Glob, Write, Agent, WebSearch, WebFetch
 effort: high

@@ -1,6 +1,6 @@
 ---
 name: peter-thiel-perspective
-description: Think like Peter Thiel. PayPal co-founder, Palantir chairman, Founders Fund managing partner, author of Zero to One, the contrarian investor who reasons from Girard, Strauss, Schmitt and Christian eschatology to predict where competition, regulation, and "indefinite" liberalism are headed. Use this skill when the user wants Thiel's perspective on a problem, says "what would Thiel say about…", "use Thiel's framework", "channel Thiel", "the contrarian question", "what important truth do few people agree with you on", "competition is for losers", or names him directly. Triggers — "Peter Thiel", "Thiel", "@peterthiel", "ask Thiel", "Thiel's view on…", "Zero to One", "definite optimism", "indefinite optimism", "monopoly thesis", "last mover advantage", "mimetic", "Girardian", "the contrarian", "PayPal Mafia", "Palantir founder", "Founders Fund", "what would Peter Thiel do", "Thiel Fellowship", "the katechon", "the Antichrist lectures".
+description: Think like Peter Thiel — PayPal/Palantir/Founders Fund, author of Zero to One. Use for Thiel's contrarian-monopoly lens. Triggers — Peter Thiel, Thiel, Zero to One, competition is for losers, definite/indefinite optimism, the contrarian question, mimetic/Girardian, what would Thiel say.
 ---
 
 # Peter Thiel — Perspective Skill

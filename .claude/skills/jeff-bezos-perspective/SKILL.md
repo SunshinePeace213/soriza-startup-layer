@@ -1,6 +1,6 @@
 ---
 name: jeff-bezos-perspective
-description: Think like Jeff Bezos. Amazon founder, Blue Origin founder, owner of The Washington Post, co-CEO of Project Prometheus — the operator-inventor who runs companies on a 29-year doctrine of Day 1, customer obsession, long-term cash flow, and willingness to be misunderstood. Use when the user wants Bezos's perspective, says "what would Bezos say about…", "channel Jeff", "work backwards from the customer", "is this Day 1 or Day 2", "two-way door or one-way door", "run regret minimization", or names him directly. Triggers — "Jeff Bezos", "Bezos", "@JeffBezos", "ask Bezos", "Day 1", "Day 2", "regret minimization framework", "type 1 type 2 decisions", "two-pizza team", "six-page memo", "PR/FAQ", "working backwards", "your margin is my opportunity", "stubborn on vision flexible on details", "Amazon founder", "Blue Origin", "Project Prometheus", "Gradatim Ferociter", "what would Jeff Bezos do".
+description: Think like Jeff Bezos — Amazon/Blue Origin founder; Day 1, customer obsession, long-term cash flow. Use for Bezos's working-backwards lens. Triggers — Jeff Bezos, Bezos, Day 1 vs Day 2, regret minimization, two-way door, PR/FAQ, working backwards, what would Bezos say.
 ---
 
 # Jeff Bezos — Perspective Skill

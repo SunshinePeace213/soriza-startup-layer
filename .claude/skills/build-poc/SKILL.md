@@ -9,10 +9,7 @@ description: |
   "build a PoC / prototype", "build the proof of concept", "what should the PoC do", "scope my prototype",
   "synthesize my PoC feedback".
 when_to_use: |
-  Trigger on "build a PoC / proof of concept / prototype", "what should the PoC do / scope my prototype",
-  "the lightweight prototype", "put it in front of 5 users", "synthesize my PoC feedback" — when an
-  idea-stage-exit.md = GO exists. Not the MVP build (that's the next layer) and not idea defensibility
-  (forward-deployed-founder).
+  Gate: an idea-stage-exit.md = GO exists for the idea. Not the MVP build (that's the next layer) and not idea defensibility (/forward-deployed-founder).
 argument-hint: "[slug]"
 allowed-tools: Read, Glob, Write, Bash, Agent, AskUserQuestion
 effort: high

@@ -8,9 +8,10 @@ quality_check.py
 
 Used at Nuwa's Phase 4 quality-validation step. Reads a generated SKILL.md
 file and checks it against the six pass criteria from extraction-framework.md
-section 6. Prints a PASS / FAIL line for each criterion and a final summary.
+section 6, plus a seventh skill-listing-budget check. Prints a PASS / FAIL line
+for each criterion and a final summary.
 
-The six checks (mirroring extraction-framework.md):
+The checks (1–6 mirror extraction-framework.md; 7 guards the listing budget):
 
   1. Mental-model count is between 3 and 7 inclusive.
   2. Every mental model has an explicit "limits" / "where it fails" subsection.
@@ -21,9 +22,11 @@ The six checks (mirroring extraction-framework.md):
   5. The Values / Anti-patterns section names at least 2 internal tensions
      or contradiction pairs.
   6. The Research Sources section shows a primary-source ratio above 50%.
+  7. The frontmatter description is a tight routing card (≤ ~300 chars; hard
+     cap 1,536 for description+when_to_use) — not a bio paragraph.
 
 Exit codes:
-   0  All six checks pass.
+   0  All checks pass.
    1  At least one check failed.
    2  Could not read the SKILL.md file.
 
@@ -281,6 +284,55 @@ def check_primary_source_ratio(markdown: str) -> CheckResult:
     )
 
 
+_FM_RE = re.compile(r"^---\n(.*?)\n---", re.DOTALL)
+
+
+def _frontmatter_field(markdown: str, key: str) -> str | None:
+    """Extract a scalar frontmatter field (inline or block scalar), no YAML dep."""
+    m = _FM_RE.match(markdown)
+    if not m:
+        return None
+    lines = m.group(1).split("\n")
+    for i, ln in enumerate(lines):
+        km = re.match(rf"^{re.escape(key)}:\s*(.*)$", ln)
+        if not km:
+            continue
+        rest = km.group(1).strip()
+        if rest in ("|", ">", "|-", ">-", "|+", ">+", ""):
+            buf = []
+            for nl in lines[i + 1:]:
+                if nl[:1].isspace() or nl.strip() == "":
+                    buf.append(nl.strip())
+                else:
+                    break
+            return " ".join(x for x in buf if x).strip()
+        if len(rest) >= 2 and rest[0] in "\"'" and rest[-1] == rest[0]:
+            rest = rest[1:-1]
+        return rest
+    return None
+
+
+def check_description_budget(markdown: str) -> CheckResult:
+    """A perspective skill's description is a routing card, not a bio. It sits in
+    the skill listing of EVERY session under a global ~1% budget; long ones evict
+    other skills. Keep it tight."""
+    name = "7. Description is a tight routing card (≤ ~300 chars)"
+    desc = _frontmatter_field(markdown, "description")
+    wtu = _frontmatter_field(markdown, "when_to_use")
+    if not desc:
+        return CheckResult(name, False, "FAIL — no frontmatter description found.")
+    combined = len(desc) + (1 + len(wtu) if wtu else 0)
+    if combined > 1536:
+        return CheckResult(name, False,
+            f"FAIL — description+when_to_use is {combined} chars, over the 1,536 per-entry "
+            "listing cap (it will be truncated). Cut to a tight routing card; move bio to the Identity Card.")
+    if combined > 500:
+        return CheckResult(name, False,
+            f"FAIL — description+when_to_use is {combined} chars. Target ≤ ~300 for a perspective "
+            "skill: 'Think like X — <identity>. Use for X's lens. Triggers — …'. No bio in the description.")
+    return CheckResult(name, True, f"PASS — {combined} chars (lean routing card).")
+
+
 # ---------- Orchestrator ----------
 
 ALL_CHECKS = (
@@ -290,6 +342,7 @@ ALL_CHECKS = (
     check_honest_limits,
     check_internal_tensions,
     check_primary_source_ratio,
+    check_description_budget,
 )
 
 
