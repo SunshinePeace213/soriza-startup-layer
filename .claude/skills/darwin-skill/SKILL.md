@@ -1,6 +1,7 @@
 ---
 name: darwin-skill
-description: Autonomous skill optimizer inspired by Karpathy's autoresearch. Scores each SKILL.md against an 8-dimension rubric (structure + live effectiveness), then runs a hill-climbing loop with git as a ratchet — keeps every commit that raises the score, auto-reverts every one that doesn't, and pauses for human confirmation between skills. Trigger when the user asks to "optimize my skills", "score my skills", "improve SKILL.md", "audit skills", "run darwin", "auto-optimize skill", "evaluate skill quality", "review all skills", "make my skills better", or names a specific skill to grade/improve.
+description: |
+  Autonomous SKILL.md optimizer: scores each skill on an 8-dimension rubric, then hill-climbs with git as a ratchet (keep score-raising commits, auto-revert the rest). Use for "optimize/score my skills", "improve SKILL.md", "audit skills", "run darwin", "make my skills better".
 ---
 
 # Darwin — Train Your Skills Like You Train Models

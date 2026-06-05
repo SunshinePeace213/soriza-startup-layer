@@ -1,14 +1,7 @@
 ---
 name: solution-design
 description: |
-  Fifth step in the Idea Stage of Soriza Startup Layer — crystallizes AND challenges the final
-  solution concept for ONE idea that has been through /customer-discovery-synthesis. Mines the concept latent in
-  the validated evidence, articulates it (founder confirms), then attacks it: a drift audit (does the
-  design serve the problem discovery VALIDATED, not the one the hypothesis ASSUMED?), the three most
-  load-bearing assumptions + what would have to be true, alternatives, scale conditions — with a blind,
-  separate-context solution-red-team adversary. Writes solution-design.md with a non-binding Concept
-  Read (build / narrow / redesign / reconsider) + an MVP Brief. Reads customer-discovery.md; never
-  edits hypothesis.md.
+  Fifth Idea-Stage step: crystallize AND red-team the final solution concept (post-discovery) — drift audit, load-bearing assumptions, alternatives, scale, blind adversary. Writes solution-design.md + MVP Brief. Use for "design my solution", "solution concept", "red-team my solution".
 when_to_use: |
   Gate: a customer-discovery.md exists but no solution-design.md yet (precedence: no idea folder -> /generate-ideas; folder without customer-discovery.md -> /customer-discovery-synthesis). Not editing hypothesis.md (/sharpen-hypothesis), sizing (/market-map), running interviews (/customer-discovery-synthesis), or software/code-level design — this is startup solution-concept design.
 argument-hint: "[slug]"

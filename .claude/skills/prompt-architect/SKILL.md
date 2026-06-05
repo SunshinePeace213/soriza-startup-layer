@@ -1,14 +1,7 @@
 ---
 name: prompt-architect
 description: |
-  Design, draft, test, and iterate on Claude Code skills, slash commands, and subagents — end to end.
-  Picks the right artifact type, drafts with Opus 4.8 conventions and Thariq's 9 tips, runs a real
-  test/eval/iterate loop via dynamic workflows and the meta-skill-grader agent, and optimizes the
-  description for reliable triggering. Use when the user says "build me a /commit command", "create a skill for X",
-  "make a code-reviewer agent", "my skill isn't triggering", "test my skill", "rewrite this prompt
-  for 4.8", "add hooks to this skill", "package my skill", "what category does this skill fit",
-  or wants to validate any reusable Claude artifact. Also use after /grill-me has grilled on an
-  artifact-building topic and the next step is to actually build it.
+  Design, draft, test, and iterate on Claude Code skills, slash commands, and subagents end-to-end. Use for "build me a /commit command", "create a skill for X", "make a code-reviewer agent", "my skill isn't triggering", "test/optimize my skill", "rewrite this prompt for 4.8".
 when_to_use: |
   Also fires when the build-an-artifact meta-intent is buried under a long excerpt or task spec (e.g. "develop a workflow for <domain task>"), to upgrade existing prompts to 4.8 best practices, and as the natural follow-up to /grill-me on artifact-building topics.
 ---
@@ -134,7 +127,7 @@ If the user explicitly asks for a refused pattern, explain the cost once and onl
 - [ ] Hooks decision documented (added with rationale, or rationale for skipping)
 - [ ] Scope explicit (what's in, what's out)
 - [ ] Output specification concrete (length, format, structure)
-- [ ] `description` + `when_to_use` within the 1,536-char hard cap AND lean (target ≤ ~500 combined) — the listing eats shared per-session budget (Tip 6; see `references/skill-template.md` → "Description budget")
+- [ ] `description` field under 300 chars (keyword-dense, front-loaded triggers) and `description` + `when_to_use` within the 1,536-char hard cap — the listing eats shared per-session budget (Tip 6; see `references/skill-template.md` → "Description budget")
 - [ ] `when_to_use` adds only the gate + NOT-boundaries — it does NOT repeat trigger phrases already in `description` (omit the field if it would just echo)
 - [ ] Reasoning depth set via `effort` (subagents carry it; no "think harder" prose forcing it); no forced progress-update cadence (4.8)
 

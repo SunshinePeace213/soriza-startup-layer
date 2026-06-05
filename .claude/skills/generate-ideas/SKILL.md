@@ -1,12 +1,7 @@
 ---
 name: generate-ideas
 description: |
-  First stage of the Idea Stage: expand a thesis (or normalize a supplied list) into a WIDE slate of
-  10 thin startup-idea seeds, recommend which one to take next (weighing demand + founder-fit + moat +
-  distribution), and let the FOUNDER pick — then scaffold the chosen idea's workspace. The recommendation
-  is advisory; you decide (no auto-pick, no ranking that chooses for you). Use for "generate startup
-  ideas", "brainstorm ideas from my thesis", "expand this thesis into ideas", "give me a slate of ideas",
-  "which idea should I pursue", or to start the Idea Stage.
+  First Idea-Stage stage: expand a thesis into a WIDE slate of 10 thin idea seeds, recommend one (demand + founder-fit + moat + distribution), the FOUNDER picks, then scaffold it. Use for "generate/brainstorm startup ideas", "expand my thesis", "give me a slate", "which idea should I pursue".
 when_to_use: |
   Gate: no idea folder exists yet — the kickoff of the Idea Stage. Not for sharpening one chosen idea (/sharpen-hypothesis).
 argument-hint: "[thesis | 'seed list']"

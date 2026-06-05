@@ -1,12 +1,7 @@
 ---
 name: disconfirm
 description: |
-  Third stage of the Idea Stage — the structured devil's advocate. Pressure-test a hypothesis with a
-  bounded expert panel (core-3 Thiel/Munger/Bezos) + competitor steelman + doctrine angles + one
-  idea-type specialist, turning each disconfirming objection into a falsifiable assumption + a Mom-Test
-  interview question. Produces a Disconfirmation Brief, NOT a verdict — nothing kills here; real users
-  validate subjective merit. Use for "disconfirm my idea", "argue against this", "find disconfirming
-  evidence", "pressure-test my hypothesis", "red-team the idea", "what could kill this".
+  Third Idea-Stage stage: structured devil's advocate — pressure-test a hypothesis with an expert panel + competitor steelman, turning objections into falsifiable assumptions. A Brief, not a verdict. Use for "disconfirm my idea", "argue against this", "red-team the idea", "what could kill this".
 when_to_use: |
   Gate: a hypothesis.md exists for the idea. Not sizing the market (/market-map) or scoring real interviews (/customer-discovery-synthesis).
 argument-hint: "[slug]"

@@ -90,8 +90,8 @@ A long description is not free and does **not** "trigger better" — past a tigh
 
 - **Front-load the primary use case + trigger phrases in `description`** — that is the part that survives truncation.
 - **`when_to_use` = gate + NOT-boundaries only.** The precondition ("when a `hypothesis.md` exists") and sibling-routing ("not for X → /other-skill"). Never duplicate trigger phrases already in `description`; if `when_to_use` would only echo it, delete the field.
-- **Target ≤ ~500 chars combined** for a normal skill; reference/doctrine/perspective skills should be tighter. Treat 1,536 as the hard wall, not the goal.
-- Validate: `python3 ${CLAUDE_SKILL_DIR}/scripts/quick_validate.py <artifact>` — it **fails** the combined 1,536 cap and **warns** when the description is bloated (> ~500) or when `when_to_use` largely repeats `description`.
+- **Keep the `description` field under 300 chars.** That's this layer's standard — the description's one job is telling Claude *when* to load the skill, so it needs trigger keywords, not how-it-works prose or feature lists. Put the long explanation in the body. (1,536 combined is the hard wall; 300 on `description` is the editorial target.)
+- Validate: `python3 ${CLAUDE_SKILL_DIR}/scripts/quick_validate.py <artifact>` — it **fails** the combined 1,536 cap and **warns** when the `description` field exceeds 300 chars or when `when_to_use` largely repeats `description`.
 
 ### Reference vs Task content
 

@@ -1,13 +1,7 @@
 ---
 name: lean-startup
 description: |
-  The Lean Startup method as APPLIED tools for the Idea Stage: Build-Measure-Learn, the value vs
-  growth hypothesis, the MVP-type chooser (video / concierge / Wizard-of-Oz / functional), validated
-  learning vs vanity metrics + innovation accounting, the 10 pivot types + "runway = pivots left", and
-  the "should we even build this?" gate. Read inline by sharpen-hypothesis, solution-design,
-  idea-stage-exit, and build-poc; also invocable standalone. Use for "what's the cheapest test?",
-  "which MVP type?", "is this a vanity metric?", "should we pivot or persevere?", "what kind of pivot
-  is this?", "how much runway do we have?", or "should we even build this?".
+  Lean Startup applied tools for the Idea Stage: Build-Measure-Learn, value/growth hypotheses, MVP-type chooser, validated learning vs vanity metrics, pivot types, "runway = pivots left". Use for "cheapest test", "which MVP type", "vanity metric", "pivot or persevere", "should we even build this".
 allowed-tools: Read, Glob
 ---
 

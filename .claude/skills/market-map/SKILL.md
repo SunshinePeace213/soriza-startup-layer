@@ -1,12 +1,7 @@
 ---
 name: market-map
 description: |
-  Fourth stage of the Idea Stage: map the market for a hypothesis via a parallel fan-out of focused
-  research agents — competitor tiers, review-complaint mining (problem-solution-fit signal) + user
-  language, TAM/SAM/SOM (pressure-tested for inflation) + buyer landscape + market maturity, and 3 named
-  trends (tailwind/headwind) + analogous markets — plus the moat/distribution read. It is CONTEXT, never
-  a gate: size NEVER kills. Use for "market research", "map the competitive landscape", "size the
-  market", "who are the competitors", "is the timing right", "TAM SAM SOM", "what are the trends".
+  Fourth Idea-Stage stage: map a hypothesis's market via parallel research agents — competitors, review-complaint mining, TAM/SAM/SOM, trends, moat/distribution. Context, never a gate (size never kills). Use for "market research", "competitive landscape", "size the market", "TAM SAM SOM", "trends".
 when_to_use: |
   Gate: a hypothesis.md exists for the idea. Not arguing against the idea (/disconfirm) or building the interview pack (/customer-discovery-design).
 argument-hint: "[slug]"

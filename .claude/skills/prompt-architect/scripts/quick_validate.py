@@ -208,6 +208,12 @@ def description_budget_warnings(frontmatter):
     desc = (frontmatter.get("description") or "").strip()
     wtu = (frontmatter.get("when_to_use") or "").strip()
     combined = len(desc) + (1 + len(wtu) if wtu else 0)
+    if len(desc) > 300:
+        warnings.append(
+            f"description is {len(desc)} chars (>300). This layer's standard is <300 — keyword-dense, "
+            "front-loaded triggers; the description's one job is telling Claude WHEN to load the skill, "
+            "so move how-it-works detail into the body."
+        )
     if 1200 < combined <= 1536:
         warnings.append(
             f"description+when_to_use is {combined} chars — approaching the 1,536 truncation cap. "

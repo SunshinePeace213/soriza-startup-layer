@@ -316,21 +316,20 @@ def check_description_budget(markdown: str) -> CheckResult:
     """A perspective skill's description is a routing card, not a bio. It sits in
     the skill listing of EVERY session under a global ~1% budget; long ones evict
     other skills. Keep it tight."""
-    name = "7. Description is a tight routing card (≤ ~300 chars)"
+    name = "7. Description is a tight routing card (< 300 chars)"
     desc = _frontmatter_field(markdown, "description")
     wtu = _frontmatter_field(markdown, "when_to_use")
     if not desc:
         return CheckResult(name, False, "FAIL — no frontmatter description found.")
-    combined = len(desc) + (1 + len(wtu) if wtu else 0)
-    if combined > 1536:
+    if len(desc) >= 300:
         return CheckResult(name, False,
-            f"FAIL — description+when_to_use is {combined} chars, over the 1,536 per-entry "
-            "listing cap (it will be truncated). Cut to a tight routing card; move bio to the Identity Card.")
-    if combined > 500:
+            f"FAIL — description is {len(desc)} chars; keep it under 300. A perspective skill's "
+            "description is a tight routing card ('Think like X — <identity>. Use for X's lens. "
+            "Triggers — …'); the bio belongs in the Identity Card, not the description.")
+    if wtu and (len(desc) + 1 + len(wtu)) > 1536:
         return CheckResult(name, False,
-            f"FAIL — description+when_to_use is {combined} chars. Target ≤ ~300 for a perspective "
-            "skill: 'Think like X — <identity>. Use for X's lens. Triggers — …'. No bio in the description.")
-    return CheckResult(name, True, f"PASS — {combined} chars (lean routing card).")
+            "FAIL — description+when_to_use is over the 1,536 per-entry listing cap (it will be truncated).")
+    return CheckResult(name, True, f"PASS — description {len(desc)} chars (<300, lean routing card).")
 
 
 # ---------- Orchestrator ----------

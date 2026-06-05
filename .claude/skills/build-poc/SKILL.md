@@ -1,13 +1,7 @@
 ---
 name: build-poc
 description: |
-  Final stage of the Idea Stage: build a lightweight PROOF-OF-CONCEPT (NOT an MVP) and run it past 5 real
-  users. Phase-aware — scope (list what to build + explicit non-goals; pick the cheapest archetype:
-  video / concierge / Wizard-of-Oz / functional single-interaction), build (the single core interaction,
-  in its own coding session + worktree), then synthesize the 5 reactions into a direction
-  (keep-building / pivot / back-to-the-drawing-board) + an MVP-scope handoff to the next layer. Use for
-  "build a PoC / prototype", "build the proof of concept", "what should the PoC do", "scope my prototype",
-  "synthesize my PoC feedback".
+  Final Idea-Stage stage: build a lightweight PROOF-OF-CONCEPT (not an MVP) — scope the cheapest archetype (video/concierge/Wizard-of-Oz/functional), build the one core interaction, synthesize 5 users. Use for "build a PoC/prototype", "scope my prototype", "synthesize my PoC feedback".
 when_to_use: |
   Gate: an idea-stage-exit.md = GO exists for the idea. Not the MVP build (that's the next layer) and not idea defensibility (/forward-deployed-founder).
 argument-hint: "[slug]"

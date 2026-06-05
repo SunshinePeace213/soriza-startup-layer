@@ -1,7 +1,7 @@
 ---
 name: tech-company-personas
 description: |
-  Assigns a realistic FAANG-style tech-company persona (company + role) to an agent, prompt, or workflow step instead of generic "PM"/"developer" framing. Use to "pick a persona", "assign a role", "generate a Staff Engineer persona", or when a generated component needs a company-accurate persona block. Provides 25 company profiles + 55+ role cards across executive, director, IC, and cross-functional tracks.
+  Assigns a realistic FAANG-style tech-company persona (company + role) to an agent, prompt, or workflow step instead of a generic "PM"/"developer". 25 company profiles + 55+ role cards. Use to "pick a persona", "assign a role", "generate a Staff Engineer persona".
 disable-model-invocation: true
 ---
 

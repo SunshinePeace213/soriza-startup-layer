@@ -1,13 +1,7 @@
 ---
 name: solo-founder
 description: |
-  The one-person-business operating model as APPLIED tools for a solo founder: the keep-vs-delegate/
-  automate matrix (what only you can do vs what AI / contractors should), AI-as-cofounder + contractor
-  orchestration, the solo failure modes (decision fatigue, isolation, the GTM skill-gap, bus-factor),
-  ruthless one-project focus, and the solo-vs-cofounder call. Read inline by solution-design and
-  build-poc (scope / feasibility); also invocable standalone. Use for "should I build or delegate
-  this?", "what should only I do?", "am I overextending solo?", "do I need a co-founder?", "how do I
-  not burn out solo?", or scoping work to a one-person operation.
+  One-person-business operating model: keep-vs-delegate/automate matrix, AI-as-cofounder + contractors, solo failure modes (decision fatigue, isolation, GTM gap), one-project focus, solo-vs-cofounder. Use for "build or delegate this", "what only I do", "do I need a co-founder", "founder burnout".
 allowed-tools: Read, Glob
 ---
 

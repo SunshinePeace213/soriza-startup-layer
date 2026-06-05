@@ -1,15 +1,7 @@
 ---
 name: forward-deployed-founder
 description: |
-  The AI-era moat doctrine for evaluating and shaping startup ideas. In 2026 software is
-  commoditized, so technical strength is NOT a moat — the durable moats are deep customer-workflow
-  understanding, owned distribution/relationships, and proprietary access. Steers idea evaluation away
-  from the default "big-TAM SaaS" reflex toward reachable-niche, distribution-first, business-builder
-  (forward-deployed) wedges. Read inline by the Idea-Stage skills (generate-ideas, disconfirm,
-  market-map, solution-design); also invocable standalone. Use when judging whether an idea is
-  defensible, asking "what's my moat in the AI era?", "is this just another SaaS?", "how would I
-  reach/own these customers?", scoring an idea's distribution path, or applying the FDE /
-  business-builder playbook.
+  AI-era moat doctrine for ideas: software is commoditized, so moats = customer-workflow depth, owned distribution, proprietary access — not tech. Use for "is this defensible", "what's my moat", "moat in the AI era", "just another SaaS?", "how do I reach customers", FDE / business-builder.
 allowed-tools: Read, Glob
 ---
 

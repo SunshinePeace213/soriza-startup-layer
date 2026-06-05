@@ -1,13 +1,7 @@
 ---
 name: customer-discovery-design
 description: |
-  Fifth stage of the Idea Stage: build the SEALED customer-discovery pack for a validated-enough idea —
-  a precise target profile, a reachability map, a WARM LIST of real people who already publicly
-  complained (each with a drafted contextual reply), a Mom-Test interview guide built from the
-  Disconfirmation Brief's OPEN assumptions, cold-email drafts, and a tracking sheet — AND lock the
-  kill-criteria.json before any data comes in. DRAFTS ONLY — the skill never sends; you post warm replies
-  and Cowork sends cold email on per-batch approval. Use for "design my customer discovery", "build my
-  interview guide", "who do I talk to and what do I ask", "build my outreach", "set up customer discovery".
+  Idea-Stage stage: build the SEALED customer-discovery pack — target profile, warm list, Mom-Test interview guide, cold-email drafts — and lock kill-criteria.json before data. Drafts only; never sends. Use for "design my customer discovery", "build my interview guide", "build my outreach".
 when_to_use: |
   Gate: a disconfirmation-brief.md + hypothesis.md exist for the idea. Not scoring real interviews (/customer-discovery-synthesis) and not sending email (Cowork does that, gated).
 argument-hint: "[slug]"

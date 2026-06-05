@@ -1,12 +1,7 @@
 ---
 name: idea-stage
 description: |
-  The Idea Stage map + dashboard for the Soriza startup layer. Shows where every idea sits in the
-  founder-gated pipeline (generate → hypothesis → disconfirm → market → discovery → solution → exit →
-  PoC), the next action for each, and the validated-learning + pivot ledger (runway = pivots left).
-  A map and router, NOT an orchestrator — it points you at the next stage skill; each stage you run
-  deliberately. Use for "where am I in the idea stage", "what's next", "idea stage status", "show my
-  ideas", "which idea should I work on", "what's my runway", or to orient before/after running a stage.
+  Idea-Stage map + dashboard: where each idea sits in the founder-gated pipeline (generate → hypothesis → disconfirm → market → discovery → solution → exit → PoC) and its next action. A router, not an orchestrator. Use for "idea stage status", "where am I", "what's next", "my runway".
 when_to_use: |
   Use when orienting across ideas — not running a stage (route to that stage's skill) and not editing an idea's artifacts.
 argument-hint: "[slug]"

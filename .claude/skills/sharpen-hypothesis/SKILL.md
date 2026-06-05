@@ -1,12 +1,7 @@
 ---
 name: sharpen-hypothesis
 description: |
-  Second stage of the Idea Stage: sharpen a chosen idea into a TESTABLE problem hypothesis
-  (who · how-often · how-severe · status-quo) plus the lean-startup value + growth hypotheses —
-  founder-AWARE and interactive (the skill drafts, you refine with domain knowledge), with NO web
-  research, because a hypothesis is a claim to TEST, not a fact to prove (researching to "prove" it is
-  the confirmation-bias trap). Use for "sharpen my hypothesis", "make my idea testable", "turn this into
-  a testable hypothesis", or "what's next" after an idea is picked.
+  Second Idea-Stage stage: sharpen a chosen idea into a TESTABLE problem hypothesis (who, how-often, how-severe, status-quo) + lean value/growth hypotheses. Interactive, no web research (a hypothesis is to TEST, not prove). Use for "sharpen my hypothesis", "make my idea testable", "what's next".
 when_to_use: |
   Gate: a scaffolded idea exists but no hypothesis.md yet. Not arguing against the idea (/disconfirm) or sizing it (/market-map).
 argument-hint: "[slug]"

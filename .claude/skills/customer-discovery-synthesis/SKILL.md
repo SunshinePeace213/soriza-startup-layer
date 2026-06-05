@@ -1,7 +1,7 @@
 ---
 name: customer-discovery-synthesis
 description: |
-  SYNTHESIS stage of the Idea Stage — scores a founder's REAL interview evidence against the LOCKED kill-criteria thresholds and writes a bias-checked customer-discovery.md Discovery Read. Synthesis-only: the interview DESIGN (target profile, warm list, guide, sealed pack, kill-criteria.json) comes upstream from /customer-discovery-design; this never softens a threshold after data and cannot send email (Cowork does, gated). Reads kill-criteria.json + interview notes; writes customer-discovery.md. Use for "synthesize/score my interviews", "I did N interviews — what do they say", "customer discovery synthesis", "Mom Test scoring".
+  SYNTHESIS stage: score a founder's REAL interview evidence against the LOCKED kill-criteria and write a bias-checked customer-discovery.md Discovery Read (never softens a threshold after data; can't send email). Use for "synthesize/score my interviews", "I did N interviews", "Mom Test scoring".
 when_to_use: |
   Gate: kill-criteria.json + interview notes exist but no customer-discovery.md yet -> here; once customer-discovery.md exists, "what's next" -> /solution-design. Not designing the pack (/customer-discovery-design), editing the hypothesis (/sharpen-hypothesis), sizing (/market-map), the expert debate (/disconfirm), or sending outreach (Cowork, gated).
 argument-hint: "[slug]"

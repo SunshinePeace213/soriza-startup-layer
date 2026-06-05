@@ -1,12 +1,7 @@
 ---
 name: idea-stage-exit
 description: |
-  The deliberate GO/NO-GO that ends the Idea Stage's validation. Re-states the problem discovery
-  VALIDATED, checks the three exit-criteria (problem real & specific · solution serves the VALIDATED
-  problem · enough signal to justify building) plus Lean Startup's "should we even build this?" against
-  the pre-registered kill-criteria, and stamps an explicit GO or NO-GO on record before any PoC is built.
-  Use for "am I ready to build", "should I build this", "idea-stage exit", "go / no-go", "is this worth
-  building a prototype for".
+  The deliberate GO/NO-GO that ends Idea-Stage validation: restate the VALIDATED problem, check the three exit-criteria + Lean's "should we even build this?" against pre-registered kill-criteria, stamp GO/NO-GO. Use for "am I ready to build", "should I build this", "go / no-go", "idea-stage exit".
 when_to_use: |
   Gate: a solution-design.md exists for the idea. Not designing the solution (/solution-design) or building the PoC (/build-poc).
 argument-hint: "[slug]"

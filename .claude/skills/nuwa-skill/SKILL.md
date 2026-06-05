@@ -1,6 +1,7 @@
 ---
 name: nuwa-skill
-description: Distill how anyone thinks. Input a name (or a topic) and Nuwa runs auto-research → extracts a thinking framework → outputs a runnable "perspective skill" that can analyze new problems through that person's cognitive operating system (mental models, decision heuristics, expression DNA, values, honest limits). Use this skill whenever the user asks to "create a perspective skill for X", "distill X", "build me a [name] skill", "make X think for me", "extract [person]'s thinking framework", "turn [person] into a skill", or asks to clone the cognitive style of any public figure, author, founder, investor, scientist, or domain expert. Also use for topic-style mentor skills (e.g., "a value-investing perspective", "an X/Twitter mastery mentor"). Trigger even if the user only says "nuwa" or "use nuwa".
+description: |
+  Distill how anyone thinks into a runnable perspective skill — auto-research, extract a thinking framework (mental models, heuristics, expression DNA), generate the SKILL.md. Use for "create a perspective skill for X", "distill X", "build me a [name] skill", "turn X into a skill", "nuwa".
 ---
 
 # Nuwa — The Skill That Makes Skills
