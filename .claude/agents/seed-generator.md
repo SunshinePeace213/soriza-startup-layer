@@ -8,7 +8,7 @@ description: |
   research downstream. Built for the generate-ideas stage. Not for narrowing to 1–3, not for deep
   dives — the founder picks from the slate.
 tools: Read, Glob
-model: sonnet
+model: opus
 effort: high
 color: green
 ---
