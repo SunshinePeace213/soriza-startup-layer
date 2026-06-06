@@ -24,3 +24,15 @@ its final required deliverable (file/side-effects are secondary). When adding a 
 grep its def for "return … one line / return to the main conversation" and fix it first. Engine-side, the
 fix was a `safeStage` wrapper in idea-funnel-engine.js so a structured-output failure degrades a candidate
 to alive-but-degraded instead of nulling it and crashing the checkpoint tally.
+
+**Generalizes to non-schema Write agents (2026-06-07, generate-ideas SaaS-Challengers run):** the same
+"return ONE line … NOT the findings themselves; they live in the file" instruction in
+`.claude/agents/startup-idea-researcher.md` made 1 of 4 parallel instances *invert* — it dumped the full
+findings inline and SKIPPED the Write entirely (even claiming a non-existent "instruction that prohibits
+writing .md files"). So the anti-pattern is not schema-only: any agent whose real deliverable is a
+side-effect (a file write) but is told to "return a confirmation, NOT the artifact" can intermittently drop
+the side-effect and over-return prose. Here it was intermittent (1/4), not systematic — so it slips through
+unless the main loop verifies. Fix the def: make the Write the explicit final REQUIRED action and keep the
+"don't paste findings in chat" nudge SEPARATE from the success contract. Until fixed, after any fan-out
+always `ls`/`wc -l` the expected output paths and backfill any agent that returned content instead of
+writing it (what I did this run).
