@@ -1,0 +1,63 @@
+# Platform Policy / Regulation / Brand-Safety / Monetization-Rail Risk — Findings
+
+## Key findings
+
+- **Instagram/Meta: AI personas are explicitly permitted; labeling is optional and algorithm-neutral.** Meta's "AI Creator" label (rolled out May 2026) is a voluntary toggle that creators can add to their profile and posts. Meta has confirmed it has no negative impact on ranking. The older mandatory "AI info" badge only auto-applies when C2PA metadata signals AI generation; it too carries no reach penalty per Meta's stated policy. Practical risk: reach is not throttled — but label adoption may become mandatory if EU AI Act enforcement pressure mounts post-August 2026.
+  Source: https://www.socialmediatoday.com/news/instagram-adds-ai-creator-labels/819267/
+
+- **TikTok: disclosed AI personas are permitted; undisclosed ones risk removal and Creator Revenue Sharing suspension.** TikTok requires an "AI-generated content" toggle or on-screen text when content features synthetic faces, voices, or digital humans. The platform publicly states the AIGC label is "a disclosure mechanism, not a distribution signal," meaning labeled AI content is not penalized algorithmically. However, failing to disclose when AI plays a significant role can trigger content removal or account restrictions. Practical risk: compliant virtual KOLs can operate — but manual review of "no disclosure" accounts is an ongoing enforcement threat.
+  Source: https://www.auditsocials.com/blog/tiktok-ai-content-disclosure-rules-2026
+
+- **YouTube: AI disclosure is mandatory only for "realistic" synthetically generated scenes; monetization eligibility tightened July 2025.** YouTube requires disclosure for content that could genuinely mislead a viewer (e.g., a synthetic scene presented as real). Stylized or clearly fictional AI characters are not in scope. From July 15, 2025, content must be "significantly original and authentic" to stay in the YouTube Partner Program — a direct crackdown on mass-produced AI content. Practical risk: a distinctive virtual persona with original creative is fine; a content-farm approach triggering "AI slop" detection gets demonetized.
+  Source: https://subscribr.ai/p/youtube-ai-disclosure-rules
+
+- **X (Twitter): weakest disclosure regime, but adult AI content now carries dual-label requirement and advertiser restrictions.** X has no blanket rule requiring disclosure of AI-generated content, but as of February 2026, all AI-generated adult content must carry both a sensitivity tier label and an AI content disclosure label. AI-generated content about armed conflict without disclosure results in 90-day suspension from Creator Revenue Sharing, with repeat violations yielding permanent removal. Adult content is fully excluded from For You recommendations and ad adjacency. Practical risk for brand-deal track: X's weak AIGC governance is a reputational liability; adult-content restrictions already limit monetization.
+  Source: https://www.auditsocials.com/blog/x-twitter-adult-content-policy-2026-rules-guide
+
+- **OnlyFans: BLOCKS fully fictional AI personas — requires AI content to resemble the verified real human creator.** OnlyFans requires a real person to verify the account, and all AI content must represent that verified creator. Fully fictional AI characters are explicitly not allowed, distinguishing it from competitors. There is also a no-chatbot policy: even AI-assisted messaging requires the human to manually send each message. Penalties include content removal and account termination. This rail is closed for a from-scratch virtual persona with no real human behind it.
+  Source: https://www.creatorhero.com/blog/ai-onlyfans-models
+
+- **Fanvue: explicitly PERMITS AI personas and is the primary adult subscription rail for virtual creators, but still requires a verified real human behind the account.** Fanvue's help centre states it "allows fully AI-generated content" and has positioned itself as the go-to home for AI creators (80% payout, built-in AI chat tools, no requirement that content depict the account owner). However, its own policy page states you "MUST verify the real model behind the AI" — meaning a real person must own and verify the account, even if the content persona is entirely fictional. No real human = no account. Practical implication: Fanvue is the strongest adult-subscription rail for this thesis, but you still need a human identity attached to the account, creating a legal/compliance linkage.
+  Source: https://help.fanvue.com/en/articles/9538738-is-ai-content-allowed-on-fanvue
+
+- **Patreon: permits AI content on Adult/18+ pages if the persona is stylized/illustrated rather than hyperrealistic, but requires consent documentation for realistic depictions of real people.** Patreon's late-2025 policy update allows stylized or illustrated AI-generated characters on adult pages while restricting hyperrealistic depictions of real people without consent. Fully fictional AI personas are therefore workable on Patreon for adult subscription content, as long as they are clearly fictional/illustrated rather than photorealistic. Practical risk: the photorealism bar is undefined and subject to moderator judgment, creating grey-zone enforcement risk for "ultra-realistic" virtual personas.
+  Source: https://news.patreon.com/articles/year-end-2025-policy-updates-and-livestream
+
+- **BRAND-SAFETY HARD WALL: adult-platform association reliably kills mainstream brand sponsorships on the same persona.** The evidence here is categorical: (a) direct links to OnlyFans are outright banned from Facebook, TikTok, and Google Ads even for SFW creators; (b) even mainstream athletes with SFW OnlyFans accounts face bans from official competition sponsors (Wimbledon, Rome Masters 1000 in 2024); (c) L'Oréal's Urban Decay/Kytsya partnership in 2025 became a widely-cited brand-safety crisis, showing that even explicit brand "Value Charters" prohibiting adult-content partnerships get violated and then publicly punished. Running adult/subscription selfie content on the same persona as mainstream brand deals is not a dual-track — it is a persona killer for the brand-deal track. These two monetization rails require separate persona identities.
+  Source: https://racketone.com/how-onlyfans-is-testing-the-limits-of-tennis-sponsorship/
+
+- **China AIGC labeling (effective September 1, 2025): mandatory visible + embedded labels for all AI-generated content on Douyin, Weibo, Xiaohongshu, Bilibili.** Four agencies (CAC, MIIT, Ministry of Public Security, NRTA) jointly issued rules requiring both human-readable labels (e.g., "AI生成") and embedded technical metadata/watermarks for any AI-generated text, image, audio, video, or virtual scene distributed on Chinese platforms. Douyin auto-labels non-compliant content "suspected AI-generated, please verify carefully." Penalties are not yet fully codified but include content removal, regulatory investigation, account suspension, and license revocation for repeat violations. Practical risk: operating a virtual KOL in Greater China requires building the labeling layer in from day one; retrofitting is an enforcement liability.
+  Source: https://news.cgtn.com/news/2025-09-01/China-enforces-new-rules-on-labeling-AI-generated-content-1Gj1GWXQeJi/p.html
+
+- **EU AI Act Article 50 transparency obligations apply from August 2, 2026: AI-generated content reaching EU consumers must carry explicit disclosure.** European Commission draft guidelines (published May 8, 2026, consultation closing June 3, 2026) are finalizing the implementation. For virtual influencers, any content that could be seen by EU consumers and is AI-generated must carry "clear and distinguishable" labeling. US FTC Endorsement Guides (updated 2023, enforced through 2025-2026) treat virtual influencers as "virtual endorsers" subject to the same material-connection disclosure rules as human endorsers; FTC enforcement actions increased ~40% year-over-year in 2025-2026. New York's Synthetic Performer Disclosure Bill (passed June 2026, awaiting governor signature) adds state-level mandatory disclosure for "synthetic performers" in advertising. Combined: building for English-language markets means three overlapping disclosure regimes (FTC, EU AI Act, NY state law) on top of platform rules.
+  Source: https://artificialintelligenceact.eu/article/50/
+
+- **Right-of-publicity risk is real and has new federal momentum: the NO FAKES Act (introduced April 2025) would create a federal right to control AI digital replicas of your voice and likeness.** If an AI face generator produces a persona that closely resembles a real celebrity or influencer, even accidentally, the creator faces right-of-publicity claims (currently under state law; 46 states have some form), deepfake/likeness legislation, and potential liability under the NO FAKES Act if passed. California AB 1836, in effect since January 1, 2026, already extends post-mortem likeness rights to AI digital replicas of deceased performers. Practical risk: any AI persona generation pipeline that could output celebrity-adjacent faces must include a "resemblance check" gate to avoid a lawsuit that could shut down the entire operation.
+  Source: https://www.afslaw.com/perspectives/alerts/the-business-ai-avatars-key-legal-risks-and-best-practices
+
+## Net feasibility read
+
+**Solid rails:** TikTok (with AIGC disclosure toggle), Instagram/Meta (with optional AI Creator label), YouTube (original/distinctive persona only), Fanvue (adult subscription, requires human account verification). Brand deals on a clean, non-adult mainstream persona are commercially validated — top virtual influencers earn $2.5M–$11M in career brand-deal revenue, and brands are allocating 30% of influencer budgets to virtual influencers by 2026.
+
+**Build-on-sand rails:** OnlyFans (fully blocks fictional AI personas), X for brand revenue (weak governance, adult restrictions, advertiser flight risk), any persona that blends adult-subscription and mainstream brand content (brand-safety hard wall makes this impossible on one identity).
+
+**Mandatory compliance layers:** China AIGC labeling (September 2025, active enforcement), EU AI Act disclosure (August 2026), FTC endorsement disclosure (in force), right-of-publicity resemblance checks (federal legislation pending). None of these block the thesis — all require it to be built in from day one, not added later.
+
+**Structural constraint:** The adult-subscription track and the brand-deal track cannot share a persona. If the founder pursues both, they need two separate persona identities with firewall separation.
+
+## Sources
+
+1. https://www.socialmediatoday.com/news/instagram-adds-ai-creator-labels/819267/ — Instagram AI Creator label details (optional, algorithm-neutral)
+2. https://www.auditsocials.com/blog/tiktok-ai-content-disclosure-rules-2026 — TikTok AIGC disclosure requirements and enforcement
+3. https://subscribr.ai/p/youtube-ai-disclosure-rules — YouTube AI disclosure requirements and July 2025 monetization update
+4. https://www.auditsocials.com/blog/x-twitter-adult-content-policy-2026-rules-guide — X adult content + AI disclosure dual-label requirement
+5. https://www.creatorhero.com/blog/ai-onlyfans-models — OnlyFans AI content policy (requires real human, bans fictional AI personas)
+6. https://help.fanvue.com/en/articles/9538738-is-ai-content-allowed-on-fanvue — Fanvue AI creator policy (allows AI content, requires human verification)
+7. https://news.patreon.com/articles/year-end-2025-policy-updates-and-livestream — Patreon AI + adult content policy updates (late 2025)
+8. https://racketone.com/how-onlyfans-is-testing-the-limits-of-tennis-sponsorship/ — Brand-safety hard wall evidence (mainstream sponsors vs adult platforms)
+9. https://news.cgtn.com/news/2025-09-01/China-enforces-new-rules-on-labeling-AI-generated-content-1Gj1GWXQeJi/p.html — China AIGC labeling rules effective September 1, 2025
+10. https://harris-sliwoski.com/chinalawblog/chinas-new-ai-labeling-rules-what-every-china-business-needs-to-know/ — China AI labeling penalty framework
+11. https://artificialintelligenceact.eu/article/50/ — EU AI Act Article 50 transparency obligations (August 2026)
+12. https://www.afslaw.com/perspectives/alerts/the-business-ai-avatars-key-legal-risks-and-best-practices — Right-of-publicity / NO FAKES Act risk for AI avatars
+13. https://www.influencers-time.com/ai-disclosure-rules-for-influencer-marketing-in-2025/ — FTC AI endorsement disclosure requirements
+14. https://autofaceless.ai/blog/virtual-influencer-statistics-2026 — Virtual influencer market size and brand-deal revenue benchmarks
