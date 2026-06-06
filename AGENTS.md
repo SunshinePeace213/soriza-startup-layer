@@ -1,4 +1,4 @@
 ## Soriza Startup Layer
 
 ### Founder Background
-@docs/founder-profile.md
+@./docs/founder-profile.md
