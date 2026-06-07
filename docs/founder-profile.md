@@ -8,7 +8,7 @@ B.S. Applied & Human-Centred Computing, Hang Seng University of Hong Kong (2019�
 Junior–mid full-stack web (Next.js/Node.js/React/TS, MySQL/MongoDB; ~1 yr, shipped to real production users). Junior Python/ML (LSTM final-year project). Mid-and-climbing, leading-edge **agentic coding** on Anthropic's Claude models (Claude Code) — builds a real agentic engineering *layer* with industry-standard practice (architecture, review, testing, CD), explicitly **not** "vibe coding"; evidenced by Soriza, built end-to-end. Weakest on GTM/sales. **Unfair advantages:** disciplined agentic build speed; a studied grasp of *why solo startups fail in the AI era* (lesson: building ≠ distribution); chatbot/LLM domain insight; trilingual reach.
 
 ## Interests
-AI agents / LLM apps (stated career bet), quant/fintech, e-commerce/consumer (the Soriza cosmetics concept), and dev tools / SaaS.
+AI agents / LLM apps (stated career bet), quant/fintech, e-commerce/consumer (a general interest — **not** a beauty/vertical specialism; the Soriza cosmetics app was a build exercise, not domain expertise), and dev tools / SaaS.
 
 ## Location & serviceable geography
 Hong Kong, work-authorized there. Trilingual — Cantonese (native), English (fluent), Mandarin (fluent) — serviceable across Hong Kong, Greater China, and English-language markets.
@@ -26,7 +26,7 @@ Treats time/commitment as a non-issue: an agentic layer parallelizes the build (
 Solo today, open to a co-founder who covers weaker areas (notably business/GTM); willing to use contractors as needed.
 
 ## Prior startup experience
-Built "Soriza," an AI-driven cosmetics e-commerce app end-to-end (agentic coding + human-in-the-loop) — never launched (lesson: building ≠ shipping/distribution). Wants "Soriza" as his eventual brand. LSTM stock predictor was a final-year project. No revenue/users yet.
+Built "Soriza," an AI-driven cosmetics e-commerce app end-to-end (agentic coding + human-in-the-loop) as an **unlaunched build/PoC** — never shipped, no users/revenue (lesson: building ≠ shipping/distribution). It evidences his **agentic-build skill, not beauty/cosmetics-industry expertise** — he is *not* a domain expert in beauty. He reuses "**Soriza**" only because he owns the **Soriza.co** domain and wants it as his eventual brand name — a label to attach to whichever venture wins, independent of the cosmetics vertical. LSTM stock predictor was a final-year project. No revenue/users yet.
 
 ## Goals & ambition
 A profitable indie business he owns and controls, while leveling up on AI agents as a long-term career bet — not chasing venture-scale or fundraising. Income target not yet quantified. Currently planning his move out of retail.
