@@ -24,9 +24,30 @@
     ],
     "PostToolUse": [
       {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "uv run .claude/hooks/schema_on_write.py" }
+        ]
+      },
+      {
         "matcher": "Write|Edit|Bash|Task",
         "hooks": [
           { "type": "command", "command": "uv run .claude/hooks/run_log.py" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "uv run .claude/hooks/stop_guard.py" }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "resume|compact",
+        "hooks": [
+          { "type": "command", "command": "uv run .claude/hooks/resume_inject.py" }
         ]
       }
     ]
