@@ -1,0 +1,9 @@
+gate: g3
+slug: $slug
+locked: true
+locked_at: $locked_at
+criteria:
+  - {id: g3-1, desc: "kill-scan.md passes its validator: 4-axis disqualifier scan (regulatory / technical / platform single-point / graveyard) + demand scan + G3 verdict, every verdict citing an E-xxx ledger entry", check: auto, test: test_killscan}
+  # G3 has no routine founder signature: a CLEAR scan auto-advances. The only human act is the
+  # OVERRIDE -- proceeding past a TRIPPED disqualifier, stamped in decision-log (the single
+  # legitimate desk-kill, ref §2.10 / §11.2). The skill never advances on a trip; the founder does.

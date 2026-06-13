@@ -1,0 +1,10 @@
+gate: g4
+slug: $slug
+locked: true
+locked_at: $locked_at
+criteria:
+  - {id: g4-1, desc: "pressure-report-alpha.md passes its validator", check: auto, test: test_pressure}
+  - {id: g4-2, desc: "5-8 OPEN assumptions, each with a past-behaviour interview question", check: auto, test: test_pressure}
+  - {id: g4-3, desc: "Every persona prediction in predictions.jsonl carries resolution_criteria + resolve_by", check: auto, test: test_predictions}
+  - {id: g4-4, desc: "G5 kill-criteria.json locked (lock-ahead)", check: auto}
+  - {id: g4-5, desc: "Founder has read all change_my_mind items and signs proceed/pivot", check: human}
