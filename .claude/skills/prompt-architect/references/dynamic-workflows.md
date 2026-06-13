@@ -59,7 +59,7 @@ either — inline is fine.
 - it's a one-off you can just do now, or the work is linear with no real fan-out;
 - the orchestration is conversational / interactive — a workflow runs headless to completion,
   so anything needing a human mid-run belongs in a skill (put the human gate at the boundary,
-  the way `/idea-funnel` stops at the SEND gate);
+  the way the idea-stage skills stop at a founder-signature gate);
 - each step needs the filesystem *during* orchestration — workflow scripts can't touch it
   (this is exactly why prompt-architect keeps `scripts/` outside its workflows);
 - the only justification is "there's some parallelism." Parallelism alone is not the bar; a
@@ -87,7 +87,7 @@ meets the need:
    opt-in gate applies here too, not just to saved workflows.
 3. **Thin skill fronts a saved workflow** — `.claude/workflows/<name>.js` holds stable, complex,
    reused orchestration; a dedicated thin skill is the trigger (`Workflow({name})`). The repo's
-   `/idea-funnel` → `idea-funnel-engine.js` is exactly this.
+   `/artifact-eval` → `artifact-eval.js` is exactly this.
 4. **Standalone saved workflow** — `.claude/workflows/<name>.js` invoked **by name as an internal
    step from another skill or workflow's body**, rather than fronted by its own dedicated trigger
    skill. prompt-architect's `artifact-eval` and `description-optimize` are this: prompt-architect
@@ -101,7 +101,7 @@ meets the need:
   `phases` whose titles match the `phase()` calls. No variables, calls, or spreads in it.
 - **Skill-fronts wiring:** the fronting skill stays thin — its body's job is to gather inputs,
   surface the fan-out cost (per the bar above), then call `Workflow({ name: '<name>', args })`.
-  Keep the orchestration in the `.js`; keep judgment/interaction in the skill. `/idea-funnel`'s
+  Keep the orchestration in the `.js`; keep judgment/interaction in the skill. `artifact-eval`'s
   SKILL.md is the model.
 - **Gate at the boundary, not mid-run:** if a human decision is needed, return up to it and let
   the fronting skill handle it; don't try to pause a headless workflow.
@@ -117,10 +117,11 @@ for the details. They're shapes, not bar-clearers: a 3-attempt tournament or a
 generate-and-filter over a couple of ideas is still inline (rung 1); reach for a workflow only on
 a load-bearing instance at a scale where inline is unreliable. For shape, read the repo's own:
 
-- `.claude/workflows/idea-funnel-engine.js` — skill-fronted, multi-phase, schema-validated
-  agents, stateful resume, a human SEND gate at the boundary. The richest example.
-- `.claude/workflows/artifact-eval.js` — a compact utility called by name from prompt-architect's
-  body: with-artifact-vs-baseline per item + a grader agent. Compact pipeline shape.
+- `.claude/workflows/artifact-eval.js` — skill-fronted (`/artifact-eval`) and also called by name
+  from prompt-architect's body: with-artifact-vs-baseline per item + a grader agent, schema-validated.
+  The richest in-repo example.
+- `.claude/workflows/description-optimize.js` — a compact utility called by name from prompt-architect's
+  body. Compact pipeline shape.
 
 ## Validating a drafted workflow (lean — no eval pipeline)
 
@@ -149,6 +150,6 @@ bites in practice.
 - ["A harness for every task" (Anthropic)](https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code) — source for the three failure modes + the named patterns
 - `decision-tree.md` — the orthogonal "is the core orchestration?" branch routes here
 - `4-8-principles.md §5` — fewer subagents by default; this file is when to override that
-- `../../../workflows/idea-funnel-engine.js` — the skill-fronts-workflow exemplar
-- `../../../workflows/artifact-eval.js` — called-by-name internal-step exemplar
+- `../../../workflows/artifact-eval.js` — the skill-fronts-workflow + called-by-name exemplar
+- `../../../workflows/description-optimize.js` — called-by-name internal-step exemplar
 - the `Workflow` tool description — the authoritative authoring reference

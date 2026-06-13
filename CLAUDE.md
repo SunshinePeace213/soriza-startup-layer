@@ -34,9 +34,22 @@
 - **Paths**: schemas `tests/schemas/` | gate script `scripts/advance_gate.py` |
   agents `.claude/agents/` | reference `docs/loop-engineering-reference-en.md`
 
-<!-- W2 insert: ## 6. Two-Round Protocol -- independent round blind; cross-exam p-changes need revision_note (ref SS6.3) -->
-<!-- W5 insert: ## 7. Hook Behaviour -- Stop blocks until agent-owned checklist items clear; schema failures arrive as stderr -->
-<!-- W11: update SS1 pipeline table; remove legacy names -->
+#### 6. Two-Round Protocol (pressure-test α/β)
+- **Independent round is sacred**: every panel seat reads ONLY `neutral-brief.md` + `evidence-ledger.jsonl`;
+  NEVER a sibling's verdict before the cross-examination round (`objection-lens` holds no spawn tool;
+  SubagentStop validates each seat's JSON before the judge sees it — hook-enforced)
+- **Cross-exam revisions**: a seat may revise `p_success` ONLY with a `revision_note` -> never a silent overwrite
+- **Spec**: reference SS2 step 4 / SS10; the canary guards the isolation config (`tests/schemas/test_canary_isolation.py`)
+
+#### 7. Hook Behaviour
+- **Stop blocks**: the `Stop` hook refuses to end the turn while any `owner: agent` `step_checklist`
+  item in STATE.md is unfinished -> finish the item or flip ownership; never force-exit (hook-enforced)
+- **Schema failures arrive as stderr**: a failed artifact write returns the validator's assertion
+  messages on stderr (exit 2) -> fix and rewrite, do not argue, do not bypass (hook-enforced)
+- **Gate-write bypass**: only `advance_gate.py` writes `gates:`; the file-tool path is denied
+  (`gates_guard`) and a Bash-sed bypass is caught by `uv run scripts/ledger_audit.py` (three-way reconciliation)
+
+<!-- W11: legacy stage names retired in SS1 (done); deprecation redirect = .claude/hooks/deprecated_redirect.py (UserPromptExpansion) -->
 
 <!-- ### Founder Background
 @docs/founder-profile.md -->

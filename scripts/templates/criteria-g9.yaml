@@ -1,0 +1,13 @@
+gate: g9
+slug: $slug
+locked: true
+locked_at: $locked_at
+criteria:
+  # G9 = the PoC keep/pivot/kill gate. Its criteria are the idea-specific, falsifiable PoC
+  # thresholds /startup-brief locks at G8 (one per top OPEN assumption); /build-poc scores the
+  # 5 target-user reactions against them. ALL check:human -- subjective merit dies only to real
+  # users + the founder's signature (ref §2 step 9 / Hard Rule #8). g9 is lock-ahead-EXEMPT
+  # (no g10), so this template seeds the per-idea file /startup-brief overwrites with real thresholds.
+  - {id: g9-1, desc: "<≥N of 5 PoC users do X -- the falsifiable threshold for OPEN assumption #1>", check: human}
+  - {id: g9-2, desc: "<concrete threshold tied to OPEN assumption #2>", check: human}
+  - {id: g9-3, desc: "Founder makes the keep-building / pivot / kill call having read all 5 reactions; all open predictions resolved", check: human}

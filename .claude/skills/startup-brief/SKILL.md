@@ -91,7 +91,7 @@ and append a `## Round <N>` section) · **Skip** (print the existing Decision li
 ### Step 3 — Build the delta ledger + reconstruct the validated baseline
 Create `ideas/<slug>/startup-brief/` first. Run the ledger script:
 ```bash
-uv run "${CLAUDE_SKILL_DIR}/scripts/build_delta_ledger.py" ideas/<slug>
+uv run scripts/build_delta_ledger.py ideas/<slug>
 ```
 Write its JSON to `startup-brief/delta-ledger.md`. Then reconstruct the **validated baseline** (hypothesis
 dimensions with each accumulated delta applied) → `startup-brief/validated-baseline.md`. This baseline,
