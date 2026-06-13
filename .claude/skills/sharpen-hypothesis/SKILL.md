@@ -3,7 +3,7 @@ name: sharpen-hypothesis
 description: |
   Second Idea-Stage stage: sharpen a chosen idea into a TESTABLE problem hypothesis (who, how-often, how-severe, status-quo) + lean value/growth hypotheses. Interactive, no web research (a hypothesis is to TEST, not prove). Use for "sharpen my hypothesis", "make my idea testable", "what's next".
 when_to_use: |
-  Gate: a scaffolded idea exists but no hypothesis.md yet. Not arguing against the idea (/disconfirm) or sizing it (/market-map).
+  Gate: a scaffolded idea exists but no hypothesis.md yet. Not arguing against the idea (/pressure-test) or sizing it (/market-sizing).
 argument-hint: "[slug]"
 allowed-tools: Read, Glob, Write, AskUserQuestion
 effort: high
@@ -14,7 +14,7 @@ effort: high
 Turn the picked idea into a testable hypothesis. **Founder-aware and interactive:** the skill drafts, you
 refine with your domain knowledge, and everything stays **"provisional, to-be-tested."** **No web
 research** — sharpening makes a claim *specific and falsifiable*; the truth is tested by real users later
-(`market-map` grounds it, the interviews validate it). Researching to "prove" it here would manufacture
+(`kill-scan`'s demand-scan grounds it, the interviews validate it). Researching to "prove" it here would manufacture
 false certainty — the loss-of-objectivity trap.
 
 ## When this applies
