@@ -12,6 +12,13 @@ argument-hint: "[slug] [--beta]"
 disable-model-invocation: true
 allowed-tools: Read, Glob, Write, Bash, Agent, AskUserQuestion
 effort: high
+hooks:
+  PostToolUse:
+    - matcher: "Write"
+      hooks:
+        - type: command
+          if: "Write(*pressure-report-beta.md)"
+          command: "uv run .claude/hooks/citation_density_check.py"
 ---
 
 # Pressure-test — the calibrated expert panel
@@ -59,9 +66,9 @@ contract, a cross-examination round, locked predictions, and a founder-blind bri
   `test_pressure_beta` validator is shipped and **always-on** via `schema_on_write` — it checks the
   report's shape (recommendation enum, required sections) and that the report and its recommendation
   rationale are citation-grounded. The stricter, β-only `citation_density_check` hook — every
-  evidence-table claim row carries an `E-xxx`, and every cited `E-xxx` exists in the ledger — is shipped
-  and tested (`tests/hooks/`); it rides in this skill's frontmatter once the founder authorizes the
-  auto-executing hook (it is self-modification of agent config, so it is a deliberate one-time opt-in).
+  evidence-table claim row carries an `E-xxx`, and every cited `E-xxx` exists in the ledger — is shipped,
+  tested (`tests/hooks/`), and **wired into this skill's frontmatter** (the `hooks:` block above): a
+  founder opt-in, since it auto-executes a command (self-modification of agent config).
 - **Cost.** ≥5 seats × 2 rounds + steelman + judge runs several× a single thread — note a token estimate
   per run.
 

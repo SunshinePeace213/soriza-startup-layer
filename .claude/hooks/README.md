@@ -58,8 +58,9 @@ project-level invariants above.
 |---|---|---|---|
 | `citation_density_check.py` | `pressure-test` SKILL.md | `PostToolUse(Write *pressure-report-beta.md)` | the β citation tooth: every evidence-table claim row cites an `E-xxx`, and every cited `E-xxx` exists in the sibling `evidence-ledger.jsonl` (β-only; no-op on α). Additive to the always-on `test_pressure_beta` schema floor. Covered by `tests/hooks/`. |
 
-The **script and its tests are shipped**; the frontmatter `hooks:` wiring (snippet in §7.5) is a
-deliberate one-time opt-in because it auto-executes a command (self-modification of agent config).
+The **script and its tests are shipped, and the frontmatter `hooks:` wiring (§7.5) is now live** in
+`pressure-test` SKILL.md — a founder opt-in, since it auto-executes a command (self-modification of
+agent config).
 
 ## Still pending (reference §7.5–§7.6, component-scoped / later weeks)
 
