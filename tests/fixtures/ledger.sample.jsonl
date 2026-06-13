@@ -1,0 +1,5 @@
+{"id":"E-001","grade":5,"type":"founder_belief","claim":"Small brokerages reconcile manually in Excel","source":"founder","date":"2026-06-16","added_by":"human"}
+{"id":"E-007","grade":4,"type":"web","claim":"Competitor X's top three unresolved review complaints all concern reconciliation errors","url":"https://example.com/reviews","source":"demand-scan","date":"2026-06-27","added_by":"research-agent"}
+{"id":"E-012","grade":3,"type":"persona_opinion","claim":"Eisenmann: pattern-matches False Start -- tooling built before WTP validated","source":"pressure-report-alpha.md#eisenmann","date":"2026-06-30","added_by":"judge"}
+{"id":"E-019","grade":2,"type":"interview_quote","claim":"Respondent spends 6-8h per month-end on manual reconciliation","quote":"those last two days of the month, I basically do nothing else","source":"interviews/2026-07-03-brokerA.md","date":"2026-07-03","added_by":"agent"}
+{"id":"E-023","grade":1,"type":"commitment","claim":"Broker A agrees to a two-week concierge pilot at HK$500","source":"interviews/2026-07-03-brokerA.md","date":"2026-07-03","added_by":"human"}

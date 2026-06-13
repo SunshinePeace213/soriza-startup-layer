@@ -1,7 +1,7 @@
 ---
 name: idea-stage
 description: |
-  Idea-Stage map + dashboard: where each idea sits in the founder-gated pipeline (generate → hypothesis → disconfirm → market → discovery → solution → exit → PoC) and its next action. A router, not an orchestrator. Use for "idea stage status", "where am I", "what's next", "my runway".
+  Idea-Stage map + dashboard: where each idea sits in the founder-gated 9-step pipeline (generate → hypothesis → kill-scan → pressure-α → discovery → pressure-β → sizing → startup-brief → PoC) and its next action. A router, not an orchestrator. Use for "idea stage status", "where am I", "what's next", "my runway".
 when_to_use: |
   Use when orienting across ideas — not running a stage (route to that stage's skill) and not editing an idea's artifacts.
 argument-hint: "[slug]"
@@ -27,11 +27,14 @@ Out of scope: running a stage (route to that stage's skill); editing an idea's a
 ## What it does
 
 1. `glob ideas/*/` and `ideas/_exploration/*/` for the founder's work product.
-2. **Derive each idea's stage live** from which artifacts exist — no status file to drift (the
-   artifact→stage map is in `references/stage-pipeline.md`).
-3. Render the **board**: per idea — current stage · the **next action** (the next stage skill to run,
-   per `stage-pipeline.md`) · the latest verdict (Discovery Read / Concept Read / GO-NO-GO) · the
-   **pivot count** (runway).
+2. **Reconcile two state layers** (the state-audit, per `references/stage-pipeline.md`): the
+   **declared** step from each idea's `STATE.md` frontmatter (`current_step`/`status`/`next_action`)
+   AND the **derived** step from which artifacts exist. `derived ≠ declared` ⇒ render that row **red**
+   (a drift alarm) — STATE gains machine-readability without losing the "no status file silently rots"
+   insurance.
+3. Render the **board**: per idea — current step (1–9) · gate progress (the `gates:` block) · the
+   **next action** (the next step skill to run) · the latest verdict (Discovery Read / β recommendation
+   / GO-NO-GO) · the **pivot count** (runway) · any drift alarm.
 4. Read `ideas/<slug>/learning-log.md` for the validated-learning + pivot history.
 5. **Route** the founder to the next skill. If they confirm a pivot or a key learning, append it to
    `learning-log.md` (the BML record; runway = pivots left, not months of cash — see `lean-startup`).
@@ -39,16 +42,19 @@ Out of scope: running a stage (route to that stage's skill); editing an idea's a
 ## The pipeline (the map)
 
 ```
-generate-ideas → (founder picks 1) → sharpen-hypothesis → disconfirm → market-map
-  → customer-discovery-design → [founder interviews, days] → customer-discovery-synthesis
-  → solution-design → idea-stage-exit (GO/NO-GO) → build-poc  ⟶ exits to the MVP layer
-loop-backs: synthesis or PoC can return PIVOT → re-enter sharpen-hypothesis (or generate-ideas for a
-segment pivot); each pivot decrements runway.
+1 generate-ideas → (founder picks 1) → 2 sharpen-hypothesis → 3 kill-scan → 4 pressure-test (α)
+  → 5 customer-discovery-design → [founder interviews, days] → customer-discovery-synthesis
+  → 6 pressure-test --beta (main kill) → 7 market-sizing → 8 startup-brief (GO/NO-GO)
+  → 9 build-poc  ⟶ exits to the MVP layer
+gate number = step number; the gate sits at the step's end (advance via scripts/advance_gate.py).
+loop-backs: synthesis (G5) or PoC (G9) can return PIVOT → re-enter sharpen-hypothesis (or generate-ideas
+for a segment pivot); each pivot decrements runway.
 ```
 
 ## Reference files
 
-- `references/stage-pipeline.md` — the canonical order, each stage's entry-guard, the artifact→stage
-  derivation, the loop-back edges, and the handoff frontmatter fields. Read this to render the board.
+- `references/stage-pipeline.md` — the canonical 9-step order, each step's entry-guard + gate, the
+  declared-vs-derived **state-audit**, the artifact→step derivation, the loop-back edges, and the
+  handoff frontmatter fields. Read this to render the board.
 - `references/doctrine-map.md` — which doctrine skill each stage inline-reads.
 - `references/expert-lens-map.md` — the `disconfirm` persona panel (core-3 + specialist + steelman).

@@ -40,9 +40,13 @@ the picked idea into `ideas/<slug>/`.
   moat + **distribution as a first-class factor** (distribution is the founder's #1 documented risk —
   foreground it).
 - **Founder picks.** `AskUserQuestion` with the slate + recommendation; the founder chooses or overrides.
-- **Scaffold.** On pick, create `ideas/<slug>/` and write the chosen card as `ideas/<slug>/seed.md`
-  (the input to sharpening). The other 9 stay in `slate.md` as a **dormant backlog** — no ledger; re-run
-  `/sharpen-hypothesis` on any of them later.
+- **Scaffold.** On pick, write the chosen card as `ideas/<slug>/seed.md` (the input to sharpening),
+  then run `uv run scripts/new_idea.py <slug> --reason "<one-line why-this-idea>"` — the T01 scaffold
+  script that lays down the **state layer**: `STATE.md` (schema v2, `current_step: 1`, `gates: {}`),
+  `gates/criteria-g2.yaml` **locked immediately** (pre-registration), empty `evidence-ledger.jsonl` +
+  `predictions.jsonl`, `decision-log.md` with **DL-001 = why this idea**, and points `ideas/ACTIVE` at
+  the slug. The other 9 cards stay in `slate.md` as a **dormant backlog** — re-run the scaffold
+  (`new_idea.py`) on any of them later.
 
 ## Gotchas
 
@@ -53,8 +57,9 @@ the picked idea into `ideas/<slug>/`.
 
 ## Output
 
-`ideas/_exploration/<thesis>/slate.md` (`assets/slate-template.md`) + `grounding.md`. Next:
-`/sharpen-hypothesis` on the picked idea.
+`ideas/_exploration/<thesis>/slate.md` (`assets/slate-template.md`) + `grounding.md`, and on pick the
+scaffolded `ideas/<slug>/` state layer (via `scripts/new_idea.py`). Next: `/sharpen-hypothesis` on the
+picked idea (its `STATE.md` `next_action` already says so).
 
 ## Workers & references
 
