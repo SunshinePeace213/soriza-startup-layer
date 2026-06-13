@@ -47,7 +47,7 @@ STEP_OWNER = {2: "human", 3: "agent", 4: "agent", 5: "agent", 6: "agent", 7: "ag
 TEST_ARTIFACT = {"test_hypothesis": "hypothesis.md", "test_killscan": "kill-scan.md",
                  "test_pressure": "pressure-report-alpha.md", "test_pressure_beta": "pressure-report-beta.md",
                  "test_synthesis": "customer-discovery.md", "test_sizing": "market-sizing.md",
-                 "test_brief": "startup-brief.md"}
+                 "test_startup_brief": "startup-brief.md"}
 DEFAULT_RESULT = {"g4": "proceed"}
 
 
