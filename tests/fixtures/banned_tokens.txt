@@ -1,0 +1,49 @@
+# banned_tokens.txt — enthusiasm adjectives + sunk-cost / founder-commitment phrasing.
+# SHARED between scripts/make_brief.py (which STRIPS these) and the neutral-brief validator
+# (test_neutral_brief, which FLAGS them). Because make_brief strips this exact list, a brief it
+# produces passes the validator's banned-token check by construction (reference §8 step 4).
+#
+# Format: one token or phrase per line; '#' comments and blank lines are ignored.
+# Matching is case-insensitive, whole-word/phrase.
+#
+# Keep DOMAIN-LEGIT terms OFF this list — banning a word that legitimately appears in a real
+# hypothesis (e.g. "viral", "real", "owned", "zero", "proprietary", "materially") would corrupt
+# the brief by deleting substance. This list is for FOUNDER ENTHUSIASM and SUNK-COST framing only.
+
+# --- enthusiasm / hype adjectives ---
+revolutionary
+unique
+huge
+massive
+game-changing
+game changer
+groundbreaking
+disruptive
+cutting-edge
+world-class
+best-in-class
+unprecedented
+incredible
+amazing
+insanely
+mind-blowing
+next-generation
+state-of-the-art
+unbeatable
+unparalleled
+no-brainer
+obviously
+clearly the best
+
+# --- sunk-cost / founder-commitment phrasing ---
+already built
+already invested
+we've built
+we have built
+i've built
+i have built
+poured months
+spent months
+months of work
+our existing
+my existing
