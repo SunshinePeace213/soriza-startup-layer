@@ -1,0 +1,9 @@
+gate: g2
+slug: cantonese-ai-support-ops
+locked: true
+locked_at: 2026-06-13T15:27:21+08:00
+criteria:
+  - {id: g2-1, desc: "hypothesis.md passes its validator: 5 sections (WHO / HOW OFTEN / HOW SEVERE / STATUS QUO / VALUE & GROWTH), <=300 words", check: auto, test: test_hypothesis}
+  - {id: g2-2, desc: "HOW OFTEN and HOW SEVERE each carry a number (forced specificity)", check: auto, test: test_hypothesis}
+  - {id: g2-3, desc: "No web citations in hypothesis.md (sharpen, don't prove)", check: auto, test: test_hypothesis}
+  - {id: g2-4, desc: "Founder injected the dimension specifics and signs the hypothesis as their own testimony", check: human}
