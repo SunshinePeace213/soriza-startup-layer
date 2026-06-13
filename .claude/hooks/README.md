@@ -49,11 +49,23 @@ at session start, so a fresh session picks them up.
 }
 ```
 
+## Component-scoped hooks (ride in a component's frontmatter, not project settings)
+
+These live and die with their component (ref §7.2 / §7.5) — additive, never a replacement for the
+project-level invariants above.
+
+| Script | Rides in | Event | Guards |
+|---|---|---|---|
+| `citation_density_check.py` | `pressure-test` SKILL.md | `PostToolUse(Write *pressure-report-beta.md)` | the β citation tooth: every evidence-table claim row cites an `E-xxx`, and every cited `E-xxx` exists in the sibling `evidence-ledger.jsonl` (β-only; no-op on α). Additive to the always-on `test_pressure_beta` schema floor. Covered by `tests/hooks/`. |
+
+The **script and its tests are shipped**; the frontmatter `hooks:` wiring (snippet in §7.5) is a
+deliberate one-time opt-in because it auto-executes a command (self-modification of agent config).
+
 ## Still pending (reference §7.5–§7.6, component-scoped / later weeks)
 
-`persona_contract_check.py` (#W2, rides in persona-agent frontmatter, `Stop`→`SubagentStop`),
-`citation_density_check.py` (rides in `pressure-test` frontmatter), and `deprecated_redirect.py`
-(#W11, `UserPromptExpansion` guard for retired command names). The full settings sample is §7.3.
+`persona_contract_check.py` (#W2, rides in persona-agent frontmatter, `Stop`→`SubagentStop`) and
+`deprecated_redirect.py` (#W11, `UserPromptExpansion` guard for retired command names). The full
+settings sample is §7.3.
 
 ## schema_on_write routing note
 

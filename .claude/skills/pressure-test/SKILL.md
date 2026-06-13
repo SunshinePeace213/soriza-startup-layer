@@ -55,9 +55,13 @@ contract, a cross-examination round, locked predictions, and a founder-blind bri
   appended supplement line carrying the same `id`.
 - **Lock-ahead is enforced.** `advance_gate.py` refuses G4 unless `gates/criteria-g5.yaml` is locked and
   the G5 kill-criteria (derived from the OPEN assumptions) exist — pre-registration walks ahead of data.
-- **β citation tooth.** Every β claim cites a ledger `E-xxx`. The deterministic teeth — a
-  `citation_density_check` frontmatter hook + the `test_pressure_beta` validator — are not yet shipped
-  (validator-first); until they are, the skill itself is the enforcement.
+- **β citation tooth.** Every β claim cites a ledger `E-xxx` (interview claims grade ≤2). The
+  `test_pressure_beta` validator is shipped and **always-on** via `schema_on_write` — it checks the
+  report's shape (recommendation enum, required sections) and that the report and its recommendation
+  rationale are citation-grounded. The stricter, β-only `citation_density_check` hook — every
+  evidence-table claim row carries an `E-xxx`, and every cited `E-xxx` exists in the ledger — is shipped
+  and tested (`tests/hooks/`); it rides in this skill's frontmatter once the founder authorizes the
+  auto-executing hook (it is self-modification of agent config, so it is a deliberate one-time opt-in).
 - **Cost.** ≥5 seats × 2 rounds + steelman + judge runs several× a single thread — note a token estimate
   per run.
 
@@ -113,8 +117,10 @@ G6 (the main kill decision).
 
 - **Input:** `customer-discovery.md` + the full `evidence-ledger.jsonl` (pass `neutral-brief.md` too for
   idea context). No new `make_brief` run.
-- **Citation tooth.** Every claim in the report cites a ledger `E-xxx`. Interview-derived claims cite
-  grade ≤2 entries.
+- **Citation tooth.** Every claim in the report cites a ledger `E-xxx`; interview-derived claims cite
+  grade ≤2 entries. Enforced deterministically: `test_pressure_beta` (shape + citation-grounded, via
+  `schema_on_write`) and the `citation_density_check` hook (per-row density + ledger referential
+  integrity). Write the ledger entry first, then cite it — a dangling `E-xxx` bounces for repair.
 - **Recommendation tooth.** The judge/aggregation produces a `go | pivot | kill` *recommendation* — the
   panel recommends; the founder's signature decides.
 - **Resolve due α predictions.** For each `predictions.jsonl` entry from g4 whose `resolution_criteria`
