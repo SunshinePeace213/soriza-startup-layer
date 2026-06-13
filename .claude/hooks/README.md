@@ -11,13 +11,14 @@ They are **invariants** — they must hold no matter which skill is active — s
 | 3 | `run_log.py` | `PostToolUse(Write\|Edit\|Bash\|Task)` | appends one observational line to `logs/run-log.jsonl` (never blocks) |
 
 Each script is a self-contained PEP-723 `uv run --script` (no project deps) and is covered by
-`tests/hooks/` (run `uv run pytest tests/hooks`). They are **not active until wired into
-settings.json** below — activating enforcement is a deliberate opt-in.
+`tests/hooks/` (run `uv run pytest tests/hooks`). They are **wired into `.claude/settings.json`
+and active** (the `"hooks"` block below). Hooks load at session start, so a fresh session picks
+them up.
 
-## Activation — merge this block into `.claude/settings.json`
+## Wiring (live in `.claude/settings.json`)
 
-> An automated edit to `.claude/settings.json` is intentionally guarded (it changes agent
-> startup config), so wiring is a one-time manual/authorized step. Merge the `"hooks"` key:
+> The `"hooks"` key below is already present in `.claude/settings.json`. Reproduced here for
+> reference; editing agent startup config is otherwise guarded, so changes are a deliberate step:
 
 ```json
 {
