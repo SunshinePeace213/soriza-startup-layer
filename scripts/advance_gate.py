@@ -45,7 +45,8 @@ NEXT_SKILL = {2: "/sharpen-hypothesis", 3: "/kill-scan", 4: "/pressure-test",
 STEP_OWNER = {2: "human", 3: "agent", 4: "agent", 5: "agent", 6: "agent", 7: "agent", 8: "agent", 9: "human"}
 # pytest validator -> the artifact (relative to the idea dir) it should run against
 TEST_ARTIFACT = {"test_hypothesis": "hypothesis.md", "test_killscan": "kill-scan.md",
-                 "test_pressure": "pressure-report-alpha.md", "test_pressure_beta": "pressure-report-beta.md",
+                 "test_pressure": "pressure-report-alpha.md", "test_predictions": "predictions.jsonl",
+                 "test_pressure_beta": "pressure-report-beta.md",
                  "test_synthesis": "customer-discovery.md", "test_sizing": "market-sizing.md",
                  "test_startup_brief": "startup-brief.md"}
 DEFAULT_RESULT = {"g4": "proceed"}
@@ -129,7 +130,13 @@ def render_state(fm: dict, body: str) -> str:
 
 
 def run_pytest(root: Path, test: str, artifact: Path) -> bool:
-    r = subprocess.run(["uv", "run", "pytest", "tests/schemas", "-q", "-k", test, "--artifact", str(artifact)],
+    # Run the validator's OWN file, never `-k <name>` against the whole dir: `-k test_pressure`
+    # substring-matches `test_pressure_beta`, which would run the β validator on the α artifact.
+    vfile = root / "tests" / "schemas" / f"{test}.py"
+    if not vfile.exists():
+        sys.stderr.write(f"validator {vfile.relative_to(root)} not found -- it must ship before this gate\n")
+        return False
+    r = subprocess.run(["uv", "run", "pytest", str(vfile), "-q", "--artifact", str(artifact)],
                        cwd=str(root), capture_output=True, text=True)
     if r.returncode != 0:
         sys.stderr.write(r.stdout[-1500:] + "\n")

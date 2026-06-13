@@ -1,0 +1,7 @@
+gate: g8
+slug: $slug
+locked: true
+locked_at: $locked_at
+criteria:
+  - {id: g8-1, desc: "startup-brief.md passes its validator: Decision + Drift-Audit table + Premortem + Exit-Criteria + PoC Kill-Criteria + PoC Brief, >=2 upstream citations, and a bold GO/NO-GO stamp", check: auto, test: test_startup_brief}
+  - {id: g8-2, desc: "Founder stamps GO/NO-GO having read every drift-audit ❌ row -- a ❌ row, an unsupported top-3 assumption, or a live premortem pattern pushes the decision to NO-GO/redesign", check: human}

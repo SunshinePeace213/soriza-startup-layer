@@ -222,10 +222,10 @@ Print the full draft Read in chat. Fire `AskUserQuestion`:
 #### Step S8 — Close G5 (lock-ahead, then advance) and exit
 
 Only once the Read is written and the founder is ready to sign:
-1. **Lock-ahead G6.** Ensure `gates/criteria-g6.yaml` exists and is locked: copy
-   `scripts/templates/criteria-g6.yaml`, substitute the slug + an ISO `locked_at` of now, and Write it to
-   `ideas/<slug>/gates/criteria-g6.yaml` (the schema_on_write hook runs `test_criteria` on it). Pre-registration
-   walks ahead of data — `/pressure-test` β's gate is locked before discovery closes.
+1. **Lock-ahead G6 (write-once).** Before G5 can pass, β's gate criteria must already be locked:
+   `uv run scripts/lock_criteria.py --slug <slug> --gate g6` (write-once; `--force` only to re-register; the
+   schema_on_write hook runs `test_criteria` on the result). Pre-registration walks ahead of data —
+   `/pressure-test` β's gate is locked before discovery closes.
 2. **STATE.** Flip this step's `owner: agent` checklist items to `done: true` and set `next_action` to
    *"run /pressure-test --beta for step 6"*. Do not touch `gates:`, `owner`, or `interview_budget`
    (agent-writable fields are `status / next_action / step_checklist / deltas_pending` only).

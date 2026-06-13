@@ -159,7 +159,7 @@ flip the step-8 checklist item to `done: true`.
 
 ### Step 9 — Close G8 + route
 ```bash
-uv run scripts/advance_gate.py --slug <slug> --gate g8 --result <GO|NO-GO> --attest <g8 human criterion id>
+uv run scripts/advance_gate.py --slug <slug> --gate g8 --result <GO|NO-GO> --attest g8-2
 ```
 It enforces the brief validator + lock-ahead (criteria-g9 locked) and advances to step 9.
 - **GO** → *"Startup brief stamped GO. Next: `/build-poc <slug>` — it consumes the PoC Brief and scores

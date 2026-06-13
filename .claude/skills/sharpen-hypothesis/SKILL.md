@@ -3,7 +3,7 @@ name: sharpen-hypothesis
 description: |
   Second Idea-Stage stage: sharpen a chosen idea into a TESTABLE problem hypothesis (who, how-often, how-severe, status-quo) + lean value/growth hypotheses. Interactive, no web research (a hypothesis is to TEST, not prove). Use for "sharpen my hypothesis", "make my idea testable", "what's next".
 when_to_use: |
-  Gate: a scaffolded idea exists but no hypothesis.md yet. Not arguing against the idea (/disconfirm) or sizing it (/market-map).
+  Gate: a scaffolded idea exists but no hypothesis.md yet. Not arguing against the idea (/pressure-test) or sizing it (/market-sizing).
 argument-hint: "[slug]"
 allowed-tools: Read, Glob, Write, AskUserQuestion
 effort: high
@@ -14,7 +14,7 @@ effort: high
 Turn the picked idea into a testable hypothesis. **Founder-aware and interactive:** the skill drafts, you
 refine with your domain knowledge, and everything stays **"provisional, to-be-tested."** **No web
 research** — sharpening makes a claim *specific and falsifiable*; the truth is tested by real users later
-(`market-map` grounds it, the interviews validate it). Researching to "prove" it here would manufacture
+(`kill-scan`'s demand-scan grounds it, the interviews validate it). Researching to "prove" it here would manufacture
 false certainty — the loss-of-objectivity trap.
 
 ## When this applies
@@ -52,11 +52,15 @@ hypotheses.
 ## Output
 
 `ideas/<slug>/hypothesis.md` (`assets/hypothesis-template.md` — its 5 `##` sections match the
-validator). Then **close the step**: the founder signs the dimensions as their own testimony (G2's
-`check: human` criterion, g2-4) and you run
-`uv run scripts/advance_gate.py --slug <slug> --gate g2 --attest g2-4` — which validates the file
-(`test_hypothesis`), confirms lock-ahead, records G2 in `STATE.md`, and advances to **step 3
-(kill-scan)**. Never hand-edit the `gates:` block. Next: `/kill-scan`.
+validator). Then **close the step**:
+
+- **Lock-ahead G3 (write-once).** Before G2 can pass, the next gate's criteria must already be locked:
+  `uv run scripts/lock_criteria.py --slug <slug> --gate g3` (write-once; `--force` only to re-register).
+- **Sign + advance.** The founder signs the dimensions as their own testimony (G2's `check: human`
+  criterion, g2-4) and you run
+  `uv run scripts/advance_gate.py --slug <slug> --gate g2 --attest g2-4` — which validates the file
+  (`test_hypothesis`), confirms lock-ahead, records G2 in `STATE.md`, and advances to **step 3
+  (kill-scan)**. Never hand-edit the `gates:` block. Next: `/kill-scan`.
 
 ## References
 
