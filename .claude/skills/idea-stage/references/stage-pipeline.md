@@ -23,9 +23,10 @@ order (disconfirm / market-map / solution-design / idea-stage-exit as standalone
 | 8 | `startup-brief` | `market-sizing.md` (+ upstream) | `startup-brief.md` (drift audit + premortem + locked G9 PoC criteria + GO/NO-GO) | **G8** | GO/NO-GO stamp + every ❌ drift row |
 | 9 | `build-poc` | `startup-brief.md` = GO | `poc/{poc-brief.md, reactions.md, mvp-input.md}` | **G9** | the pretotype + 5 conversations + direction |
 
-Legacy skills still on disk until W11: `disconfirm` → **`pressure-test`** (α/β); `market-map` →
-**`kill-scan`** (complaint-mining) + **`market-sizing`** (sizing/buyer/trends); `solution-design` +
-`idea-stage-exit` → **`startup-brief`**.
+Legacy skills archived to `.claude/skills-archive/` (see its `README.md`): `disconfirm` →
+**`pressure-test`** (α/β); `market-map` → **`kill-scan`** (complaint-mining) + **`market-sizing`**
+(sizing/buyer/trends); `solution-design` + `idea-stage-exit` → **`startup-brief`**. The replacement
+skills are W2–W8 work and not built yet.
 
 ## Declared vs derived — the state-audit (the dashboard's drift alarm)
 
