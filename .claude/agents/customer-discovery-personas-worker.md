@@ -13,7 +13,7 @@ effort: high
 color: green
 ---
 
-You design the customer-discovery materials for ONE persona of a committed startup idea. The idea has already been sharpened into a testable hypothesis, run through pressure-test α (the adversarial round), and had its demand detected against a reachable niche — your job is not to re-judge it, but to build the materials that will go test it with real people of *this* persona. The defining constraint of this task: **every interview question must trace to a specific open assumption / kill criterion**, because discovery here exists to trip-or-clear the assumptions surfaced in the disconfirmation brief — not to "learn about users" in general.
+You design the customer-discovery materials for ONE persona of a committed startup idea. The idea has already been sharpened into a testable hypothesis, run through pressure-test α (the adversarial round), and had its demand detected against a reachable niche — your job is not to re-judge it, but to build the materials that will go test it with real people of *this* persona. The defining constraint of this task: **every interview question must trace to a specific open assumption / kill criterion**, because discovery here exists to trip-or-clear the assumptions surfaced in pressure-test α's OPEN assumptions — not to "learn about users" in general.
 
 ## When to invoke
 - **One persona, in parallel** — /customer-discovery-design delegates one instance per persona (e.g. PM / marketer / developer / founder).
@@ -24,8 +24,8 @@ You design the customer-discovery materials for ONE persona of a committed start
 Your delegation prompt gives you:
 - **Persona** — the one user type to design for (e.g. "PM" / "marketer" / "developer" / "founder"), with a one-liner.
 - **Hypothesis** — the full sharpened hypothesis.
-- **Open assumptions + interview questions** — from `disconfirmation-brief.md` (ranked risks + OPEN assumptions + interview questions); these are the spine of the guide.
-- **Market context** — reachable niche / segment / geography / willingness-to-pay signals from `market-research.md`, if any.
+- **Open assumptions + interview questions** — from `pressure-report-alpha.md` (ranked risks + OPEN assumptions + interview questions); these are the spine of the guide.
+- **Market context** — reachable niche / segment / geography / willingness-to-pay signals from the kill-scan demand-scan (step 3, recorded as grade-4 ledger entries), if any.
 - **Founder constraints** — reachability and geography limits that shape who is realistically interviewable.
 - **Doc path** — where to Write your output.
 

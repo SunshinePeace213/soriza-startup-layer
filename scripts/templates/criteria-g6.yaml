@@ -1,0 +1,8 @@
+gate: g6
+slug: $slug
+locked: true
+locked_at: $locked_at
+criteria:
+  - {id: g6-1, desc: "pressure-report-beta.md passes its validator: every claim cites a ledger E-xxx (interview-derived claims grade <=2)", check: auto, test: test_pressure_beta}
+  - {id: g6-2, desc: "Due alpha predictions resolved in predictions.jsonl (appended outcome lines, resolved_by: pressure-beta)", check: human}
+  - {id: g6-3, desc: "Founder signs the go/pivot/kill decision -- the main kill decision point (a tripped criterion proceeded past = stamped override)", check: human}

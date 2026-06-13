@@ -24,12 +24,12 @@ sealed: true
 | # | Link | Their words (verbatim) | Drafted reply / DM (you post this from your account) |
 |---|---|---|---|
 
-## Mom-Test interview guide (built from the Brief's OPEN assumptions)
+## Mom-Test interview guide (built from pressure-test α's OPEN assumptions)
 
 > Past behaviour, not future intentions. No "would you use…"; yes "tell me about the last time you…".
 
 1. <opening — the last time they hit this problem>
-2. <one past-behaviour question per OPEN assumption from the Disconfirmation Brief>
+2. <one past-behaviour question per OPEN assumption from pressure-report-alpha.md>
 3. …
 - **Follow-up probes** for the 2–3 likely deflection points: <…>
 - (Separate question set per persona if the hypothesis has more than one.)
@@ -46,5 +46,5 @@ sealed: true
 ---
 
 **Nothing in this pack has been sent or posted.** You post the warm replies from your own account; Cowork
-sends the cold email + schedules calls on your per-batch approval. The kill-criteria are locked in
+sends the cold email + schedules calls on your per-batch approval. The kill-criteria were locked at G4 in
 `kill-criteria.json` — never softened after data.

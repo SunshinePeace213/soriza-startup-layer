@@ -1,0 +1,9 @@
+gate: g5
+slug: $slug
+locked: true
+locked_at: $locked_at
+criteria:
+  - {id: g5-1, desc: "customer-discovery.md (the Discovery Read) passes its validator: a CONTINUE/PIVOT/KILL/KEEP-DISCOVERING verdict + Kill-Criteria Scorecard + two-list evidence + Bias-check section + grade-<=2 ledger (E-xxx) citations", check: auto, test: test_synthesis}
+  - {id: g5-2, desc: ">=5 real interviews logged in customer-discovery/interviews/ and scored against the LOCKED kill-criteria this round", check: human}
+  - {id: g5-3, desc: "interview_budget intact (used <= total); an overrun is a stamped founder override", check: human}
+  - {id: g5-4, desc: "Founder has read the Discovery Read -- every TRIPPED criterion and the independent bias-check -- and signs proceed", check: human}

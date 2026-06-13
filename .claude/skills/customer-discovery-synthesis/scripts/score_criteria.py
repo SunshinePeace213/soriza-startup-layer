@@ -5,9 +5,9 @@
 # ///
 """Score customer-discovery interview evidence against LOCKED kill-criteria thresholds.
 
-Deterministic implementation of /customer-discovery Step S3. Bundled so the thresholds
-the founder pre-registered from the funnel's Disconfirmation Brief (OPEN assumptions +
-interview questions, encoded once into kill-criteria.json) are applied mechanically — the
+Deterministic implementation of /customer-discovery-synthesis Step S4. Bundled so the
+thresholds pre-registered at G4 from /pressure-test α's pressure-report (OPEN assumptions +
+interview questions, locked once into kill-criteria.json) are applied mechanically — the
 model tags each interview (reasoning), the script applies the threshold (arithmetic), and a
 criterion can't be quietly soft-pedaled by eye to keep an idea alive. Same write-once,
 never-soften discipline (Thariq Tip 8).
@@ -19,12 +19,12 @@ soft judgment, made downstream from this output.
 Usage:
   python3 score_criteria.py <kill_criteria.json> <scoring.json>
 
-kill_criteria.json (written once in Step S0, never edited after data exists):
+kill_criteria.json (locked at G4 by /pressure-test α, never edited after data exists):
   {
     "slug": "...", "locked_on": "YYYY-MM-DD",
     "criteria": [
       {"id": "wtp-against-free", "label": "No willingness-to-pay against free",
-       "source": "disconfirmation-brief.md open assumption #1",
+       "source": "pressure-report-alpha.md open assumption #1",
        "type": "support_proportion", "field": "ever_paid_comparable",
        "clear_at": 0.20, "trip_below": 0.10, "min_n": 8},
       {"id": "fomo-not-need", "label": "Behaviour is FOMO, not need",
