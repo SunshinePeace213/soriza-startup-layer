@@ -2,7 +2,7 @@
 stage: build-poc
 status: scoped   # scoped | built | synthesized
 archetype: functional   # video | concierge | wizard-of-oz | functional
-direction:   # set at synthesize: keep | pivot | redraw
+direction:   # set at synthesize (G9 result): keep | pivot | kill
 ---
 
 # PoC Brief — <slug>
@@ -30,9 +30,12 @@ win if it answers the question.)
 - **Who** (from the validated profile): <…>
 - **Reaction rubric — what to watch:** do they *get* it · do they *want* it · would they pay / switch ·
   where do they stumble.
+- **Scored against the locked G9 criteria** (`gates/criteria-g9.yaml`): each conversation must produce the
+  signal a pre-registered criterion needs — name which criterion each rubric line maps to.
 
 ---
 
-*Filled at the synthesize phase:* `reactions.md` (the 5-user synthesis + the direction decision —
-keep-building / pivot / back-to-the-drawing-board) and `mvp-input.md` (what the next layer should lock as
-the MVP scope). build-poc produces the input; the MVP layer locks the scope.
+*Filled at the synthesize phase:* `reactions.md` (the 5-user synthesis + the G9 scorecard + the direction
+decision — keep-building / pivot / kill) and `mvp-input.md` (what the next layer should lock as the MVP
+scope). build-poc produces the input; the MVP layer locks the scope. Close G9 via
+`scripts/advance_gate.py --gate g9 --result <keep|pivot|kill> --attest <criterion ids>`.
