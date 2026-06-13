@@ -55,11 +55,13 @@ def test_unmapped_artifact_is_noop(tmp_path, run_hook):
 
 
 def test_unshipped_validator_is_noop(tmp_path, run_hook):
-    # kill-scan.md maps to test_killscan, which has not shipped yet (validator-first):
-    # a write must NOT be blocked just because its validator does not exist yet
-    p = tmp_path / "ideas" / "slug" / "kill-scan.md"
+    # pressure-report-alpha.md maps to test_pressure (the α validator), not shipped yet
+    # (validator-first): a write must NOT be blocked just because its validator does not exist yet.
+    # (kill-scan.md was the example until its test_killscan validator shipped; swapped to a
+    # still-unshipped target so the test keeps asserting the no-op branch.)
+    p = tmp_path / "ideas" / "slug" / "pressure-report-alpha.md"
     p.parent.mkdir(parents=True)
-    p.write_text("# kill-scan\nnonsense that no validator checks yet")
+    p.write_text("# pressure-report-alpha\nnonsense that no validator checks yet")
     r = run_hook("schema_on_write.py", _payload(p))
     assert r.returncode == 0, r.stderr
 
