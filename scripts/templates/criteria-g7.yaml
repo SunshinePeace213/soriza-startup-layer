@@ -1,0 +1,8 @@
+gate: g7
+slug: $slug
+locked: true
+locked_at: $locked_at
+criteria:
+  - {id: g7-1, desc: "market-sizing.md passes its validator: bottom-up TAM/SAM/SOM with the inflation flag, buyer landscape, 3 scored trends, analogues, and the moat/distribution read", check: auto, test: test_sizing}
+  # G7 is read-only: size NEVER kills (ref §2 step 7 / §2.11). The completeness check IS the gate;
+  # there is no founder verdict to sign -- market-sizing closes it with a bare `advance_gate --gate g7`.

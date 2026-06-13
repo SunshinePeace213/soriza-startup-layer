@@ -109,8 +109,9 @@ within each round, fan out in parallel.
    estimate.
 7. **Lock the G5 kill-criteria (lock-ahead).** From the top-ranked OPEN assumptions, derive the
    pre-registered kill-criteria discovery will score against (concrete thresholds + resolution source);
-   write `customer-discovery/kill-criteria.json` (write-once) and ensure `gates/criteria-g5.yaml` is
-   locked. These are never softened after data — that is the whole point of pre-registration.
+   write `customer-discovery/kill-criteria.json` (write-once), then lock the gate criteria:
+   `uv run scripts/lock_criteria.py --slug <slug> --gate g5` (write-once; `--force` only to re-register).
+   These are never softened after data — that is the whole point of pre-registration.
 8. **Close G4.** The founder reads every `change_my_mind`, then signs. Run
    `uv run scripts/advance_gate.py --slug <slug> --gate g4 --result proceed --p-agg <p_agg> --attest g4-5`
    — it enforces the triple lock (report validator + predictions + lock-ahead) and advances to step 5.
@@ -133,6 +134,8 @@ G6 (the main kill decision).
 - **Resolve due α predictions.** For each `predictions.jsonl` entry from g4 whose `resolution_criteria`
   the Discovery Read now answers, append a supplement line (same `id`, `resolved` date, `outcome`,
   `brier`, `resolved_by: pressure-beta`).
+- **Lock-ahead G7 (write-once).** Before G6 can pass, market-sizing's gate criteria must already be
+  locked: `uv run scripts/lock_criteria.py --slug <slug> --gate g7`.
 - **Close G6.** `uv run scripts/advance_gate.py --slug <slug> --gate g6 --result <go|pivot|kill>
   --p-agg <p_agg> --attest <g6 human criterion>`. NO-GO routes per the gate table (pivot → step 2;
   keep-discovering → more interviews; drop → promote another slate idea).

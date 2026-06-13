@@ -52,11 +52,15 @@ hypotheses.
 ## Output
 
 `ideas/<slug>/hypothesis.md` (`assets/hypothesis-template.md` — its 5 `##` sections match the
-validator). Then **close the step**: the founder signs the dimensions as their own testimony (G2's
-`check: human` criterion, g2-4) and you run
-`uv run scripts/advance_gate.py --slug <slug> --gate g2 --attest g2-4` — which validates the file
-(`test_hypothesis`), confirms lock-ahead, records G2 in `STATE.md`, and advances to **step 3
-(kill-scan)**. Never hand-edit the `gates:` block. Next: `/kill-scan`.
+validator). Then **close the step**:
+
+- **Lock-ahead G3 (write-once).** Before G2 can pass, the next gate's criteria must already be locked:
+  `uv run scripts/lock_criteria.py --slug <slug> --gate g3` (write-once; `--force` only to re-register).
+- **Sign + advance.** The founder signs the dimensions as their own testimony (G2's `check: human`
+  criterion, g2-4) and you run
+  `uv run scripts/advance_gate.py --slug <slug> --gate g2 --attest g2-4` — which validates the file
+  (`test_hypothesis`), confirms lock-ahead, records G2 in `STATE.md`, and advances to **step 3
+  (kill-scan)**. Never hand-edit the `gates:` block. Next: `/kill-scan`.
 
 ## References
 

@@ -91,7 +91,7 @@ and append a `## Round <N>` section) · **Skip** (print the existing Decision li
 ### Step 3 — Build the delta ledger + reconstruct the validated baseline
 Create `ideas/<slug>/startup-brief/` first. Run the ledger script:
 ```bash
-uv run "${CLAUDE_SKILL_DIR}/scripts/build_delta_ledger.py" ideas/<slug>
+uv run scripts/build_delta_ledger.py ideas/<slug>
 ```
 Write its JSON to `startup-brief/delta-ledger.md`. Then reconstruct the **validated baseline** (hypothesis
 dimensions with each accumulated delta applied) → `startup-brief/validated-baseline.md`. This baseline,
@@ -159,7 +159,7 @@ flip the step-8 checklist item to `done: true`.
 
 ### Step 9 — Close G8 + route
 ```bash
-uv run scripts/advance_gate.py --slug <slug> --gate g8 --result <GO|NO-GO> --attest <g8 human criterion id>
+uv run scripts/advance_gate.py --slug <slug> --gate g8 --result <GO|NO-GO> --attest g8-2
 ```
 It enforces the brief validator + lock-ahead (criteria-g9 locked) and advances to step 9.
 - **GO** → *"Startup brief stamped GO. Next: `/build-poc <slug>` — it consumes the PoC Brief and scores

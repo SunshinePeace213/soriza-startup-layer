@@ -47,7 +47,7 @@ The first branch above is **orthogonal** to skill/command/subagent, not a fifth 
 exclusive box. A dynamic workflow (`Workflow` tool) writes a JS harness that fans out subagents
 deterministically; it runs headless and returns a value, so it's almost never what the user
 invokes directly. The build target is normally *a saved workflow plus a thin trigger skill*
-(the `/idea-funnel` → `idea-funnel-engine.js` pattern), or a skill that emits an ad-hoc
+(the `/artifact-eval` → `artifact-eval.js` pattern), or a skill that emits an ad-hoc
 workflow at runtime.
 
 Reach for one **only when fan-out is load-bearing** — a correctness requirement, not "there's

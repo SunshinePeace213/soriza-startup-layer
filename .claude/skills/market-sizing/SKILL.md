@@ -75,9 +75,11 @@ is no verdict to sign; G7 is a completeness check.
    founder reach + own this niche — the #1 risk), and "what this means" (rank inputs + new interview
    questions). Cite `E-xxx` for every web fact. `schema_on_write` runs `test_sizing` on save — fix and
    rewrite on any stderr feedback.
-5. **Close G7 (read-only).** `uv run scripts/advance_gate.py --slug <slug> --gate g7` — the `test_sizing`
-   completeness check is the gate, and lock-ahead requires `gates/criteria-g8.yaml` to be locked. The
-   founder reads the context; **there is no verdict to sign.** Next: `/startup-brief <slug>`.
+5. **Lock-ahead G8 (write-once).** Before G7 can pass, the startup-brief's gate criteria must already be
+   locked: `uv run scripts/lock_criteria.py --slug <slug> --gate g8`.
+6. **Close G7 (read-only).** `uv run scripts/advance_gate.py --slug <slug> --gate g7` — the `test_sizing`
+   completeness check is the gate (lock-ahead now satisfied). The founder reads the context; **there is
+   no verdict to sign.** Next: `/startup-brief <slug>`.
 
 ## Workers, references & assets
 

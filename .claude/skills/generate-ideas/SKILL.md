@@ -47,6 +47,9 @@ the picked idea into `ideas/<slug>/`.
   `predictions.jsonl`, `decision-log.md` with **DL-001 = why this idea**, and points `ideas/ACTIVE` at
   the slug. The other 9 cards stay in `slate.md` as a **dormant backlog** — re-run the scaffold
   (`new_idea.py`) on any of them later.
+- **Close G1 (the pick).** `uv run scripts/advance_gate.py --slug <slug> --gate g1` records the founder's
+  pick (referencing DL-001), confirms lock-ahead (`criteria-g2` locked), and advances `STATE.md` to
+  **step 2 (hypothesis)**. Never hand-edit the `gates:` block.
 
 ## Gotchas
 

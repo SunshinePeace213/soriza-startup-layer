@@ -1,0 +1,3 @@
+{"id":"p-001","slug":"hk-broker-recon","gate":"g4","date":"2026-07-01","persona":"munger","claim":">=3 of 10 interviewed brokers spent >=2h on manual reconciliation in the last 30 days","p":0.55,"resolution_criteria":"customer-discovery.md severity table","resolve_by":"2026-07-12","resolved":null,"outcome":null,"brier":null}
+{"id":"p-002","slug":"hk-broker-recon","gate":"g4","date":"2026-07-01","persona":"eisenmann","claim":">=1 broker commits money or a pilot in the first 5 interviews","p":0.35,"resolution_criteria":"evidence-ledger grade-1 commitment entries","resolve_by":"2026-07-12","resolved":null,"outcome":null,"brier":null}
+{"id":"p-001","resolved":"2026-07-11","outcome":true,"brier":0.2025,"resolved_by":"pressure-beta"}

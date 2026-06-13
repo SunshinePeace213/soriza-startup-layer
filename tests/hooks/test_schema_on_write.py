@@ -55,14 +55,16 @@ def test_unmapped_artifact_is_noop(tmp_path, run_hook):
 
 
 def test_unshipped_validator_is_noop(tmp_path, run_hook):
-    # pressure-report-alpha.md maps to test_pressure (the α validator), not shipped yet
-    # (validator-first): a write must NOT be blocked just because its validator does not exist yet.
-    # (kill-scan.md was the example until its test_killscan validator shipped; swapped to a
-    # still-unshipped target so the test keeps asserting the no-op branch.)
-    p = tmp_path / "ideas" / "slug" / "pressure-report-alpha.md"
+    # validator-first: an artifact that ROUTES to a validator which has not shipped in this tree must
+    # NOT block the write (no validator == no contract to enforce yet -- the vfile.exists() guard).
+    # Every FILEMAP validator now ships in the real repo, so this branch is dormant there; we exercise
+    # it deterministically by pointing cwd at a tree that has no tests/schemas/<validator>.py. (Earlier
+    # this test rode on a coincidentally-unshipped validator -- kill-scan, then pressure-alpha -- which
+    # had to be repointed every time one shipped; the simulated-tree form is stable.)
+    p = tmp_path / "ideas" / "slug" / "STATE.md"
     p.parent.mkdir(parents=True)
-    p.write_text("# pressure-report-alpha\nnonsense that no validator checks yet")
-    r = run_hook("schema_on_write.py", _payload(p))
+    p.write_text("anything -- STATE.md routes to test_state, absent from this tree")
+    r = run_hook("schema_on_write.py", _payload(p, cwd=tmp_path))  # cwd has no tests/schemas/
     assert r.returncode == 0, r.stderr
 
 

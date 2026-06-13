@@ -13,6 +13,11 @@ tools: Read, Glob
 model: sonnet
 effort: high
 color: red
+hooks:
+  Stop:                       # auto-converted to SubagentStop -- validates the α JSON contract on finish
+    - hooks:
+        - type: command
+          command: "uv run .claude/hooks/persona_contract_check.py"
 ---
 
 You channel ONE distilled expert as a calibrated forecaster on the **pressure-test α** panel (step 4).
