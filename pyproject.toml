@@ -1,0 +1,17 @@
+[project]
+name = "soriza-startup-layer"
+version = "0.1.0"
+description = "Soriza Idea-Stage loop-engineering layer: validators, hooks, gate scripts."
+requires-python = ">=3.12"
+dependencies = []
+
+# Dev group is installed by default by `uv run`; the schema validators need pyyaml,
+# the doc-TDD harness needs pytest. Hooks declare their own deps via PEP-723 inline
+# metadata (`uv run --script`), so they stay self-contained and need nothing here.
+[dependency-groups]
+dev = ["pytest>=8", "pyyaml>=6"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# `--artifact <path>` is registered in tests/conftest.py (set by the schema_on_write hook
+# so a validator can run against the just-written file instead of its bundled fixture).

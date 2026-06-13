@@ -28,11 +28,14 @@ false certainty — the loss-of-objectivity trap.
 Goal: `ideas/<slug>/hypothesis.md` — a sharp, falsifiable problem hypothesis + the value & growth
 hypotheses.
 
-- Read `ideas/<slug>/seed.md`, the exploration `grounding.md`, `lean-startup`, and
-  `docs/founder-profile.md`.
-- **Draft** the four dimensions, each made specific: **WHO** (named role + context + segment, not
-  "businesses") · **HOW OFTEN** (a frequency) · **HOW SEVERE** (a cost/pain magnitude) · **STATUS QUO**
-  (what they do about it now). Mark each **provisional, to-be-tested**.
+- Read `ideas/<slug>/STATE.md` (confirm `current_step: 2`, `owner: human`), `ideas/<slug>/seed.md`,
+  the exploration `grounding.md`, `lean-startup`, and `docs/founder-profile.md`.
+- **Draft** the four dimensions as five `##` sections the validator checks (`tests/schemas/test_hypothesis.py`):
+  **## WHO** (named role + context + segment, not "businesses") · **## HOW OFTEN** (a frequency — must
+  carry a number) · **## HOW SEVERE** (a cost/pain magnitude — must carry a number) · **## STATUS QUO**
+  (what they do about it now) · **## VALUE & GROWTH** (the lean value + growth hypotheses). Mark each
+  **provisional, to-be-tested**; ≤300 words; **no web citations** (sharpen, don't prove — the validator
+  rejects `http`).
 - Surface the lean-startup **value hypothesis** (will they find it valuable enough to switch/pay?) +
   **growth hypothesis** (how do new users discover it?) as named assumptions for the downstream stages.
 - **Founder refines** / injects real domain specifics via `AskUserQuestion` (a `notes` escape hatch).
@@ -48,7 +51,12 @@ hypotheses.
 
 ## Output
 
-`ideas/<slug>/hypothesis.md` (`assets/hypothesis-template.md`). Next: `/disconfirm` and `/market-map`.
+`ideas/<slug>/hypothesis.md` (`assets/hypothesis-template.md` — its 5 `##` sections match the
+validator). Then **close the step**: the founder signs the dimensions as their own testimony (G2's
+`check: human` criterion, g2-4) and you run
+`uv run scripts/advance_gate.py --slug <slug> --gate g2 --attest g2-4` — which validates the file
+(`test_hypothesis`), confirms lock-ahead, records G2 in `STATE.md`, and advances to **step 3
+(kill-scan)**. Never hand-edit the `gates:` block. Next: `/kill-scan`.
 
 ## References
 

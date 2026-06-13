@@ -11,20 +11,28 @@ growth_hypothesis: "<how do new customers discover it?>"
 
 # Hypothesis — <slug>
 
-**Testable sentence:** <who> experience <problem> <how often>, costing <how severe>, because they
-currently <status quo>.
+**Testable sentence (provisional, to-be-tested):** <who> experience <problem> <how often>, costing
+<how severe>, because they currently <status quo>.
 
-## The four dimensions — *provisional, to-be-tested*
+<!-- The 5 sections below ARE the validator's contract (tests/schemas/test_hypothesis.py):
+     all five present, each dimension a falsifiable claim, HOW OFTEN + HOW SEVERE each carry a
+     number, <=300 words, no web citations. Keep every claim flagged provisional. -->
 
-- **Who** — <named role + context + segment>
-- **How often** — <frequency>
-- **How severe** — <cost / pain magnitude>
-- **Status quo** — <what they do about it now>
+## WHO
+<named role + context + segment>. *Provisional.*
 
-## Value & growth hypotheses (assumptions the downstream stages test)
+## HOW OFTEN
+<frequency — include a number>. *Provisional.*
 
-- **Value hypothesis** — <will they switch / pay?>
-- **Growth hypothesis** — <how do new users find it?>
+## HOW SEVERE
+<cost / pain magnitude — include a number>. *Provisional, to-be-tested.*
+
+## STATUS QUO
+<what they do about it now>.
+
+## VALUE & GROWTH
+- **Value hypothesis** — <will they switch / pay?> *Provisional.*
+- **Growth hypothesis** — <how do new customers discover it?> *Provisional.*
 
 ## Founder refinements
 

@@ -1,0 +1,6 @@
+gate: g2
+slug: bad-criteria
+locked: false
+locked_at: 2026-06-13T15:27:21+08:00
+criteria:
+  - {id: g2-1, desc: "first criterion", check: maybe}
