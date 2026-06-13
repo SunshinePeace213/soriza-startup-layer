@@ -4,8 +4,7 @@
 
 #### 1. Pipeline Canon
 - **Stages**: Idea Stage = 9 steps: generate -> hypothesis -> kill-scan -> pressure-a ->
-  discovery (design / human interviews / synthesis) -> pressure-b -> sizing -> startup-brief -> PoC
-- **Spec**: step cards in `docs/loop-engineering-reference-en.md` SS2. The legacy stage order (disconfirm / market-map / solution-design / idea-stage-exit as standalone stages) is RETIRED -- see the migration table SS2.11
+discovery (design / human interviews / synthesis) -> pressure-b -> sizing -> startup-brief -> PoC
 
 #### 2. Write Rules (hook-enforced)
 - **Write path**: ONLY write inside `ideas/<ACTIVE>/` and `ideas/_exploration/`;
