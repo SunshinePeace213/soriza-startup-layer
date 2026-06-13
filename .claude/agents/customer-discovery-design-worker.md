@@ -6,7 +6,7 @@ description: |
   drafted replies/DMs), a Mom-Test interview guide built from the open assumptions, secondary
   cold-email drafts, and a tracking sheet. Warm-first. Drafts only — never sends or posts.
   Soft-stop: stops ONLY if there is no reachable audience at all. Reads the idea's hypothesis,
-  Disconfirmation Brief (open assumptions), and market-map research.
+  Disconfirmation Brief (open assumptions), and the market-research demand-scan.
 tools: Read, Glob, Write
 model: sonnet
 effort: high
