@@ -19,6 +19,10 @@ Lays down the state-layer scaffold for ONE idea slug:
         poc/                             # empty (.gitkeep)
     ideas/ACTIVE                         # <- slug (unless --no-active)
 
+The file contents come from scripts/templates/ (STATE.md, criteria-g2.yaml,
+decision-log.md); edit those to change what a scaffold looks like. They use
+$placeholder substitution (string.Template), so the YAML stays plain YAML.
+
 Constitution: this script writes `gates: {}` (empty) ONLY. Gate *results* are
 written exclusively by scripts/advance_gate.py (§3.4 / Hard Rule #6); the empty
 scaffold block is the one lawful exception (gates_guard.py allows a fresh STATE.md).
@@ -33,8 +37,10 @@ import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from string import Template
 
 HKT = timezone(timedelta(hours=8))  # founder is in HK; timestamps match the reference samples
+TEMPLATES = Path(__file__).resolve().parent / "templates"  # scripts/templates/
 
 
 def now_iso(seconds: bool = True) -> str:
@@ -82,42 +88,9 @@ def seed_oneliner(seed_path: Path) -> str:
     return ""
 
 
-STATE_TMPL = """---
-slug: {slug}
-schema_version: 2
-current_step: 1
-step_name: generate
-status: done
-owner: human
-interview_budget: {{total: 10, used: 0}}
-step_checklist:
-  - {{item: "Idea picked from slate; rationale recorded in decision-log (DL-001)", owner: human, done: true}}
-deltas_pending: []
-gates: {{}}
-next_action: "run /sharpen-hypothesis {slug}"
-blocking: null
-updated: {updated}
----
-{summary}
-"""
-
-CRITERIA_G2_TMPL = """gate: g2
-slug: {slug}
-locked: true
-locked_at: {locked_at}
-criteria:
-  - {{id: g2-1, desc: "hypothesis.md passes its validator: 5 sections (WHO / HOW OFTEN / HOW SEVERE / STATUS QUO / VALUE & GROWTH), <=300 words", check: auto, test: test_hypothesis}}
-  - {{id: g2-2, desc: "HOW OFTEN and HOW SEVERE each carry a number (forced specificity)", check: auto, test: test_hypothesis}}
-  - {{id: g2-3, desc: "No web citations in hypothesis.md (sharpen, don't prove)", check: auto, test: test_hypothesis}}
-  - {{id: g2-4, desc: "Founder injected the dimension specifics and signs the hypothesis as their own testimony", check: human}}
-"""
-
-DL_TMPL = """## DL-001 | {date} | g1 | pick
-- Source: scripts/new_idea.py (scaffold)
-- Verdict: idea selected from slate; folder scaffolded (STATE.md, gates/criteria-g2.yaml locked, ledgers opened)
-- Rationale: {reason}
-- Signed: Ringo
-"""
+def render(name: str, **fields: str) -> str:
+    """Fill scripts/templates/<name>'s $placeholders. Raises if a field is missing."""
+    return Template((TEMPLATES / name).read_text(encoding="utf-8")).substitute(**fields)
 
 
 def scaffold(slug: str, reason: str, set_active: bool, force: bool) -> None:
@@ -142,15 +115,15 @@ def scaffold(slug: str, reason: str, set_active: bool, force: bool) -> None:
     reason = reason or seed_oneliner(idea / "seed.md") or "(rationale pending -- fill in)"
 
     # 2) STATE.md  (gates: {} only)
-    state.write_text(STATE_TMPL.format(slug=slug, updated=now_iso(seconds=False), summary=reason), encoding="utf-8")
+    state.write_text(render("STATE.md", slug=slug, updated=now_iso(seconds=False), summary=reason), encoding="utf-8")
     # 3) gates/criteria-g2.yaml (locked immediately)
-    (idea / "gates" / "criteria-g2.yaml").write_text(CRITERIA_G2_TMPL.format(slug=slug, locked_at=now_iso()), encoding="utf-8")
+    (idea / "gates" / "criteria-g2.yaml").write_text(render("criteria-g2.yaml", slug=slug, locked_at=now_iso()), encoding="utf-8")
     # 4) empty ledgers + decision-log DL-001
     for ledger in ("evidence-ledger.jsonl", "predictions.jsonl"):
         (idea / ledger).touch()
     dl = idea / "decision-log.md"
     if not dl.exists() or force:
-        dl.write_text(DL_TMPL.format(date=today(), reason=reason), encoding="utf-8")
+        dl.write_text(render("decision-log.md", date=today(), reason=reason), encoding="utf-8")
     # 5) ACTIVE
     if set_active:
         (ideas / "ACTIVE").write_text(slug + "\n", encoding="utf-8")
