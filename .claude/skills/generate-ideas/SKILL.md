@@ -20,7 +20,7 @@ advisory; the founder chooses.
 - "Generate / brainstorm startup ideas", "expand `<thesis>` into ideas", "give me a slate", "which idea
   should I pursue?" — the kickoff of the Idea Stage, when no `ideas/<slug>/` exists yet.
 
-Out of scope: sharpening one chosen idea (`/sharpen-hypothesis`); deep market work (`/market-map`).
+Out of scope: sharpening one chosen idea (`/sharpen-hypothesis`); deep demand/market validation (downstream — `kill-scan`'s demand-scan in step 3, `market-sizing` in step 7).
 
 ## What it does (goal + constraints)
 
@@ -33,7 +33,7 @@ the picked idea into `ideas/<slug>/`.
   `docs/founder-profile.md`). Label each seed's track.
 - **Ground it.** Dispatch `startup-idea-researcher` for a grounding sweep (trends / demand / existing
   solutions → `ideas/_exploration/<thesis>/grounding.md`); dispatch `seed-generator` for the blind-wide
-  seeds. Tag each seed with an accurate `idea_type` (drives the disconfirm specialist).
+  seeds. Tag each seed with an accurate `idea_type` (drives the step-4 `pressure-test` expert-lens selection).
 - **Apply the doctrine.** Read `forward-deployed-founder` + `lean-startup`. **Flag any undifferentiated-
   SaaS seed** with *"what's your moat in the AI era?"*
 - **Recommend (advisory).** Name the suggested pick + reasoning, weighing demand signal + founder-fit +
