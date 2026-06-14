@@ -56,7 +56,7 @@ The 9-category framework in `references/skill-categories.md` is the first refere
 Decision rules at a glance:
 
 - **Artifact type** — see `references/decision-tree.md`. Skill (directory) is the default; subagent for context isolation / tool restrictions / memory; command (single-file) only for genuinely trivial cases.
-- **Dynamic workflow** — when the work smells like *orchestration* (deterministic fan-out, multi-stage pipeline, adversarial verification, scale beyond one context, loop-until-dry), see `references/dynamic-workflows.md`. It's an orthogonal layer usually fronted by a thin skill, not a fifth artifact type; the bar is high (fan-out must be load-bearing).
+- **Dynamic workflow** — when the work smells like *orchestration* (deterministic fan-out, multi-stage pipeline, adversarial verification, scale beyond one context, loop-until-dry), see `references/dynamic-workflows.md`. It's an orthogonal layer usually fronted by a thin skill, not a fifth artifact type. Two separate decisions: **recognizing** a workflow-shaped build request (migration, triage, ranking/sorting, deep research/verification, rule-checking, root-cause — see the recognition catalog) and surfacing the option with its cost is the *default*; the high bar (fan-out must be load-bearing) governs only whether the tool *fires*, not whether you raise it. Don't let the caution suppress the offer.
 - **Persona** — invoke `tech-company-personas` only when artifact quality depends on judgment (review/recommendation/voice) AND domain is tech-flavored. See `references/composition-rules.md`.
 - **Hooks** — see `references/hooks.md`. Add hooks when 3+ of these are yes: hard requirement independent of model behavior, verification against actual state needed, tool calls that must never happen, ships to others where you can't trust manual enforcement.
 
@@ -125,6 +125,7 @@ If the user explicitly asks for a refused pattern, explain the cost once and onl
 - [ ] Workflow gives goal + constraints (Tip 4)
 - [ ] Persona substitution complete (no placeholders left)
 - [ ] Hooks decision documented (added with rationale, or rationale for skipping)
+- [ ] If the build request is workflow-shaped (recognition-catalog match: migration / triage / ranking / deep research / verification / rule-checking / root-cause), the dynamic-workflow option was surfaced with its cost — not silently defaulted to inline (`references/dynamic-workflows.md`)
 - [ ] Scope explicit (what's in, what's out)
 - [ ] Output specification concrete (length, format, structure)
 - [ ] `description` field under 300 chars (keyword-dense, front-loaded triggers) and `description` + `when_to_use` within the 1,536-char hard cap — the listing eats shared per-session budget (Tip 6; see `references/skill-template.md` → "Description budget")
@@ -281,6 +282,7 @@ Tell the user:
 - What test cases were validated and outcomes
 - Whether description optimization ran, with before/after if so
 - Any opt-outs the user took
+- If the artifact bundles a workflow `.js` for distribution, note it ships as a *template to adapt*, not a verbatim script, and that `/loop` + `/goal` pair well with it for the repeatable rows (`references/dynamic-workflows.md` → "Shipping a workflow inside a skill")
 - Follow-ups worth considering (e.g., "no Gotchas section yet — add one the first time something bites")
 
 **Optional packaging (skill-only, if `present_files` tool available):**

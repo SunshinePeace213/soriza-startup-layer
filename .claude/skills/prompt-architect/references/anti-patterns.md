@@ -140,5 +140,6 @@ Two groups:
 - [ ] Bundled-script opportunities captured (Tip 8)
 - [ ] State persisted to `${CLAUDE_PLUGIN_DATA}` if state matters (Tip 7)
 - [ ] Per-installation setup uses the `config.json` pattern (Tip 5)
+- [ ] If the build request is workflow-shaped (recognition-catalog match), the dynamic-workflow option was surfaced with its cost rather than silently defaulted to inline (`dynamic-workflows.md`)
 
 If any check fails, fix it; then re-read the draft fresh to catch what the checklist missed.

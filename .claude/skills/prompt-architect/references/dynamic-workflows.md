@@ -7,6 +7,13 @@ authoritative authoring guide and is always in context the moment you'd write on
 is about the **decision** (is a workflow the right shape, and which shape), not about
 re-teaching `agent()`/`pipeline()`.
 
+*Dynamic* is the operative word: a **static** workflow (a hand-written `claude -p` or Agent-SDK
+harness) has to be generic enough for every input it will ever see, so it stays coarse; a
+**dynamic** one is written fresh for the task in front of it, so it can be exactly as specific as
+that task needs. That's the upgrade that makes the recognition catalog below worth acting on —
+and it's why prompt-architect retired its own `claude -p` eval loop in favour of the two saved
+workflows at the bottom of this file.
+
 ## The reframe — a workflow is an orchestration layer, not a 5th artifact type
 
 `decision-tree.md` routes here when the core of the work is *orchestration* (fan-out,
@@ -21,6 +28,37 @@ is normally **paired** with one of the other artifacts:
 "This should be a workflow" therefore answers a *different* question than "skill vs subagent" —
 it's orthogonal. The build target is usually *a saved workflow plus a thin trigger skill*, not
 "a workflow instead of a skill."
+
+## Recognize a workflow-shaped build request
+
+The bar below is stated in *mechanism* terms (deterministic fan-out, adversarial verification,
+scale, loop-until-dry, multi-stage pipeline). But a user rarely speaks mechanism — they describe
+a *job*. This catalog (the "harness for every task" article's use cases) is the bridge: when a
+build request sounds like a row here, a workflow is a live candidate, and the shape is half-chosen
+already. Most of these are even more valuable for **non-technical** work — sales post-mortems,
+résumé ranking, tearing a business plan apart — than for code.
+
+| Build request sounds like… | Shape it implies | Load-bearing signal that would justify it |
+|---|---|---|
+| "rename our `User` model to `Account` everywhere" / migrate a callsite class | discover sites → transform-per-site (worktree) → adversarially review → merge | scale beyond one context + per-item independence |
+| "research <topic> across many sources and give me a cited report" | fan-out searches → fetch → verify each claim → synthesize (the `/deep-research` shape) | deterministic fan-out + adversarial verify |
+| "verify every technical claim in this draft against the codebase" | extract claims → check each → verify the source's quality | deterministic fan-out + adversarial verify |
+| "rank these 200 support tickets by severity" / sort N items by a qualitative measure | pairwise-comparison tournament, or bucket-rank in parallel then merge | scale beyond one context (comparative judgment beats absolute scoring) |
+| "a reviewer that enforces our CLAUDE.md rules" / rules Claude keeps missing | one verifier agent per rule (+ a skeptic to cut false positives) | deterministic fan-out + independent perspectives |
+| "figure out why <X> broke" / sales dropped / the pipeline failed | hypotheses from *disjoint* evidence (logs / files / data) → panel of verifiers & refuters | independent perspectives (the structural fix for self-preferential bias) |
+| "a bot that triages our bug/support queue" | classify each → dedupe vs already-tracked → act, with a quarantine boundary | scale + loop-until-dry; pair with `/loop` to run continuously |
+| "explore design/naming directions and pick the best" | generate many → score against a rubric, or tournament-select | independent perspectives + loop-until-rubric-met |
+| "eval / refine this skill against a rubric" | with-artifact-vs-baseline per case → grade (prompt-architect's own Phase 5) | deterministic fan-out + adversarial verify |
+| "route each task to the cheapest model that can do it" | a classifier agent that researches complexity, then routes Sonnet vs Opus | classify-and-act (often light enough to stay rung 1–2) |
+
+**Quarantine** (the triage row) is a security pattern worth calling out: the agents that read
+untrusted public content are barred from high-privilege actions; a separate acting agent does
+those. Carry it into any triage/research workflow that ingests the open web.
+
+Recognizing the shape is the **generative** half — surface the workflow option and its cost
+rather than silently defaulting to inline. Whether the tool then *fires* is the conservative
+bar's call (next section): plenty of catalog matches are small enough to stay inline at rung 1.
+The two halves are separate decisions; don't let the bar's caution suppress the *offer*.
 
 ## The conservative bar — escalate from inline-spawn only when fan-out is load-bearing
 
@@ -106,6 +144,29 @@ meets the need:
 - **Gate at the boundary, not mid-run:** if a human decision is needed, return up to it and let
   the fronting skill handle it; don't try to pause a headless workflow.
 
+## Shipping a workflow inside a skill (the distribution case)
+
+When the build target is a *portable* skill that carries its own orchestration — not a workflow
+checked into one repo's `.claude/workflows/` — the workflow `.js` travels inside the skill folder
+(`<skill>/workflows/<name>.js`) and the SKILL.md points at it. This is prompt-architect's own
+domain (it builds shareable artifacts), and the Workflow tool description doesn't cover it because
+it's a *packaging* question, not an authoring one.
+
+- **Reference it with `${CLAUDE_SKILL_DIR}`** so the path resolves wherever the skill installs:
+  the body says `read ${CLAUDE_SKILL_DIR}/workflows/<name>.js`.
+- **Ship it as a *template*, not a script to run verbatim.** A bundled workflow can't anticipate
+  every caller's task the way a repo-local one can. So the SKILL.md should instruct Claude to
+  read the `.js` as a *starting shape* — adapt the agent prompts, stages, and schemas to the task
+  at hand, then run via `Workflow({script})` — rather than `Workflow({scriptPath})` it byte-for-byte.
+  The bundled file is the skeleton; the live task fills the variables. (prompt-architect's own
+  saved workflows are repo-local utilities called by name — the opposite case — so they're *not*
+  the model for this; a distributed skill wants the template framing.)
+- **Pair with `/loop` and `/goal` for the repeatable rows.** Triage, research, and verification
+  workflows are the catalog rows that recur: a fronting skill can note that `/loop` runs the
+  workflow on an interval (continuous triage) and `/goal` sets a hard completion gate
+  ("don't stop until no new findings"). Mention this in the skill's user-facing notes; don't bake
+  a fixed cadence into the workflow itself.
+
 ## Authoring — point at the spec and the live exemplars, don't duplicate
 
 The `Workflow` tool description already covers `agent()`, `parallel()`, `pipeline()`, schemas,
@@ -122,6 +183,17 @@ a load-bearing instance at a scale where inline is unreliable. For shape, read t
   The richest in-repo example.
 - `.claude/workflows/description-optimize.js` — a compact utility called by name from prompt-architect's
   body. Compact pipeline shape.
+
+Two article notes worth carrying into what you build:
+
+- **`ultracode` forces a workflow.** When a user puts "ultracode" in a prompt, Claude Code builds a
+  workflow rather than working inline (the Workflow tool's standing opt-in). It's the user's lever,
+  not yours to assume — but a fronting skill's user-facing notes can mention it as the way to
+  guarantee the orchestrated path.
+- **Quick workflows are legitimate.** A workflow needn't be a 30-agent epic; "a quick adversarial
+  review of one assumption" is a fine three-agent ad-hoc emit. The bar is about whether fan-out is
+  *load-bearing*, not whether it's *large* — a small load-bearing instance still earns a workflow
+  (often the cheapest rung that fires, rung 2), and a large-but-not-load-bearing one still doesn't.
 
 ## Validating a drafted workflow (lean — no eval pipeline)
 
