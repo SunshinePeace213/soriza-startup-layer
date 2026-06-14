@@ -1,5 +1,5 @@
 {
-  "autoMemoryEnabled": true,
+  "autoMemoryEnabled": false,
   "autoMemoryDirectory": "~/soriza-startup-layer/.claude/memory",
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
@@ -17,8 +17,8 @@
       {
         "matcher": "Write|Edit",
         "hooks": [
-          { "type": "command", "command": "uv run .claude/hooks/write_path_guard.py" },
-          { "type": "command", "if": "Edit(*STATE.md)|Write(*STATE.md)", "command": "uv run .claude/hooks/gates_guard.py" }
+          { "type": "command", "command": "uv run ${CLAUDE_PROJECT_DIR}/.claude/hooks/write_path_guard.py" },
+          { "type": "command", "if": "Edit(*STATE.md)|Write(*STATE.md)", "command": "uv run ${CLAUDE_PROJECT_DIR}/.claude/hooks/gates_guard.py" }
         ]
       }
     ],
@@ -26,20 +26,20 @@
       {
         "matcher": "Write|Edit",
         "hooks": [
-          { "type": "command", "command": "uv run .claude/hooks/schema_on_write.py" }
+          { "type": "command", "command": "uv run ${CLAUDE_PROJECT_DIR}/.claude/hooks/schema_on_write.py" }
         ]
       },
       {
         "matcher": "Write|Edit|Bash|Task",
         "hooks": [
-          { "type": "command", "command": "uv run .claude/hooks/run_log.py" }
+          { "type": "command", "command": "uv run ${CLAUDE_PROJECT_DIR}/.claude/hooks/run_log.py" }
         ]
       }
     ],
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "uv run .claude/hooks/stop_guard.py" }
+          { "type": "command", "command": "uv run ${CLAUDE_PROJECT_DIR}/.claude/hooks/stop_guard.py" }
         ]
       }
     ],
@@ -47,7 +47,7 @@
       {
         "matcher": "resume|compact",
         "hooks": [
-          { "type": "command", "command": "uv run .claude/hooks/resume_inject.py" }
+          { "type": "command", "command": "uv run ${CLAUDE_PROJECT_DIR}/.claude/hooks/resume_inject.py" }
         ]
       }
     ]
