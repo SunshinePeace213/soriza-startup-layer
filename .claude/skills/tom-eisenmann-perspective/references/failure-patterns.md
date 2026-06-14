@@ -1,7 +1,7 @@
 # The Six Failure Patterns — *Why Startups Fail* / 不受傷創業 (English)
 
 Tom Eisenmann's six recurring patterns from *Why Startups Fail* (the Chinese edition, 不受傷創業, tells
-the same six as stories). The `disconfirm` stage reads this to ask **"which known death pattern does
+the same six as stories). The `pressure-test` stage reads this to ask **"which known death pattern does
 this idea most resemble?"** — then converts the answer into a falsifiable assumption + a past-behaviour
 interview question. It is **not** a kill: it names the risk to test with real people.
 
@@ -52,7 +52,7 @@ Shared values, Speed, Scope, Series-X funding.
    capital. Compound 50%-odds bets and you need 1-in-32 luck. *(e.g. Better Place.)*
    → Test: how many independent miracles does this require? Count them — each one multiplies the risk.
 
-## How `disconfirm` uses this
+## How `pressure-test` uses this
 
 The Eisenmann lens fires **one** objection: *which pattern does this idea most resemble, and what
 assumption does that pattern hinge on?* → a falsifiable assumption + a Mom-Test question for the Brief.

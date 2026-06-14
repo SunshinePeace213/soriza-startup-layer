@@ -14,8 +14,8 @@ so a founder ships instead of learning. The cure is to keep the **learning ahead
 
 ## When this applies
 
-- **Inline-read by stages:** `sharpen-hypothesis` (value + growth hypotheses), `solution-design` (MVP
-  type + pivots), `idea-stage-exit` ("should we build?"), `build-poc` (the MVP-type chooser).
+- **Inline-read by stages:** `sharpen-hypothesis` (value + growth hypotheses), `startup-brief` (MVP
+  type + pivots; "should we build?"), `build-poc` (the MVP-type chooser).
 - **Standalone:** "what's the cheapest test of this?", "which MVP type?", "is that a vanity metric?",
   "should we pivot or persevere — and which pivot?", "what's my real runway?"
 
@@ -92,5 +92,5 @@ is MVP/Launch work. Flag it; don't build for it yet.
 
 The era's question is no longer "can we build it?" (you can) but **"should we?"** and **"can this become
 a sustainable business?"** Before committing to build, check the BML loop is aimed at a real, valuable,
-reachable problem — not at being productively busy on the wrong thing. `idea-stage-exit` runs this
-against the pre-registered kill-criteria.
+reachable problem — not at being productively busy on the wrong thing. `startup-brief` runs this
+against the locked kill-criteria.

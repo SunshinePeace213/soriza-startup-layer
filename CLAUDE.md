@@ -48,7 +48,7 @@ discovery (design / human interviews / synthesis) -> pressure-b -> sizing -> sta
 - **Gate-write bypass**: only `advance_gate.py` writes `gates:`; the file-tool path is denied
   (`gates_guard`) and a Bash-sed bypass is caught by `uv run scripts/ledger_audit.py` (three-way reconciliation)
 
-<!-- W11: legacy stage names retired in SS1 (done); deprecation redirect = .claude/hooks/deprecated_redirect.py (UserPromptExpansion) -->
+<!-- W11: legacy stage names retired in SS1; archive + deprecation-redirect hook removed in cleanup; replacements (kill-scan / pressure-test / market-sizing / startup-brief) are live -->
 
 <!-- ### Founder Background
 @docs/founder-profile.md -->

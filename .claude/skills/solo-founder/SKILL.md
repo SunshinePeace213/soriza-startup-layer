@@ -14,7 +14,7 @@ the wrong work.
 
 ## When this applies
 
-- **Inline-read by stages:** `solution-design` (is this scope a one-person job?), `build-poc` (scope the
+- **Inline-read by stages:** `startup-brief` (is this scope a one-person job?), `build-poc` (scope the
   build to what a solo founder can actually run).
 - **Standalone:** "should I build this or delegate/automate it?", "what should only I do?", "am I
   overextending?", "do I need a co-founder?"
@@ -46,7 +46,7 @@ solo, so spend your excellence budget where it matters.
 ## The solo failure modes (self-checks)
 
 - **Decision fatigue** — no partner to validate with. → Use structured devil's-advocates (the
-  `disconfirm` panel), pre-commit to kill-criteria *before* data, lean on advisors.
+  `pressure-test` panel), pre-commit to kill-criteria *before* data, lean on advisors.
 - **Isolation** — consequential calls made alone. → Peer/founder groups, advisors, masterminds.
 - **The skill-gap (usually GTM/sales/distribution)** — name your weakest area honestly. For this
   archetype it's almost always *distribution* → plug it deliberately (own a channel, hire a contractor,

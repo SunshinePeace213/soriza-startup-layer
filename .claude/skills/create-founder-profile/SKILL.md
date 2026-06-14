@@ -137,8 +137,9 @@ Founder-agnostic block to ensure is present:
 
 This project runs the Soriza Startup Layer — an Idea Stage taking a founder from many raw ideas
 to a validated solution concept and a lightweight PoC, as a founder-gated pipeline of skills:
-/generate-ideas → /sharpen-hypothesis → /disconfirm → /market-map → /customer-discovery-design →
-[human interviews] → /customer-discovery-synthesis → /solution-design → /idea-stage-exit → /build-poc
+/generate-ideas → /sharpen-hypothesis → /kill-scan → /pressure-test (α) → /customer-discovery-design →
+[human interviews] → /customer-discovery-synthesis → /pressure-test --beta → /market-sizing →
+/startup-brief → /build-poc
 (run /idea-stage anytime to see where each idea sits).
 
 The founder's context lives in two tiers: the lean summary imported below (loaded every session)

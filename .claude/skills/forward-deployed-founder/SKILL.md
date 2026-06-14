@@ -15,8 +15,8 @@ channel to reach them?**
 ## When this applies
 
 - **Inline-read by Idea-Stage stages:** `generate-ideas` (bias the slate + the recommendation),
-  `disconfirm` (the no-distribution / SaaS-dead objection), `market-map` (the moat/distribution read),
-  `solution-design` (does the concept own a workflow + a channel?).
+  `pressure-test` (the no-distribution / SaaS-dead objection), `market-sizing` (the moat/distribution read),
+  `startup-brief` (does the concept own a workflow + a channel?).
 - **Standalone:** "is this defensible?", "what's my moat?", "is this just another SaaS?", "how do I
   reach/own these customers?", "should I build this or find a customer first?"
 
@@ -109,7 +109,7 @@ real niche you can reach. The doctrine redirects the build; it never forbids it.
 - **generate-ideas** — prefer reachable-niche / business-builder / distribution-first wedges; flag any
   undifferentiated-SaaS seed with *"what's your moat in the AI era?"*; weight distribution as a
   first-class factor in the recommendation. (Don't hard-ban software — soft-but-strong steer.)
-- **disconfirm** — fire the strongest *no-distribution / commoditized-software* objection, then convert
+- **pressure-test** — fire the strongest *no-distribution / commoditized-software* objection, then convert
   it to a falsifiable assumption + a past-behaviour interview question.
-- **market-map** — produce the moat/distribution read alongside the demand and competitor work.
-- **solution-design** — check the concept owns a workflow *and* a channel, not just a feature.
+- **market-sizing** — produce the moat/distribution read alongside the sizing, buyer, and trends work.
+- **startup-brief** — check the concept owns a workflow *and* a channel, not just a feature.

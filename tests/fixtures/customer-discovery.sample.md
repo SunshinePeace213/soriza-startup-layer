@@ -1,7 +1,7 @@
 # Customer Discovery: hk-broker-recon
 
-> **This Read scores real interview evidence against the kill criteria pre-registered from the
-> disconfirmation-brief BEFORE collecting data. Thresholds are locked. n is small — read the caveats.
+> **This Read scores real interview evidence against the kill criteria pre-registered in the
+> G4-locked kill-criteria.json BEFORE collecting data. Thresholds are locked. n is small — read the caveats.
 > "They said they'd pay" is not willingness-to-pay; only behaviour counts.**
 
 ## Discovery Read — Round 1 (2026-06-10, n=9)
@@ -12,7 +12,7 @@ open question carried into Round 2.
 ## Kill-Criteria Scorecard
 *(Statuses verbatim from `scripts/score_criteria.py` against the locked `kill-criteria.json`.)*
 
-| Criterion (from disconfirmation-brief.md) | Threshold (LOCKED) | Evidence | n | Status |
+| Criterion (from kill-criteria.json) | Threshold (LOCKED) | Evidence | n | Status |
 |---|---|---|---|---|
 | Pain is recurring, not one-off | <30% recurring → trip | 7/9 reconcile every close | 9 | CLEARED |
 | Reconciling by hand today | <40% manual → trip | 8/9 do it in Excel by hand | 9 | CLEARED |

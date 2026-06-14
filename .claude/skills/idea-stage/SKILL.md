@@ -57,4 +57,4 @@ for a segment pivot); each pivot decrements runway.
   declared-vs-derived **state-audit**, the artifact→step derivation, the loop-back edges, and the
   handoff frontmatter fields. Read this to render the board.
 - `references/doctrine-map.md` — which doctrine skill each stage inline-reads.
-- `references/expert-lens-map.md` — the `disconfirm` persona panel (core-3 + specialist + steelman).
+- `references/expert-lens-map.md` — the `pressure-test` persona panel (core-3 + specialist + steelman).

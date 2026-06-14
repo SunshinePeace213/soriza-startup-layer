@@ -64,9 +64,12 @@ agent config).
 
 ## Still pending (reference §7.5–§7.6, component-scoped / later weeks)
 
-`persona_contract_check.py` (#W2, rides in persona-agent frontmatter, `Stop`→`SubagentStop`) and
-`deprecated_redirect.py` (#W11, `UserPromptExpansion` guard for retired command names). The full
+`persona_contract_check.py` (#W2, rides in persona-agent frontmatter, `Stop`→`SubagentStop`). The full
 settings sample is §7.3.
+
+> The `deprecated_redirect.py` (#W11) guard for retired command names was **removed** in the
+> skills-archive cleanup — the four legacy stage names are fully retired and the archive is deleted, so
+> the redirect bridge is no longer needed.
 
 ## schema_on_write routing note
 

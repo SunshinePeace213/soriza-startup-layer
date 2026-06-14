@@ -1,8 +1,8 @@
-# Expert lens map — the `disconfirm` persona panel (v3)
+# Expert lens map — the `pressure-test` persona panel (v3)
 
-`disconfirm` convenes a **bounded advisory board**, not the full 12-persona roster. The panel fires sharp
+`pressure-test` convenes a **bounded advisory board**, not the full 12-persona roster. The panel fires sharp
 disconfirming objections; **each objection becomes a falsifiable assumption + a Mom-Test interview
-question** for the Disconfirmation Brief. **Nothing here kills** — real users validate subjective merit.
+question** for the α pressure-report (`pressure-report-alpha.md`). **Nothing here kills** — real users validate subjective merit.
 
 ## The panel (what always fires + one rotating seat)
 
@@ -45,5 +45,5 @@ question** for the Disconfirmation Brief. **Nothing here kills** — real users 
 
 ## Workers
 
-`disconfirm` dispatches `objection-lens` (once per panel seat, in parallel, channelling the named
-`*-perspective` SKILL.md), `competitor-steelman`, and `disconfirmation-judge` (compiles the Brief).
+`pressure-test` dispatches `objection-lens` (once per panel seat, in parallel, channelling the named
+`*-perspective` SKILL.md), `competitor-steelman`, and `disconfirmation-judge` (compiles `pressure-report-alpha.md`).
