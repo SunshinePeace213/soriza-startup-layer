@@ -42,7 +42,9 @@ The delegation prompt gives you, for the one candidate:
 
 ## Process
 
-Build all six parts of the discovery pack:
+Build all seven parts of the discovery pack. **First read `references/outreach-methods.md`** (the outreach
+leverage ladder) and `references/mom-test.md` (interview discipline); if a path doesn't resolve, Glob for
+`**/customer-discovery-design/references/<name>.md`.
 
 1. **Target profile** — role · context · segment: the specific job titles, company types, seniority,
    and situation most likely to feel this problem acutely (derive from the hypothesis's "who").
@@ -54,15 +56,25 @@ Build all six parts of the discovery pack:
    Seed from the demand-scan findings; extend only with venues you can name plausibly.
    **If no reachable audience can be identified at all, soft-kill** (verdict `kill`, reachable `false`).
 
-3. **Warm list ★ (the priority channel — Option A)** — real people who **already publicly
+3. **Outreach strategy** — from `references/outreach-methods.md`, pick the **2–3 highest-leverage methods**
+   that fit this segment + the founder's situation (climb the ladder: flag-planting / warm intros >
+   go-to-them > cold; cold is the floor, not the goal). For each, name *why it fits this segment* and tag it
+   **Tier A** (the founder builds it — meetups, teaching, blogging, landing pages, warm-intro asks; **never
+   Cowork**) or **Tier B** (per-prospect drafts — warm replies the founder posts + cold emails Cowork sends,
+   gated). **Do not list the whole menu** — focus is the point. If a landing page is chosen, note that
+   signups are a **lead source for conversations, not validation** (a vanity metric — never enters
+   `customer-discovery.md` as evidence).
+
+4. **Warm list ★ (the priority channel — Tier B, warm-first)** — real people who **already publicly
    complained** about this problem. Pull from the demand-scan findings and the reachability map.
    Each entry: `{ link · their own words (the complaint, quoted) · drafted contextual reply/DM }`. The
-   reply/DM must reference *their* specific post in *their* words, add value or curiosity (not a pitch),
-   and invite a short conversation — Mom-Test in tone, no selling. These are **drafts the founder posts
-   themselves**; you never post. Aim for as many genuine warm threads as the mined complaints support;
-   never fabricate a person, a link, or a quote — if a complaint can't be sourced, leave it out.
+   reply/DM must reference *their* specific post in *their* words, be **V.F.W.P.A.-framed** (vision /
+   framing / weakness / pedestal / ask), add value or curiosity (not a pitch), and invite a short
+   conversation — Mom-Test in tone, no selling. These are **drafts the founder posts themselves**; you
+   never post. Aim for as many genuine warm threads as the mined complaints support; never fabricate a
+   person, a link, or a quote — if a complaint can't be sourced, leave it out.
 
-4. **Interview guide** — built **FROM the open assumptions** in pressure-report α: each
+5. **Interview guide** — built **FROM the open assumptions** in pressure-report α: each
    question exists to trip-or-clear a specific open assumption. Frame every question as **past
    behaviour** ("tell me about the last time…"), never future-hypothetical ("would you use…").
    **Mom-Test audited** — run the audit on your *own* questions and rewrite any that are leading,
@@ -70,16 +82,20 @@ Build all six parts of the discovery pack:
    questions that pattern-match the founder's hope; add 2–3 deflection probes for the moments most
    likely to draw a dodge. Map each question → the open assumption it tests.
 
-5. **Cold-email drafts (secondary)** — for named prospects who fit the profile but have **no warm
-   thread**. Personalized to role and context, short, each with a plain opt-out line. Secondary to the
-   warm list by design — drafts only, for Cowork's gated send.
+6. **Cold-email drafts (secondary, Tier B)** — for named prospects who fit the profile but have **no warm
+   thread**. **V.F.W.P.A.-framed** (vision / framing / weakness / pedestal / ask) — avoid the alarm-bell
+   openers ("thanks for agreeing to this interview", "can I get your opinion", "quick coffee"). Personalized
+   to role and context, short, each with a plain opt-out line. Secondary to the warm list by design — drafts
+   only, for Cowork's gated send.
 
-6. **Tracking sheet** — schema: `prospect · channel · status · follow-up · done` (one row per
+7. **Tracking sheet** — schema: `prospect · channel · status · follow-up · done` (one row per
    prospect/thread), so the founder can run the outreach and log responses.
 
 Then compose a **SEALED** run-pack at the output path — fully self-contained (a headless Cowork run
-can't see this repo): mission, target-profile, reachability map, the warm list, the interview guide,
-the cold-email drafts, the tracking-sheet schema, and the **boundary protocol**: warm-first ordering,
+can't see this repo): mission, target-profile, reachability map, the **outreach strategy (chosen 2–3
+methods, tagged Tier A/B)**, the warm list, the interview guide, the cold-email drafts, the tracking-sheet
+schema, and the **boundary protocol**: warm-first ordering, **Tier A channels the founder builds (never
+Cowork)**, 
 the **founder posts warm replies / community posts** (own account, platform rules), **Cowork sends
 email + schedules on per-batch founder approval** (~5–10/day ramp, opt-out line, auto-stop on
 bounces/complaints), scheduling windows, day-7 follow-up cadence, and the report-back contract.

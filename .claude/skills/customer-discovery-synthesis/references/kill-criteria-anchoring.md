@@ -37,7 +37,7 @@ Worked examples (for an `personalized-ai-digest`-style idea — use the founder'
 
 The non-negotiable framing rule: **query the relevant past, not the imagined future.** "Would you use…",
 "do you think you'd…", "how likely are you to…" all produce socially-desirable noise. "Tell me about the
-last time…" produces behaviour. (See `mom-test-audit.md`.)
+last time…" produces behaviour. (See `mom-test.md` in the `/customer-discovery-design` skill.)
 
 ## `kill-criteria.json` — the G4 lock (write-once)
 

@@ -166,6 +166,18 @@ its `source` (the interview file) and `added_by: agent`. Append only — never m
 correction is a new line carrying `"corrects":"E-xxx"`. These entries are what the Discovery Read cites and
 what `/pressure-test` β resolves against, so extract them before you draft.
 
+The interview notes follow the emoji legend in `/customer-discovery-design`'s `assets/interview-note-template.md`
+— read these emoji as extraction cues: **🤝 = commitment given (currency: time / reputation / cash) → a
+grade-1 ledger entry** (the strongest evidence; "would pay" is *not* 🤝 — only a real currency given up
+counts); **⚡ / 💰 = verbatim pain / price-anchor quotes → grade-2**; **➡️ = a booked next step
+(advancement)**; **🔥 = earlyvangelist** (surface these by name in the Read — they're the candidate first
+customers). A founder's note may not use the emoji — extract the same signals from the prose regardless.
+
+- **Landing-page signups are NOT evidence.** If a note or tracking sheet reports landing-page/waitlist
+  signups, treat them as a *lead source for conversations*, never validation — a signup count is a vanity
+  metric with no ledger grade. Do not append it to the ledger or cite it in the Read; only behaviour in the
+  actual conversations counts.
+
 #### Step S3 — Tag the interviews
 
 For each interview, extract the per-criterion signal each kill criterion needs (e.g. for "willingness-to-pay
