@@ -146,4 +146,4 @@ G6 (the main kill decision).
   `disconfirmation-judge` (compiles the ranked OPEN assumptions).
 - **Panel roster:** `.claude/skills/idea-stage/references/expert-lens-map.md`.
 - **Templates:** `assets/pressure-report-alpha-template.md`, `assets/pressure-report-beta-template.md`.
-- **Spec:** `docs/loop-engineering-reference-en.md` §2 (steps 4 & 6), §3.5 (predictions protocol).
+- **Spec:** `.claude/skills/idea-stage/references/stage-pipeline.md` (steps 4 & 6).

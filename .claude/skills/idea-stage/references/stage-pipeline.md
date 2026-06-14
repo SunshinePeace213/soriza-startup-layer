@@ -5,9 +5,9 @@ step's end.** Each step is its own founder-gated skill; the founder advances bet
 **declared** in `ideas/<slug>/STATE.md` (machine-readable) AND **derived live** from which artifacts
 exist — the dashboard renders both and alarms on drift (see *State-audit* below).
 
-Spec: `docs/loop-engineering-reference-en.md` §2 (step cards) + §3 (state layer). The legacy stage
+This reference is the canonical pipeline spec (step cards + state layer). The legacy stage
 order (disconfirm / market-map / solution-design / idea-stage-exit as standalone stages) is **RETIRED**
-— absorbed into the steps below (migration table §2.11).
+— absorbed into the steps below (see *Legacy skills retired* below).
 
 ## The steps
 
@@ -23,7 +23,7 @@ order (disconfirm / market-map / solution-design / idea-stage-exit as standalone
 | 8 | `startup-brief` | `market-sizing.md` (+ upstream) | `startup-brief.md` (drift audit + premortem + locked G9 PoC criteria + GO/NO-GO) | **G8** | GO/NO-GO stamp + every ❌ drift row |
 | 9 | `build-poc` | `startup-brief.md` = GO | `poc/{poc-brief.md, reactions.md, mvp-input.md}` | **G9** | the pretotype + 5 conversations + direction |
 
-Legacy skills retired and removed (migration table §2.11): `disconfirm` →
+Legacy skills retired and removed: `disconfirm` →
 **`pressure-test`** (α/β); `market-map` → **`kill-scan`** (complaint-mining) + **`market-sizing`**
 (sizing/buyer/trends); `solution-design` + `idea-stage-exit` → **`startup-brief`**. All four
 replacement skills are live.

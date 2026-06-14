@@ -1,10 +1,9 @@
 ## Soriza Startup Layer
 
-### Pipeline Constitution
+### Idea Stage
 
 #### 1. Pipeline Canon
-- **Stages**: Idea Stage = 9 steps: generate -> hypothesis -> kill-scan -> pressure-a ->
-discovery (design / human interviews / synthesis) -> pressure-b -> sizing -> startup-brief -> PoC
+- **Idea Stage = 9 founder-gated steps**: generate -> hypothesis -> kill-scan -> pressure-α -> discovery (design / human interviews / synthesis) -> pressure-β -> sizing -> startup-brief -> PoC
 
 #### 2. Write Rules (hook-enforced)
 - **Write path**: ONLY write inside `ideas/<ACTIVE>/` and `ideas/_exploration/`;
@@ -31,14 +30,15 @@ discovery (design / human interviews / synthesis) -> pressure-b -> sizing -> sta
 #### 5. Tooling & Runtime
 - **Python**: Always `uv` (`uv run scripts/...`, `uv run pytest`) -- inherits global CLAUDE.md; never restated here beyond this pointer
 - **Paths**: schemas `tests/schemas/` | gate script `scripts/advance_gate.py` |
-  agents `.claude/agents/` | reference `docs/loop-engineering-reference-en.md`
+  agents `.claude/agents/` | workflow doctrine `/idea-stage` (+ `references/stage-pipeline.md`)
 
 #### 6. Two-Round Protocol (pressure-test α/β)
-- **Independent round is sacred**: every panel seat reads ONLY `neutral-brief.md` + `evidence-ledger.jsonl`;
-  NEVER a sibling's verdict before the cross-examination round (`objection-lens` holds no spawn tool;
-  SubagentStop validates each seat's JSON before the judge sees it — hook-enforced)
-- **Cross-exam revisions**: a seat may revise `p_success` ONLY with a `revision_note` -> never a silent overwrite
-- **Spec**: reference SS2 step 4 / SS10; the canary guards the isolation config (`tests/schemas/test_canary_isolation.py`)
+- **Panel isolation is sacred** (hook-enforced): every seat reads ONLY `neutral-brief.md` +
+  `evidence-ledger.jsonl`; NEVER a sibling's verdict before the cross-examination round
+  (`objection-lens` holds no spawn tool; `SubagentStop` validates each seat's JSON before the judge
+  sees it). A seat may revise `p_success` ONLY with a `revision_note` -> never a silent overwrite.
+  Full protocol: `/idea-stage` + `references/expert-lens-map.md`; the canary guards the isolation
+  config (`tests/schemas/test_canary_isolation.py`).
 
 #### 7. Hook Behaviour
 - **Stop blocks**: the `Stop` hook refuses to end the turn while any `owner: agent` `step_checklist`
@@ -47,8 +47,6 @@ discovery (design / human interviews / synthesis) -> pressure-b -> sizing -> sta
   messages on stderr (exit 2) -> fix and rewrite, do not argue, do not bypass (hook-enforced)
 - **Gate-write bypass**: only `advance_gate.py` writes `gates:`; the file-tool path is denied
   (`gates_guard`) and a Bash-sed bypass is caught by `uv run scripts/ledger_audit.py` (three-way reconciliation)
-
-<!-- W11: legacy stage names retired in SS1; archive + deprecation-redirect hook removed in cleanup; replacements (kill-scan / pressure-test / market-sizing / startup-brief) are live -->
 
 <!-- ### Founder Background
 @docs/founder-profile.md -->

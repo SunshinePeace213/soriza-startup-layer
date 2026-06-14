@@ -159,8 +159,8 @@ present (for coverage). If fewer than ~5 new interviews exist, say so and ask wh
 
 #### Step S2 — Extract the ledger (grade 1 / grade 2, append-only)
 
-For each interview note, append `evidence-ledger.jsonl` entries (read `docs/loop-engineering-reference-en.md`
-§6.3 for the line shape) — **first-party commitments** (the prospect put money / booked time / made an
+For each interview note, append `evidence-ledger.jsonl` entries (see `tests/schemas/test_ledger.py`
++ `tests/fixtures/ledger.sample.jsonl` for the line shape) — **first-party commitments** (the prospect put money / booked time / made an
 intro) as **grade 1**, **verbatim quotes** as **grade 2**. Unique ascending ids (`E-xxx`); each line names
 its `source` (the interview file) and `added_by: agent`. Append only — never modify a prior line; a
 correction is a new line carrying `"corrects":"E-xxx"`. These entries are what the Discovery Read cites and

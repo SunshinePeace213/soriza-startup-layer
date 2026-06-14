@@ -110,4 +110,4 @@ hands to the MVP layer.
 ## References
 
 - `assets/poc-brief-template.md`; `lean-startup` (MVP types / validated learning), `solo-founder` (scope).
-- **Spec:** `docs/loop-engineering-reference-en.md` §2 (step 9), §3.5 (predictions resolution protocol).
+- **Spec:** `.claude/skills/idea-stage/references/stage-pipeline.md` (step 9).

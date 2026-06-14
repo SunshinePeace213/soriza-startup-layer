@@ -97,4 +97,4 @@ run the pack, interview ~5–15, and capture each conversation with `assets/inte
   ladder — methods, V.F.W.P.A. framing, the landing-page vanity-metric guardrail); the locked kill-criteria
   schema in `../customer-discovery-synthesis/references/kill-criteria-anchoring.md`;
   `assets/cowork-runpack-template.md`; `assets/interview-note-template.md` (the emoji capture legend).
-- Spec: `docs/loop-engineering-reference-en.md` §2 (step 5a).
+- Spec: `.claude/skills/idea-stage/references/stage-pipeline.md` (step 5).

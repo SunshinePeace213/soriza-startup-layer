@@ -4,8 +4,9 @@
 # ///
 """new_idea.py -- T01 scaffold script for the Soriza Idea Stage.
 
-Spec: docs/loop-engineering-reference-en.md §8 (skeleton) + §3.2 (STATE schema v2)
-+ §6.2/§6.4 (criteria / decision-log samples).
+Spec: STATE schema v2 + criteria/decision-log scaffold; validators in tests/schemas/
+(test_state, test_criteria) + the pipeline canon in
+.claude/skills/idea-stage/references/stage-pipeline.md.
 
 Lays down the state-layer scaffold for ONE idea slug:
 

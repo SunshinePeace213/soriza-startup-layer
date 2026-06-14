@@ -5,7 +5,7 @@
 # ///
 """make_brief.py -- T10. hypothesis.md -> neutral-brief.md (the founder-blind pressure-test input).
 
-Spec: docs/loop-engineering-reference-en.md §8 + §2 step 4. Produces the de-identified brief that
+Spec: pressure-test α (step 4) -- see .claude/skills/idea-stage/references/stage-pipeline.md. Produces the de-identified brief that
 the pressure-test α panel (objection-lens / competitor-steelman) reads INSTEAD of hypothesis.md, so
 the panel judges the idea on its merits and can't be swayed by the founder's identity or enthusiasm.
 

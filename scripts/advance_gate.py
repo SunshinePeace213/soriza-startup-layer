@@ -5,8 +5,8 @@
 # ///
 """advance_gate.py (T06) -- the ONLY writer of STATE.md's gates: block.
 
-Spec: docs/loop-engineering-reference-en.md §3.4 (gate-write enforcement) + §8 (skeleton)
-+ §6.4 (decision-log format). Constitution Hard Rule #6: gates: is written ONLY here.
+Spec: gate-write enforcement (CLAUDE.md Write Rules) + gate mechanics in
+.claude/skills/idea-stage/references/stage-pipeline.md. Constitution Hard Rule #6: gates: is written ONLY here.
 
 This script writes STATE.md via plain Python file IO (run under Bash), so it never trips
 the gates_guard PreToolUse hook -- that asymmetry IS how "script-only gate writes" is

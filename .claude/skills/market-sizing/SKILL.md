@@ -87,4 +87,4 @@ is no verdict to sign; G7 is a completeness check.
   context if needed; `forward-deployed-founder` for the moat/distribution read.
 - **Template:** `assets/market-sizing-template.md`.
 - **Validator:** `tests/schemas/test_sizing.py` (the G7 completeness gate; size never kills).
-- **Spec:** `docs/loop-engineering-reference-en.md` §2 (step 7), §2.11 (market-map harvest table).
+- **Spec:** `.claude/skills/idea-stage/references/stage-pipeline.md` (step 7).

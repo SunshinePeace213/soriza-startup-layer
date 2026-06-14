@@ -204,7 +204,7 @@ Return one line naming the concept + the doc path — not the contents.
 - **Scripts:** `scripts/build_delta_ledger.py` (every flagged delta + Discovery verdict + criteria +
   overrides, verbatim), `scripts/rank_assumptions.py` (leverage×uncertainty, top-3, adversary flag).
 - **Validator:** `tests/schemas/test_startup_brief.py` (drift table + premortem + PoC criteria + upstream
-  citations + GO/NO-GO stamp). **Spec:** `docs/loop-engineering-reference-en.md` §2 (step 8).
+  citations + GO/NO-GO stamp). **Spec:** `.claude/skills/idea-stage/references/stage-pipeline.md` (step 8).
 
 ## Composition
 
