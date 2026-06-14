@@ -39,15 +39,20 @@ Goal: the **sealed** `ideas/<slug>/customer-discovery/cowork-runpack.md`, built 
   demand-scan).
 - **Reachability map** — the named communities / subreddits / Slack-Discord / LinkedIn groups / events
   where they congregate, with a prioritization (closest-to-the-problem first).
+- **Outreach strategy** — the **2–3 highest-leverage methods** for this segment, picked from
+  `references/outreach-methods.md` (the leverage ladder: flag-planting / warm intros > go-to-them > cold),
+  each tagged **Tier A** (founder builds it; never Cowork) or **Tier B** (per-prospect drafts — warm replies
+  the founder posts, cold emails Cowork sends, gated). Not the whole menu — focus. Landing-page signups are a
+  lead source for conversations, never validation.
 - **Warm list ★ (warm-first)** — real people who **already publicly complained**, each as
-  `{link · their words · a drafted contextual reply/DM}`. Mine the demand signals from the kill-scan
+  `{link · their words · a drafted V.F.W.P.A.-framed reply/DM}`. Mine the demand signals from the kill-scan
   demand-scan — the named complainers seeded as grade-4 entries in `evidence-ledger.jsonl`.
 - **Mom-Test interview guide** — built **from pressure-test α's OPEN assumptions + their interview
   questions** (in `pressure-report-alpha.md`); past behaviour not future intentions; audited for leading /
   future-facing / too-broad questions (read `references/mom-test.md`). Each question maps to the OPEN
   assumption (and the locked kill-criterion) it trips-or-clears. Separate question sets per persona if the
   hypothesis has more than one.
-- **Cold-email drafts** — personalized to role/context (secondary to the warm list).
+- **Cold-email drafts** — personalized to role/context, **V.F.W.P.A.-framed** (secondary to the warm list).
 - **Tracking sheet** — prospect · channel · status · follow-up · done.
 - **Consume the locked kill-criteria** — read `customer-discovery/kill-criteria.json` (locked at G4) and
   ensure every interview question traces to a criterion it tests. **Never edit a threshold** —
@@ -79,14 +84,17 @@ deltas_pending` only.
 ## Output
 
 `ideas/<slug>/customer-discovery/cowork-runpack.md` (sealed; `assets/cowork-runpack-template.md`). Next:
-run the pack, interview ~5–15, drop notes into `customer-discovery/interviews/<date>-<prospect>.md`, then
+run the pack, interview ~5–15, and capture each conversation with `assets/interview-note-template.md`
+(the emoji legend — drop notes into `customer-discovery/interviews/<date>-<prospect>.md`), then
 `/customer-discovery-synthesis`.
 
 ## Workers & references
 
 - Workers: `customer-discovery-design-worker` (the pack), `customer-discovery-personas-worker` (per-persona
-  profiles + outreach drafts). Pass them pressure-test α's OPEN assumptions + interview questions and the
-  kill-scan demand-scan findings.
-- `references/mom-test.md` (interview discipline); the locked kill-criteria schema in
-  `../customer-discovery-synthesis/references/kill-criteria-anchoring.md`; `assets/cowork-runpack-template.md`.
+  profiles + outreach drafts). Pass them pressure-test α's OPEN assumptions + interview questions, the
+  kill-scan demand-scan findings, and the reference paths (`mom-test.md`, `outreach-methods.md`).
+- `references/mom-test.md` (interview discipline); `references/outreach-methods.md` (the outreach leverage
+  ladder — methods, V.F.W.P.A. framing, the landing-page vanity-metric guardrail); the locked kill-criteria
+  schema in `../customer-discovery-synthesis/references/kill-criteria-anchoring.md`;
+  `assets/cowork-runpack-template.md`; `assets/interview-note-template.md` (the emoji capture legend).
 - Spec: `docs/loop-engineering-reference-en.md` §2 (step 5a).
